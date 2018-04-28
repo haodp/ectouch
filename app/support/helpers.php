@@ -198,6 +198,7 @@ function dd($var, $echo = true, $label = null)
 {
     if ($echo) {
         dump($var, $echo, $label);
+        die();
     } else {
         return dump($var, $echo, $label);
     }

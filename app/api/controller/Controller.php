@@ -66,7 +66,7 @@ class Controller extends BaseController
         // }
 
         // 写入日志
-        if (config('app.debug')) {
+        if (config('app_debug')) {
             $debug_id = uniqid();
 
             Log::debug($debug_id, [

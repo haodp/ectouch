@@ -72,7 +72,7 @@ class InitController extends Controller
         $this->smarty = $GLOBALS['smarty'] = new Template();
         $this->smarty->template_dir = dirname(__DIR__) . '/view';
         $this->smarty->compile_dir = storage_path('framework/temp/compiled/admin');
-        if (config('app.debug')) {
+        if (config('app_debug')) {
             $this->smarty->force_compile = true;
         }
 

@@ -73,8 +73,8 @@ class InitController extends Controller
             $_SERVER['PHP_SELF'] = htmlspecialchars($_SERVER['PHP_SELF']);
         }
 
-        $app_mode = config('shop.mode');
-        if (($app_mode == 0 && is_mobile_device()) || $app_mode == 2) {
+        $app_mode = config('mobile_first');
+        if (is_mobile_device() || $app_mode) {
             $GLOBALS['_CFG']['template'] .= '/mobile';
         }
 
@@ -88,7 +88,7 @@ class InitController extends Controller
         $this->smarty->cache_dir = storage_path('framework/temp/caches');
         $this->smarty->compile_dir = storage_path('framework/temp/compiled');
 
-        if (config('app.debug')) {
+        if (config('app_debug')) {
             $this->smarty->direct_output = true;
             $this->smarty->force_compile = true;
         } else {
