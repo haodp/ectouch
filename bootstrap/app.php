@@ -117,7 +117,7 @@ require __DIR__ . '/../app/kernel/base.php';
 |
 */
 
-$app = think\Container::get('app');
+$app = app\kernel\Container::get('app');
 
 /*
 |--------------------------------------------------------------------------

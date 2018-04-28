@@ -39,4 +39,4 @@ $app->path(__DIR__ . '/app/')->initialize();
 |
 */
 
-think\Console::init();
+app\kernel\Console::init();

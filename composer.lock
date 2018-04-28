@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "afd12303bb725e0e4c58decdbfdcf790",
+    "content-hash": "5a2855605b6bd7bfc3563a8530767db4",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -2142,7 +2142,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.0"
+        "php": "^7.2.5"
     },
     "platform-dev": []
 }

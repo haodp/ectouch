@@ -1,20 +1,6 @@
 <?php
-// +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: liu21st <liu21st@gmail.com>
-// +----------------------------------------------------------------------
-namespace think;
 
-// 载入Loader类
-require __DIR__ . '/library/think/Loader.php';
-
-// 注册自动加载
-Loader::register();
+namespace app\kernel;
 
 // 注册错误和异常处理机制
 Error::register();
@@ -50,7 +36,7 @@ Container::getInstance()->bind([
     'view'                  => View::class,
     'rule_name'             => route\RuleName::class,
     // 接口依赖注入
-    'think\LoggerInterface' => Log::class,
+    'app\kernel\LoggerInterface' => Log::class,
 ]);
 
 // 注册核心类的静态代理
@@ -99,7 +85,4 @@ Loader::addClassAlias([
 ]);
 
 // 加载惯例配置文件
-facade\Config::set(include __DIR__ . '/convention.php');
-
-// 加载composer autofile文件
-Loader::loadComposerAutoloadFiles();
+facade\Config::set(include __DIR__ . '/config/convention.php');
