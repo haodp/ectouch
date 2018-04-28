@@ -35,7 +35,7 @@ class CatalogController extends InitController
             /**
              * 模拟数据
              */
-            $content = file_get_contents(base_path('docs/mock/jd.php'));
+            $content = file_get_contents(resource_path('docs/mock/jd.php'));
 
             preg_match_all('/jsonp(.*?)\}\)/', $content, $childs);
             $list = [];

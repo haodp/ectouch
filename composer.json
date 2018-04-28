@@ -33,7 +33,6 @@
             "app\\": "app"
         },
         "files": [
-            "config/constant.php",
             "app/support/helpers.php"
         ]
     },
