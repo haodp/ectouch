@@ -2,7 +2,7 @@
 
 namespace app\custom\controller;
 
-use app\http\controller\IndexController as BaseController;
+use app\shop\controller\IndexController as BaseController;
 
 class IndexController extends BaseController
 {
