@@ -13,7 +13,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.6.0",
+        "php": "^7.2.5",
         "aliyuncs/oss-sdk-php": "^2.2",
         "endroid/qr-code": "^3.2",
         "jellybool/translug": "^2.0",
