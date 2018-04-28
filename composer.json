@@ -1,0 +1,48 @@
+{
+    "name": "ectouch/ectouch",
+    "description": "ECTouch E-Commerce Platform for PHP.",
+    "keywords": ["ectouch", "B2C", "o2o", "shop", "mall", "wechat"],
+    "homepage": "https://www.ectouch.cn/",
+    "type": "project",
+    "license": "GPL-3.0",
+    "support": {
+        "issues": "https://github.com/ectouch/ectouch/issues?state=open",
+        "forum": "https://www.ectouch.cn/forum/",
+        "wiki": "https://www.ectouch.cn/wiki/",
+        "source": "https://github.com/ectouch/ectouch"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6.0",
+        "aliyuncs/oss-sdk-php": "^2.2",
+        "endroid/qr-code": "^3.2",
+        "jellybool/translug": "^2.0",
+        "jenssegers/agent": "^2.6",
+        "overtrue/easy-sms": "^1.0",
+        "overtrue/pinyin": "^3.0",
+        "overtrue/socialite": "^2.0",
+        "overtrue/wechat": "^4.0",
+        "phpoffice/phpspreadsheet": "^1.2",
+        "riverslei/payment": "^4.1",
+        "sentry/sentry": "^1.8",
+        "topthink/framework": "5.1.*",
+        "workerman/phpsocket.io": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        },
+        "files": [
+            "config/constant.php",
+            "app/support/helpers.php"
+        ]
+    },
+    "extra": {
+        "think-path": "vendor/topthink/framework"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
