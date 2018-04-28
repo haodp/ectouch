@@ -10,7 +10,7 @@ use app\extensions\Exchange;
  */
 class RegFieldsController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $exc = new Exchange($this->ecs->table("reg_fields"), $this->db, 'id', 'reg_field_name');
 

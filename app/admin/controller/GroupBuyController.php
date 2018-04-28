@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class GroupBuyController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper(['goods', 'order']);
 

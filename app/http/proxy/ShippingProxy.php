@@ -1,12 +1,10 @@
 <?php
 
-namespace app\http\proxies;
-
-use GuzzleHttp\Client;
+namespace app\http\proxy;
 
 /**
  * Class ShippingProxy
- * @package app\http\proxies
+ * @package app\http\proxy
  */
 class ShippingProxy
 {

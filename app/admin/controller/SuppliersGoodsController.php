@@ -12,7 +12,7 @@ use app\extensions\Exchange;
  */
 class SuppliersGoodsController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper('goods', 'admin');
 

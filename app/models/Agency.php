@@ -2,46 +2,18 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%agency}}".
- *
- * @property int $agency_id
- * @property string $agency_name
- * @property string $agency_desc
+ * Class Agency
+ * @package app\models
+ * @property $agency_name
+ * @property $agency_desc
  */
-class Agency extends \yii\db\ActiveRecord
+class Agency extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%agency}}';
-    }
+    protected $table = 'agency';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['agency_name', 'agency_desc'], 'required'],
-            [['agency_desc'], 'string'],
-            [['agency_name'], 'string', 'max' => 255],
-        ];
-    }
+    protected $pk = 'agency_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'agency_id' => 'Agency ID',
-            'agency_name' => 'Agency Name',
-            'agency_desc' => 'Agency Desc',
-        ];
-    }
 }

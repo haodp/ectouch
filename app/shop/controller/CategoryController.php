@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class CategoryController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 获得请求的分类 ID
         if (isset($_REQUEST['id'])) {

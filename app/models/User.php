@@ -2,103 +2,50 @@
 
 namespace app\models;
 
-class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
+use think\Model;
+
+/**
+ * Class User
+ * @package app\models
+ * @package app\models
+ * @property $email
+ * @property $user_name
+ * @property $password
+ * @property $question
+ * @property $answer
+ * @property $sex
+ * @property $birthday
+ * @property $user_money
+ * @property $frozen_money
+ * @property $pay_points
+ * @property $rank_points
+ * @property $address_id
+ * @property $reg_time
+ * @property $last_login
+ * @property $last_time
+ * @property $last_ip
+ * @property $visit_count
+ * @property $user_rank
+ * @property $is_special
+ * @property $ec_salt
+ * @property $salt
+ * @property $parent_id
+ * @property $flag
+ * @property $alias
+ * @property $msn
+ * @property $qq
+ * @property $office_phone
+ * @property $home_phone
+ * @property $mobile_phone
+ * @property $is_validated
+ * @property $credit_line
+ * @property $passwd_question
+ * @property $passwd_answer
+ */
+class User extends Model
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
+    protected $table = 'users';
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+    protected $pk = 'user_id';
 
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentity($id)
-    {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthKey()
-    {
-        return $this->authKey;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->authKey === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return $this->password === $password;
-    }
 }

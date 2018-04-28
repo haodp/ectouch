@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class PickOutController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $condition = [];
         $picks = [];

@@ -8,7 +8,7 @@ namespace app\shop\controller;
  */
 class SalesController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         return 'SalesController.';
     }

@@ -2,48 +2,19 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%member_price}}".
- *
- * @property int $price_id
- * @property int $goods_id
- * @property int $user_rank
- * @property string $user_price
+ * Class MemberPrice
+ * @package app\models
+ * @property $goods_id
+ * @property $user_rank
+ * @property $user_price
  */
-class MemberPrice extends \yii\db\ActiveRecord
+class MemberPrice extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%member_price}}';
-    }
+    protected $table = 'member_price';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['goods_id'], 'integer'],
-            [['user_price'], 'number'],
-            [['user_rank'], 'string', 'max' => 3],
-        ];
-    }
+    protected $pk = 'price_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'price_id' => 'Price ID',
-            'goods_id' => 'Goods ID',
-            'user_rank' => 'User Rank',
-            'user_price' => 'User Price',
-        ];
-    }
 }

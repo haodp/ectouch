@@ -10,7 +10,7 @@ class AreaCodeController extends Controller
     /**
     * POST ecapi.areacode.list
     */
-    public function actionIndex()
+    public function index()
     {
         $model = AreaCode::getList();
 

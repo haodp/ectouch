@@ -8,7 +8,7 @@ namespace app\admin\controller;
  */
 class AffiliateController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         admin_priv('affiliate');
         $config = $this->get_affiliate();

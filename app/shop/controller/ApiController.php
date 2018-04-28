@@ -12,7 +12,7 @@ use app\extensions\Json;
  */
 class ApiController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper('license');
 

@@ -12,7 +12,7 @@ use app\extensions\sitemap\GoogleSitemapItem;
  */
 class SitemapController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 检查权限
         admin_priv('sitemap');

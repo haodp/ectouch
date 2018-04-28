@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class MyshipController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper(['order', 'transaction']);
         load_lang(['flow', 'user']);

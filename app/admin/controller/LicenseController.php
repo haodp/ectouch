@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class LicenseController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         if ($_REQUEST['act'] == 'list_edit') {
             // 检查权限

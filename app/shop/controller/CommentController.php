@@ -12,7 +12,7 @@ use app\extensions\Captcha;
  */
 class CommentController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         if (!isset($_REQUEST['cmt']) && !isset($_REQUEST['act'])) {
             // 只有在没有提交评论内容以及没有act的情况下才跳转

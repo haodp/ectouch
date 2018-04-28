@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class GoodsScriptController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $charset = empty($_GET['charset']) ? CHARSET : $_GET['charset'];
         $type = empty($_GET['type']) ? '' : 'collection';

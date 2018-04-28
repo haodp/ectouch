@@ -69,7 +69,7 @@ class CartController extends Controller
      * POST ecapi.cart.get
      */
 
-    public function actionIndex()
+    public function index()
     {
         $response = Cart::getList();
         return $this->json($response);

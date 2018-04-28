@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class GalleryController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 参数
         $_REQUEST['id'] = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : 0; // 商品编号

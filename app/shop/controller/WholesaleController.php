@@ -11,7 +11,7 @@ use app\extensions\Sms;
  */
 class WholesaleController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 如果没登录，提示登录
         if (session('user_rank') <= 0) {

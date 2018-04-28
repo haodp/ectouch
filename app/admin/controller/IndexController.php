@@ -10,7 +10,7 @@ use app\extensions\Image;
  */
 class IndexController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper('order');
 
@@ -19,7 +19,7 @@ class IndexController extends InitController
          */
         if ($_REQUEST['act'] == 'list') {
             // 强制访问index.php，避免url异常
-            $absolute_url = app('request')->getAbsoluteUrl();
+            $absolute_url = request()->url();
             if (stripos($absolute_url, 'index.php') === false) {
                 $this->redirect('index.php');
             }

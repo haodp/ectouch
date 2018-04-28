@@ -12,7 +12,7 @@ use app\extensions\Exchange;
  */
 class AdsController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $image = new Image($GLOBALS['_CFG']['bgcolor']);
         $exc = new Exchange($this->ecs->table("ad"), $this->db, 'ad_id', 'ad_name');

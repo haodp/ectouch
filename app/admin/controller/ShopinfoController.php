@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class ShopinfoController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $exc = new Exchange($this->ecs->table("article"), $this->db, 'article_id', 'title');
 

@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class GenGoodsScriptController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         /**
          * 生成代码

@@ -8,7 +8,7 @@ namespace app\admin\controller;
  */
 class GoodsAutoController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         admin_priv('goods_auto');
         $this->smarty->assign('thisfile', 'goods_auto.php');

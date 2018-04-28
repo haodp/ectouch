@@ -2,48 +2,17 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%searchengine}}".
- *
- * @property string $date
- * @property string $searchengine
- * @property int $count
+ * Class Searchengine
+ * @package app\models
+ * @property $date
+ * @property $searchengine
+ * @property $count
  */
-class Searchengine extends \yii\db\ActiveRecord
+class Searchengine extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%searchengine}}';
-    }
+    protected $table = 'searchengine';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['date', 'searchengine'], 'required'],
-            [['date'], 'safe'],
-            [['count'], 'integer'],
-            [['searchengine'], 'string', 'max' => 20],
-            [['date', 'searchengine'], 'unique', 'targetAttribute' => ['date', 'searchengine']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'date' => 'Date',
-            'searchengine' => 'Searchengine',
-            'count' => 'Count',
-        ];
-    }
 }

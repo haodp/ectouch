@@ -2,60 +2,25 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%account_log}}".
- *
- * @property int $log_id
- * @property int $user_id
- * @property string $user_money
- * @property string $frozen_money
- * @property int $rank_points
- * @property int $pay_points
- * @property int $change_time
- * @property string $change_desc
- * @property int $change_type
+ * Class AccountLog
+ * @package app\models
+ * @property integer $log_id 自增ID
+ * @property integer $user_id 用户ID
+ * @property double $user_money 金额
+ * @property double $frozen_money 冻结金额
+ * @property integer $rank_points 等级积分
+ * @property integer $pay_points 支付积分
+ * @property integer $change_time 变更时间
+ * @property string $change_desc 变更描述
+ * @property integer $change_type 变更类型
  */
-class AccountLog extends \yii\db\ActiveRecord
+class AccountLog extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%account_log}}';
-    }
+    protected $table = 'account_log';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['user_id', 'user_money', 'frozen_money', 'rank_points', 'pay_points', 'change_time', 'change_desc', 'change_type'], 'required'],
-            [['user_id', 'rank_points', 'pay_points', 'change_time'], 'integer'],
-            [['user_money', 'frozen_money'], 'number'],
-            [['change_desc'], 'string', 'max' => 255],
-            [['change_type'], 'string', 'max' => 3],
-        ];
-    }
+    protected $pk = 'log_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'log_id' => 'Log ID',
-            'user_id' => 'User ID',
-            'user_money' => 'User Money',
-            'frozen_money' => 'Frozen Money',
-            'rank_points' => 'Rank Points',
-            'pay_points' => 'Pay Points',
-            'change_time' => 'Change Time',
-            'change_desc' => 'Change Desc',
-            'change_type' => 'Change Type',
-        ];
-    }
 }

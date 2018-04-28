@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class UserMsgController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 权限判断
         admin_priv('feedback_priv');

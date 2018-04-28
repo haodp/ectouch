@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class TopicController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 配置风格颜色选项
         $topic_style_color = [

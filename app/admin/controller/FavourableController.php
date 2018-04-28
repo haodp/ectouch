@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class FavourableController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper('goods');
 

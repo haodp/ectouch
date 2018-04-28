@@ -2,47 +2,19 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%tag}}".
- *
- * @property int $tag_id
- * @property int $user_id
- * @property int $goods_id
- * @property string $tag_words
+ * Class Tag
+ * @package app\models
+ * @property $user_id
+ * @property $goods_id
+ * @property $tag_words
  */
-class Tag extends \yii\db\ActiveRecord
+class Tag extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%tag}}';
-    }
+    protected $table = 'tag';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['user_id', 'goods_id'], 'integer'],
-            [['tag_words'], 'string', 'max' => 255],
-        ];
-    }
+    protected $pk = 'tag_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'tag_id' => 'Tag ID',
-            'user_id' => 'User ID',
-            'goods_id' => 'Goods ID',
-            'tag_words' => 'Tag Words',
-        ];
-    }
 }

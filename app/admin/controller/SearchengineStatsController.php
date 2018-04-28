@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class SearchengineStatsController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_lang('statistic', 'admin');
 

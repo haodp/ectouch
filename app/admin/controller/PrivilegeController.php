@@ -12,7 +12,7 @@ use app\extensions\Exchange;
  */
 class PrivilegeController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $_REQUEST['act'] = empty($_REQUEST['act']) ? 'login' : $_REQUEST['act'];
 

@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class CompareController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         if (!empty($_REQUEST['goods']) && is_array($_REQUEST['goods']) && count($_REQUEST['goods']) > 1) {
             foreach ($_REQUEST['goods'] as $key => $val) {

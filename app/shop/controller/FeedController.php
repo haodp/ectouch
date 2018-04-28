@@ -11,7 +11,7 @@ use app\extensions\rss\RSSBuilder;
  */
 class FeedController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         header('Content-Type: application/xml; charset=' . CHARSET);
         header('Cache-Control: no-cache, must-revalidate');

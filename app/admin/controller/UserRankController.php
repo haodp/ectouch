@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class UserRankController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $exc = new Exchange($this->ecs->table("user_rank"), $this->db, 'rank_id', 'rank_name');
         $exc_user = new Exchange($this->ecs->table("users"), $this->db, 'user_rank', 'user_rank');

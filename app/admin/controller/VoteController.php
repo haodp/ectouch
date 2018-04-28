@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class VoteController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $exc = new Exchange($this->ecs->table("vote"), $this->db, 'vote_id', 'vote_name');
         $exc_opn = new Exchange($this->ecs->table("vote_option"), $this->db, 'option_id', 'option_name');

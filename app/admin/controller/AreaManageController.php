@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class AreaManageController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $exc = new Exchange($this->ecs->table('region'), $this->db, 'region_id', 'region_name');
 

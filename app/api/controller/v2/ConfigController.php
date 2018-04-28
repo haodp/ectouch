@@ -7,7 +7,7 @@ use app\api\model\v2\Configs;
 
 class ConfigController extends Controller
 {
-    public function actionIndex()
+    public function index()
     {
         $data = Configs::getList();
         return $this->json($data);

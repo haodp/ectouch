@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class ShopConfigController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         /**
          * 列表编辑 ?act=list_edit

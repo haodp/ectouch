@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class AdsenseController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper('order');
         load_lang('ads', 'admin');

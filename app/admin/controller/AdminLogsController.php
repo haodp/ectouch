@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class AdminLogsController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         /**
          * 获取所有日志列表

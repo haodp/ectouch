@@ -2,45 +2,17 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%adsense}}".
- *
- * @property int $from_ad
- * @property string $referer
- * @property int $clicks
+ * Class Adsense
+ * @package app\models
+ * @property $from_ad
+ * @property $referer
+ * @property $clicks
  */
-class Adsense extends \yii\db\ActiveRecord
+class Adsense extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%adsense}}';
-    }
+    protected $table = 'adsense';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['from_ad', 'clicks'], 'integer'],
-            [['referer'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'from_ad' => 'From Ad',
-            'referer' => 'Referer',
-            'clicks' => 'Clicks',
-        ];
-    }
 }

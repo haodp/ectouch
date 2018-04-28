@@ -2,51 +2,21 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%admin_log}}".
- *
- * @property int $log_id
- * @property int $log_time
- * @property int $user_id
- * @property string $log_info
- * @property string $ip_address
+ * Class AdminLog
+ * @package app\models
+ * @property integer $log_id 自增ID
+ * @property integer $log_time 日志时间
+ * @property integer $user_id 用户ID
+ * @property string $log_info 日志内容
+ * @property string $ip_address IP地址
  */
-class AdminLog extends \yii\db\ActiveRecord
+class AdminLog extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%admin_log}}';
-    }
+    protected $table = 'admin_log';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['log_time'], 'integer'],
-            [['user_id'], 'string', 'max' => 3],
-            [['log_info'], 'string', 'max' => 255],
-            [['ip_address'], 'string', 'max' => 15],
-        ];
-    }
+    protected $pk = 'log_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'log_id' => 'Log ID',
-            'log_time' => 'Log Time',
-            'user_id' => 'User ID',
-            'log_info' => 'Log Info',
-            'ip_address' => 'Ip Address',
-        ];
-    }
 }

@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class ArticleCatController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 获得指定的分类ID
         if (!empty($_GET['id'])) {

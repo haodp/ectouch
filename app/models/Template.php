@@ -2,60 +2,22 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%template}}".
- *
- * @property string $filename
- * @property string $region
- * @property string $library
- * @property int $sort_order
- * @property int $id
- * @property int $number
- * @property int $type
- * @property string $theme
- * @property string $remarks
+ * Class Template
+ * @package app\models
+ * @property $filename
+ * @property $region
+ * @property $library
+ * @property $sort_order
+ * @property $number
+ * @property $type
+ * @property $theme
+ * @property $remarks
  */
-class Template extends \yii\db\ActiveRecord
+class Template extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%template}}';
-    }
+    protected $table = 'template';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['id'], 'integer'],
-            [['filename', 'remarks'], 'string', 'max' => 30],
-            [['region', 'library'], 'string', 'max' => 40],
-            [['sort_order', 'number', 'type'], 'string', 'max' => 1],
-            [['theme'], 'string', 'max' => 60],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'filename' => 'Filename',
-            'region' => 'Region',
-            'library' => 'Library',
-            'sort_order' => 'Sort Order',
-            'id' => 'ID',
-            'number' => 'Number',
-            'type' => 'Type',
-            'theme' => 'Theme',
-            'remarks' => 'Remarks',
-        ];
-    }
 }

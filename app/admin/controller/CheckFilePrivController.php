@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class CheckFilePrivController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         if ($_REQUEST['act'] == 'check') {
             // 检查权限

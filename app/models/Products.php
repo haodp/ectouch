@@ -2,50 +2,20 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%products}}".
- *
- * @property int $product_id
- * @property int $goods_id
- * @property string $goods_attr
- * @property string $product_sn
- * @property int $product_number
+ * Class Products
+ * @package app\models
+ * @property $goods_id
+ * @property $goods_attr
+ * @property $product_sn
+ * @property $product_number
  */
-class Products extends \yii\db\ActiveRecord
+class Products extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%products}}';
-    }
+    protected $table = 'products';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['goods_id', 'product_number'], 'integer'],
-            [['goods_attr'], 'string', 'max' => 50],
-            [['product_sn'], 'string', 'max' => 60],
-        ];
-    }
+    protected $pk = 'product_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'product_id' => 'Product ID',
-            'goods_id' => 'Goods ID',
-            'goods_attr' => 'Goods Attr',
-            'product_sn' => 'Product Sn',
-            'product_number' => 'Product Number',
-        ];
-    }
 }

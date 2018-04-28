@@ -11,7 +11,7 @@ use app\extensions\Captcha;
  */
 class MessageController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         if (empty($GLOBALS['_CFG']['message_board'])) {
             return show_message($GLOBALS['_LANG']['message_board_close']);

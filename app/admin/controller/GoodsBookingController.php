@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class GoodsBookingController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         admin_priv('booking');
 

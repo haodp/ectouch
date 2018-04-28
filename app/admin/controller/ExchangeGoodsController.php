@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class ExchangeGoodsController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         /*初始化数据交换对象 */
         $exc = new Exchange($this->ecs->table("exchange_goods"), $this->db, 'goods_id', 'exchange_integral');

@@ -33,16 +33,16 @@ class Mysql
 
     public function insert_id()
     {
-        return app('db')->getLastInsertID();
+        return $this->getOne('SELECT LAST_INSERT_ID()');
     }
 
     public function query($sql)
     {
         $m = strtolower(substr(ltrim(trim($sql), '('), 0, 6));
         if ($m == 'select' || substr($m, 0, 4) == 'desc' || substr($m, 0, 4) == 'show') {
-            $res = app('db')->createCommand($sql)->queryAll();
+            $res = DB::query($sql);
         } else {
-            $res = app('db')->createCommand($sql)->execute();
+            $res = DB::execute($sql);
         }
 
         return $res;

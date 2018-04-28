@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class ArticlecatController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $exc = new Exchange($this->ecs->table("article_cat"), $this->db, 'cat_id', 'cat_name');
 

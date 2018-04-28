@@ -2,69 +2,29 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%ad}}".
- *
- * @property int $ad_id
- * @property int $position_id
- * @property int $media_type
- * @property string $ad_name
- * @property string $ad_link
- * @property string $ad_code
- * @property int $start_time
- * @property int $end_time
- * @property string $link_man
- * @property string $link_email
- * @property string $link_phone
- * @property int $click_count
- * @property int $enabled
+ * Class Ad
+ * @package app\models
+ * @property integer $ad_id 自增ID
+ * @property integer $position_id 广告位ID
+ * @property integer $media_type 广告类型
+ * @property string $ad_name 广告名称
+ * @property string $ad_link 广告链接
+ * @property string $ad_code 广告代码
+ * @property integer $start_time 开始时间
+ * @property integer $end_time 结束时间
+ * @property string $link_man 联系人
+ * @property string $link_email 联系人邮箱
+ * @property string $link_phone 联系人电话
+ * @property integer $click_count 广告点击数
+ * @property integer $enabled 是否启用
  */
-class Ad extends \yii\db\ActiveRecord
+class Ad extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%ad}}';
-    }
+    protected $table = 'ad';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['position_id', 'start_time', 'end_time', 'click_count'], 'integer'],
-            [['ad_code'], 'required'],
-            [['ad_code'], 'string'],
-            [['media_type', 'enabled'], 'string', 'max' => 3],
-            [['ad_name', 'link_man', 'link_email', 'link_phone'], 'string', 'max' => 60],
-            [['ad_link'], 'string', 'max' => 255],
-        ];
-    }
+    protected $pk = 'ad_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'ad_id' => 'Ad ID',
-            'position_id' => 'Position ID',
-            'media_type' => 'Media Type',
-            'ad_name' => 'Ad Name',
-            'ad_link' => 'Ad Link',
-            'ad_code' => 'Ad Code',
-            'start_time' => 'Start Time',
-            'end_time' => 'End Time',
-            'link_man' => 'Link Man',
-            'link_email' => 'Link Email',
-            'link_phone' => 'Link Phone',
-            'click_count' => 'Click Count',
-            'enabled' => 'Enabled',
-        ];
-    }
 }

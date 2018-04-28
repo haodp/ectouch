@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class OrderController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper(['order', 'goods']);
 

@@ -12,7 +12,7 @@ use app\extensions\Exchange;
  */
 class PackController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $image = new Image($GLOBALS['_CFG']['bgcolor']);
 

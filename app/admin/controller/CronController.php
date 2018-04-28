@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class CronController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         admin_priv('cron');
         $exc = new Exchange($this->ecs->table('crons'), $this->db, 'cron_code', 'cron_name');

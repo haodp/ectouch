@@ -8,7 +8,7 @@ namespace app\admin\controller;
  */
 class GoodsExportController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         if ($_REQUEST['act'] == 'goods_export') {
             // 检查权限

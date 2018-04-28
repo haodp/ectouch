@@ -10,24 +10,13 @@ use app\extensions\Json;
  */
 class IndexController extends InitController
 {
-    /**
-     * @return array
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ]
-        ];
-    }
 
     /**
      * Displays homepage.
      *
      * @return string
      */
-    public function actionIndex()
+    public function index()
     {
         /**
          * 判断是否有ajax请求

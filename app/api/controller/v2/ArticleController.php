@@ -11,7 +11,7 @@ class ArticleController extends Controller
     /**
     * POST ecapi.article.list
     */
-    public function actionIndex()
+    public function index()
     {
         $rules = [
             'id'        => 'required|integer',

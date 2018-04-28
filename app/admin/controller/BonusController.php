@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class BonusController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 初始化$exc对象
         $exc = new Exchange($this->ecs->table('bonus_type'), $this->db, 'type_id', 'type_name');

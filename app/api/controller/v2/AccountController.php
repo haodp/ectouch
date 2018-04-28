@@ -13,7 +13,7 @@ class AccountController extends Controller
     /**
     * POST ecapi.withdraw.list
     */
-    public function actionIndex()
+    public function index()
     {
         $rules = [
             'page' => 'integer|min:1',

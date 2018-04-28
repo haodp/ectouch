@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class EmailListController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         admin_priv('email_list');
 

@@ -7,7 +7,7 @@ use app\extensions\Error;
 use app\extensions\Mysql;
 use app\extensions\Captcha;
 use app\extensions\Template;
-use yii\web\Controller;
+use think\Controller;
 
 /**
  * Class InitController
@@ -21,7 +21,7 @@ class InitController extends Controller
     protected $smarty;
     protected $_CFG;
 
-    public function init()
+    protected function initialize()
     {
         define('ECS_ADMIN', true);
         $urls = parse_url($_SERVER['REQUEST_URI']);
@@ -30,8 +30,8 @@ class InitController extends Controller
         /**
          * 重新获取 REQUEST 参数
          */
-        $_GET = app('request')->get();
-        $_POST = app('request')->post();
+        $_GET = input('get.') + request()->route();
+        $_POST = input('post.');
         $_REQUEST = $_GET + $_POST;
         $_REQUEST['act'] = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'list';
 
@@ -70,7 +70,7 @@ class InitController extends Controller
 
         // 创建 Smarty 对象。
         $this->smarty = $GLOBALS['smarty'] = new Template();
-        $this->smarty->template_dir = dirname(__DIR__) . '/views';
+        $this->smarty->template_dir = dirname(__DIR__) . '/view';
         $this->smarty->compile_dir = storage_path('temp/compiled/admin');
         if (config('app.debug')) {
             $this->smarty->force_compile = true;
@@ -137,12 +137,15 @@ class InitController extends Controller
 
     /**
      * URL重定向
-     * @param array|string $url
-     * @param int $code
-     * @return void|\yii\web\Response
+     * @access protected
+     * @param  string $url 跳转的URL表达式
+     * @param  array|integer $params 其它URL参数
+     * @param  integer $code http code
+     * @param  array $with 隐式传参
+     * @return void
      */
-    public function redirect($url, $code = 302)
+    protected function redirect($url, $params = [], $code = 302, $with = [])
     {
-        parent::redirect('/' . ADMIN_PATH . '/' . $url, $code);
+        parent::redirect('/' . ADMIN_PATH . '/' . $url);
     }
 }

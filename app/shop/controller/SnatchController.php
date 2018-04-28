@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class SnatchController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $_REQUEST['act'] = !empty($_REQUEST['act']) ? $_REQUEST['act'] : 'main';
 

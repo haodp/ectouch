@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class WholesaleController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         load_helper('goods');
 

@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class AttributeController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $exc = new Exchange($this->ecs->table("attribute"), $this->db, 'attr_id', 'attr_name');
 

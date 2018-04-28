@@ -2,58 +2,22 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%brand}}".
- *
- * @property int $brand_id
- * @property string $brand_name
- * @property string $brand_logo
- * @property string $brand_desc
- * @property string $site_url
- * @property int $sort_order
- * @property int $is_show
+ * Class Brand
+ * @package app\models
+ * @property string $brand_name 品牌名称
+ * @property string $brand_logo 品牌图片
+ * @property string $brand_desc 品牌描述
+ * @property string $site_url 品牌官网
+ * @property integer $sort_order 排序
+ * @property integer $is_show 是否显示
  */
-class Brand extends \yii\db\ActiveRecord
+class Brand extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%brand}}';
-    }
+    protected $table = 'brand';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['brand_desc'], 'required'],
-            [['brand_desc'], 'string'],
-            [['brand_name'], 'string', 'max' => 60],
-            [['brand_logo'], 'string', 'max' => 80],
-            [['site_url'], 'string', 'max' => 255],
-            [['sort_order'], 'string', 'max' => 3],
-            [['is_show'], 'string', 'max' => 1],
-        ];
-    }
+    protected $pk = 'brand_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'brand_id' => 'Brand ID',
-            'brand_name' => 'Brand Name',
-            'brand_logo' => 'Brand Logo',
-            'brand_desc' => 'Brand Desc',
-            'site_url' => 'Site Url',
-            'sort_order' => 'Sort Order',
-            'is_show' => 'Is Show',
-        ];
-    }
 }

@@ -9,7 +9,7 @@ use app\api\model\v2\Keywords;
 class SearchController extends Controller
 {
     //POST  ecapi.search.keyword.list
-    public function actionIndex()
+    public function index()
     {
         return $this->json(Keywords::getHot());
     }

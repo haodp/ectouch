@@ -6,8 +6,7 @@ use app\extensions\Shop;
 use app\extensions\Error;
 use app\extensions\Mysql;
 use app\extensions\Template;
-use Yii;
-use yii\web\Controller;
+use think\Controller;
 
 class InitController extends Controller
 {
@@ -18,12 +17,12 @@ class InitController extends Controller
     protected $_CFG;
     protected $user;
 
-    public function init()
+    protected function initialize()
     {
         define('PHP_SELF', basename(substr(basename($_SERVER['REQUEST_URI']), 0, stripos(basename($_SERVER['REQUEST_URI']), '?')), '.php'));
 
-        $_GET = app('request')->get();
-        $_POST = app('request')->post();
+        $_GET = input('get.') + request()->route();
+        $_POST = input('post.');
         $_REQUEST = $_GET + $_POST;
         $_REQUEST['act'] = isset($_REQUEST['act']) ? $_REQUEST['act'] : '';
 
@@ -74,7 +73,7 @@ class InitController extends Controller
             $_SERVER['PHP_SELF'] = htmlspecialchars($_SERVER['PHP_SELF']);
         }
 
-        $app_mode = config('app.run_mode');
+        $app_mode = config('shop.mode');
         if (($app_mode == 0 && is_mobile_device()) || $app_mode == 2) {
             $GLOBALS['_CFG']['template'] .= '/mobile';
         }
@@ -117,6 +116,8 @@ class InitController extends Controller
             session('from_ad', $from_ad); // 用户点击的广告ID
             session('referer', stripslashes($site_name)); // 用户来源
 
+            unset($site_name);
+
             if (!defined('INGORE_VISIT_STATS')) {
                 visit_stats();
             }
@@ -150,12 +151,15 @@ class InitController extends Controller
 
     /**
      * URL重定向
-     * @param array|string $url
-     * @param int $statusCode
-     * @return void|\yii\web\Response
+     * @access protected
+     * @param  string $url 跳转的URL表达式
+     * @param  array|integer $params 其它URL参数
+     * @param  integer $code http code
+     * @param  array $with 隐式传参
+     * @return void
      */
-    public function redirect($url, $statusCode = 302)
+    protected function redirect($url, $params = [], $code = 302, $with = [])
     {
-        parent::redirect('/' . $url, $statusCode);
+        parent::redirect('/' . $url);
     }
 }

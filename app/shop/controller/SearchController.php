@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class SearchController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         if (empty($_GET['encode'])) {
             $string = array_merge($_GET, $_POST);

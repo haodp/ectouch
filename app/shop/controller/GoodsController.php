@@ -11,7 +11,7 @@ use app\extensions\Json;
  */
 class GoodsController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
         $this->smarty->assign('affiliate', $affiliate);

@@ -2,48 +2,19 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%reg_extend_info}}".
- *
- * @property int $Id
- * @property int $user_id
- * @property int $reg_field_id
- * @property string $content
+ * Class RegExtendInfo
+ * @package app\models
+ * @property $user_id
+ * @property $reg_field_id
+ * @property $content
  */
-class RegExtendInfo extends \yii\db\ActiveRecord
+class RegExtendInfo extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%reg_extend_info}}';
-    }
+    protected $table = 'reg_extend_info';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['user_id', 'reg_field_id', 'content'], 'required'],
-            [['user_id', 'reg_field_id'], 'integer'],
-            [['content'], 'string'],
-        ];
-    }
+    protected $pk = 'Id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'Id' => 'ID',
-            'user_id' => 'User ID',
-            'reg_field_id' => 'Reg Field ID',
-            'content' => 'Content',
-        ];
-    }
 }

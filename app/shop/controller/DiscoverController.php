@@ -8,7 +8,7 @@ namespace app\shop\controller;
  */
 class DiscoverController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         return 'discover page.';
     }

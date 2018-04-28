@@ -6,7 +6,7 @@ use app\shop\controller\IndexController as BaseController;
 
 class IndexController extends BaseController
 {
-    public function actionIndex()
+    public function index()
     {
         return 'Hello Developer.';
     }

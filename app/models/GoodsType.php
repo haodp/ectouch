@@ -2,49 +2,19 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%goods_type}}".
- *
- * @property int $cat_id
- * @property string $cat_name
- * @property int $enabled
- * @property string $attr_group
+ * Class GoodsType
+ * @package app\models
+ * @property $cat_name
+ * @property $enabled
+ * @property $attr_group
  */
-class GoodsType extends \yii\db\ActiveRecord
+class GoodsType extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%goods_type}}';
-    }
+    protected $table = 'goods_type';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['attr_group'], 'required'],
-            [['cat_name'], 'string', 'max' => 60],
-            [['enabled'], 'string', 'max' => 1],
-            [['attr_group'], 'string', 'max' => 255],
-        ];
-    }
+    protected $pk = 'cat_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'cat_id' => 'Cat ID',
-            'cat_name' => 'Cat Name',
-            'enabled' => 'Enabled',
-            'attr_group' => 'Attr Group',
-        ];
-    }
 }

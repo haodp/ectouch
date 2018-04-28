@@ -11,7 +11,7 @@ use app\extensions\Exchange;
  */
 class ShippingAreaController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $exc = new Exchange($this->ecs->table('shipping_area'), $this->db, 'shipping_area_id', 'shipping_area_name');
 

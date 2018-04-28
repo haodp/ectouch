@@ -1,211 +1,229 @@
 <?php
 
-return [
-    'v2' => [
-        // Other
-        'ecapi.article.show' => 'article/show',
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
 
-        'ecapi.notice.show' => 'notice/show',
+Route::group('api', function () {
 
-        'ecapi.order.notify.<code:\S+>' => 'order/notify',
+    Route::get('article.{id}', 'api/Article/show')
+        ->pattern(['id' => '[0-9]+']);
 
-        'ecapi.product.intro.<id:\d+>' => 'goods/intro',
+    Route::get('notice.{id:[0-9]+}', 'api/Notice/show');
 
-        'ecapi.product.share.<id:\d+>' => 'goods/share',
+    Route::post('order.notify.{code}', 'api/Order/notify');
 
-        'ecapi.auth.web' => 'user/web-oauth',
+    Route::get('product.intro.{id:[0-9]+}', 'api/Goods/intro');
 
-        'ecapi.auth.web.callback/<vendor:\d+>' => 'user/web-callback',
+    Route::get('product.share.{id:[0-9]+}', 'api/Goods/share');
 
-        // Guest
-        'ecapi.access.dns' => 'access/dns',
+    Route::get('ecapi.auth.web', 'api/User/webOauth');
 
-        'ecapi.access.batch' => 'access/batch',
+    Route::get('ecapi.auth.web.callback/{vendor:[0-9]+}', 'api/User/webCallback');
 
-        'ecapi.category.list' => 'goods/category',
+    // Guest
+    Route::post('ecapi.access.dns', 'api/Access/dns');
 
-        'ecapi.category.all.list' => 'goods/all-category',
+    Route::post('ecapi.access.batch', 'api/Access/batch');
 
-        'ecapi.product.list' => 'goods/index',
+    Route::post('ecapi.category.list', 'api/Goods/category');
 
-        'ecapi.search.product.list' => 'goods/search',
+    Route::post('ecapi.product.list', 'api/Goods/index');
 
-        'ecapi.review.product.list' => 'goods/review',
+    Route::post('ecapi.home.product.list', 'api/Goods/home');
 
-        'ecapi.review.product.subtotal' => 'goods/subtotal',
+    Route::post('ecapi.search.product.list', 'api/Goods/search');
 
-        'ecapi.recommend.product.list' => 'goods/recommend-list',
+    Route::post('ecapi.review.product.list', 'api/Goods/review');
 
-        'ecapi.product.accessory.list' => 'goods/accessory-list',
+    Route::post('ecapi.review.product.subtotal', 'api/Goods/subtotal');
 
-        'ecapi.product.get' => 'goods/info',
+    Route::post('ecapi.recommend.product.list', 'api/Goods/recommendList');
 
-        'ecapi.auth.weixin.mplogin' => 'user/weixin-mini-program-login',
+    Route::post('ecapi.product.accessory.list', 'api/Goods/accessoryList');
 
-        'ecapi.auth.signin' => 'user/signin',
+    Route::post('ecapi.product.get', 'api/Goods/info');
 
-        'ecapi.auth.social' => 'user/auth',
+    Route::post('ecapi.auth.signin', 'api/User/signin');
 
-        'ecapi.auth.default.signup' => 'user/signup-by-email',
+    Route::post('ecapi.auth.social', 'api/User/auth');
 
-        'ecapi.auth.mobile.signup' => 'user/signup-by-mobile',
+    Route::post('ecapi.auth.default.signup', 'api/User/signupByEmail');
 
-        'ecapi.user.profile.fields' => 'user/fields',
+    Route::post('ecapi.auth.mobile.signup', 'api/User/signupByMobile');
 
-        'ecapi.auth.mobile.verify' => 'user/verify-mobile',
+    Route::post('ecapi.user.profile.fields', 'api/User/fields');
 
-        'ecapi.auth.mobile.send' => 'user/send-code',
+    Route::post('ecapi.auth.mobile.verify', 'api/User/verifyMobile');
 
-        'ecapi.auth.mobile.reset' => 'user/reset-password-by-mobile',
+    Route::post('ecapi.auth.mobile.send', 'api/User/sendCode');
 
-        'ecapi.auth.default.reset' => 'user/reset-password-by-email',
+    Route::post('ecapi.auth.mobile.reset', 'api/User/resetPasswordByMobile');
 
-        'ecapi.cardpage.get' => 'card-page/view',
+    Route::post('ecapi.auth.default.reset', 'api/User/resetPasswordByEmail');
 
-        'ecapi.cardpage.preview' => 'card-page/preview',
+    Route::post('ecapi.cardpage.get', 'api/CardPage/view');
 
-        'ecapi.config.get' => 'config/index',
+    Route::post('ecapi.cardpage.preview', 'api/CardPage/preview');
 
-        'ecapi.article.list' => 'article/index',
+    Route::post('ecapi.config.get', 'api/Config/index');
 
-        'ecapi.brand.list' => 'brand/index',
+    Route::post('ecapi.article.list', 'api/Article/index');
 
-        'ecapi.search.keyword.list' => 'search/index',
+    Route::post('ecapi.brand.list', 'api/Brand/index');
 
-        'ecapi.region.list' => 'region/index',
+    Route::post('ecapi.search.keyword.list', 'api/Search/index');
 
-        'ecapi.invoice.type.list' => 'invoice/type',
+    Route::post('ecapi.region.list', 'api/Region/index');
 
-        'ecapi.invoice.content.list' => 'invoice/content',
+    Route::post('ecapi.invoice.type.list', 'api/Invoice/type');
 
-        'ecapi.invoice.status.get' => 'invoice/status',
+    Route::post('ecapi.invoice.content.list', 'api/Invoice/content');
 
-        'ecapi.notice.list' => 'notice/index',
+    Route::post('ecapi.invoice.status.get', 'api/Invoice/status');
 
-        'ecapi.banner.list' => 'banner/index',
+    Route::post('ecapi.notice.list', 'api/Notice/index');
 
-        'ecapi.version.check' => 'version/check',
+    Route::post('ecapi.banner.list', 'api/Banner/index');
 
-        'ecapi.recommend.brand.list' => 'brand/recommend',
+    Route::post('ecapi.version.check', 'api/Version/check');
 
-        'ecapi.message.system.list' => 'message/system',
+    Route::post('ecapi.recommend.brand.list', 'api/Brand/recommend');
 
-        'ecapi.message.count' => 'message/unread',
+    Route::post('ecapi.message.system.list', 'api/Message/system');
 
-        'ecapi.site.get' => 'site/index',
+    Route::post('ecapi.message.count', 'api/Message/unread');
 
-        'ecapi.splash.list' => 'splash/index',
+    Route::post('ecapi.site.get', 'api/Site/index');
 
-        'ecapi.splash.preview' => 'splash/view',
+    Route::post('ecapi.splash.list', 'api/Splash/index');
 
-        'ecapi.theme.list' => 'theme/index',
+    Route::post('ecapi.splash.preview', 'api/Splash/view');
 
-        'ecapi.theme.preview' => 'theme/view',
+    Route::post('ecapi.theme.list', 'api/Theme/index');
 
-        'ecapi.search.category.list' => 'goods/category-search',
+    Route::post('ecapi.theme.preview', 'api/Theme/view');
 
-        'ecapi.order.reason.list' => 'order/reason-list',
+    Route::post('ecapi.search.category.list', 'api/Goods/categorySearch');
 
-        'ecapi.search.shop.list' => 'shop/search',
+    Route::post('ecapi.order.reason.list', 'api/Order/reasonList');
 
-        'ecapi.recommend.shop.list' => 'shop/recommand',
+    Route::post('ecapi.search.shop.list', 'api/Shop/search');
 
-        'ecapi.shop.list' => 'shop/index',
+    Route::post('ecapi.recommend.shop.list', 'api/Shop/recommand');
 
-        'ecapi.shop.get' => 'shop/info',
+    Route::post('ecapi.shop.list', 'api/Shop/index');
 
-        'ecapi.areacode.list' => 'area-code/index',
+    Route::post('ecapi.shop.get', 'api/Shop/info');
 
-        // Authorization
-        'ecapi.user.profile.get' => 'user/profile',
+    Route::post('ecapi.areacode.list', 'api/AreaCode/index');
 
-        'ecapi.user.profile.update' => 'user/update-profile',
+    // Authorization
+    Route::post('ecapi.user.profile.get', 'api/User/profile');
 
-        'ecapi.user.password.update' => 'user/update-password',
+    Route::post('ecapi.user.profile.update', 'api/User/updateProfile');
 
-        'ecapi.order.list' => 'order/index',
+    Route::post('ecapi.user.password.update', 'api/User/updatePassword');
 
-        'ecapi.order.get' => 'order/view',
+    Route::post('ecapi.order.list', 'api/Order/index');
 
-        'ecapi.order.confirm' => 'order/confirm',
+    Route::post('ecapi.order.get', 'api/Order/view');
 
-        'ecapi.order.cancel' => 'order/cancel',
+    Route::post('ecapi.order.confirm', 'api/Order/confirm');
 
-        'ecapi.order.price' => 'order/price',
+    Route::post('ecapi.order.cancel', 'api/Order/cancel');
 
-        'ecapi.product.like' => 'goods/set-like',
+    Route::post('ecapi.order.price', 'api/Order/price');
 
-        'ecapi.product.unlike' => 'goods/set-unlike',
+    Route::post('ecapi.product.like', 'api/Goods/setLike');
 
-        'ecapi.product.liked.list' => 'goods/liked-list',
+    Route::post('ecapi.product.unlike', 'api/Goods/setUnlike');
 
-        'ecapi.order.review' => 'order/review',
+    Route::post('ecapi.product.liked.list', 'api/Goods/likedList');
 
-        'ecapi.order.subtotal' => 'order/subtotal',
+    Route::post('ecapi.order.review', 'api/Order/review');
 
-        'ecapi.payment.types.list' => 'order/payment-list',
+    Route::post('ecapi.order.subtotal', 'api/Order/subtotal');
 
-        'ecapi.payment.pay' => 'order/pay',
+    Route::post('ecapi.payment.types.list', 'api/Order/paymentList');
 
-        'ecapi.shipping.vendor.list' => 'shipping/index',
+    Route::post('ecapi.payment.pay', 'api/Order/pay');
 
-        'ecapi.shipping.status.get' => 'shipping/info',
+    Route::post('ecapi.shipping.vendor.list', 'api/Shipping/index');
 
-        'ecapi.shipping.select.shipping' => 'cart/select-shipping',
+    Route::post('ecapi.shipping.status.get', 'api/Shipping/info');
 
-        'ecapi.consignee.list' => 'consignee/index',
+    Route::post('ecapi.consignee.list', 'api/Consignee/index');
 
-        'ecapi.consignee.update' => 'consignee/modify',
+    Route::post('ecapi.consignee.update', 'api/Consignee/modify');
 
-        'ecapi.consignee.add' => 'consignee/add',
+    Route::post('ecapi.consignee.add', 'api/Consignee/add');
 
-        'ecapi.consignee.delete' => 'consignee/remove',
+    Route::post('ecapi.consignee.delete', 'api/Consignee/remove');
 
-        'ecapi.consignee.setDefault' => 'consignee/set-default',
+    Route::post('ecapi.consignee.setDefault', 'api/Consignee/setDefault');
 
-        'ecapi.score.get' => 'score/view',
+    Route::post('ecapi.score.get', 'api/Score/view');
 
-        'ecapi.score.history.list' => 'score/history',
+    Route::post('ecapi.score.history.list', 'api/Score/history');
 
-        'ecapi.cashgift.list' => 'cash-gift/index',
+    Route::post('ecapi.cashgift.list', 'api/CashGift/index');
 
-        'ecapi.cashgift.available' => 'cash-gift/available',
+    Route::post('ecapi.cashgift.available', 'api/CashGift/available');
 
-        'ecapi.push.update' => 'message/update-deviceId',
+    Route::post('ecapi.push.update', 'api/Message/updateDeviceId');
 
-        'ecapi.cart.add' => 'cart/add',
+    Route::post('ecapi.cart.add', 'api/Cart/add');
 
-        'ecapi.cart.clear' => 'cart/clear',
+    Route::post('ecapi.cart.clear', 'api/Cart/clear');
 
-        'ecapi.cart.delete' => 'cart/delete',
+    Route::post('ecapi.cart.delete', 'api/Cart/delete');
 
-        'ecapi.cart.get' => 'cart/index',
+    Route::post('ecapi.cart.get', 'api/Cart/index');
 
-        'ecapi.cart.update' => 'cart/update',
+    Route::post('ecapi.cart.update', 'api/Cart/update');
 
-        'ecapi.cart.checkout' => 'cart/checkout',
+    Route::post('ecapi.cart.checkout', 'api/Cart/checkout');
 
-        'ecapi.cart.promos' => 'cart/promos',
+    Route::post('ecapi.cart.promos', 'api/Cart/promos');
 
-        'ecapi.product.purchase' => 'goods/purchase',
+    Route::post('ecapi.product.purchase', 'api/Goods/purchase');
 
-        'ecapi.product.validate' => 'goods/check-product',
+    Route::post('ecapi.product.validate', 'api/Goods/checkProduct');
 
-        'ecapi.message.order.list' => 'message/order',
+    Route::post('ecapi.message.order.list', 'api/Message/order');
 
-        'ecapi.shop.watch' => 'shop/watch',
+    Route::post('ecapi.shop.watch', 'api/Shop/watch');
 
-        'ecapi.shop.unwatch' => 'shop/unwatch',
+    Route::post('ecapi.shop.unwatch', 'api/Shop/unwatch');
 
-        'ecapi.shop.watching.list' => 'shop/watching-list',
+    Route::post('ecapi.shop.watching.list', 'api/Shop/watchingList');
 
-        'ecapi.coupon.list' => 'coupon/index',
+    Route::post('ecapi.coupon.list', 'api/Coupon/index');
 
-        'ecapi.coupon.available' => 'coupon/available',
+    Route::post('ecapi.coupon.available', 'api/Coupon/available');
 
-        'ecapi.cart.flow' => 'cart/flow',
+    Route::post('ecapi.recommend.bonus.list', 'api/Affiliate/index');
 
-        'ecapi.goods.property.total' => 'goods/property-total',
+    Route::post('ecapi.recommend.bonus.info', 'api/Affiliate/info');
 
-    ],
-];
+    Route::post('ecapi.withdraw.submit', 'api/Account/submit');
+
+    Route::post('ecapi.withdraw.cancel', 'api/Account/cancel');
+
+    Route::post('ecapi.withdraw.list', 'api/Account/index');
+
+    Route::post('ecapi.withdraw.info', 'api/Account/getDetail');
+
+    Route::post('ecapi.balance.get', 'api/Account/surplus');
+
+    Route::post('ecapi.balance.list', 'api/Account/accountDetail');
+
+});

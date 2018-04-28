@@ -8,7 +8,7 @@ namespace app\admin\controller;
  */
 class MagazineListController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         admin_priv('magazine_list');
         if ($_REQUEST['act'] == 'list') {

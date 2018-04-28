@@ -11,7 +11,7 @@ use app\extensions\Captcha;
  */
 class CaptchaController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $img = new Captcha(public_path('data/captcha/'), $GLOBALS['_CFG']['captcha_width'], $GLOBALS['_CFG']['captcha_height']);
         @ob_end_clean(); //清除之前出现的多余输入

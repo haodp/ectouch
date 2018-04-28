@@ -12,7 +12,7 @@ use app\extensions\Transport;
  */
 class CloudController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $data['api_ver'] = '1.0';
         $data['version'] = VERSION;

@@ -2,72 +2,28 @@
 
 namespace app\models;
 
-use Yii;
+use think\Model;
 
 /**
- * This is the model class for table "{{%category}}".
- *
- * @property int $cat_id
- * @property string $cat_name
- * @property string $keywords
- * @property string $cat_desc
- * @property int $parent_id
- * @property int $sort_order
- * @property string $template_file
- * @property string $measure_unit
- * @property int $show_in_nav
- * @property string $style
- * @property int $is_show
- * @property int $grade
- * @property string $filter_attr
+ * Class Category
+ * @package app\models
+ * @property string $cat_name 分类名称
+ * @property string $keywords 分类关键词
+ * @property string $cat_desc 分类描述
+ * @property integer $parent_id 父级ID
+ * @property integer $sort_order 排序
+ * @property string $template_file 分类模板文件
+ * @property string $measure_unit 数量单位
+ * @property integer $show_in_nav 是否导航显示
+ * @property string $style 分类样式文件
+ * @property integer $is_show 是否显示
+ * @property integer $grade 价格等级
+ * @property string $filter_attr 筛选属性
  */
-class Category extends \yii\db\ActiveRecord
+class Category extends Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%category}}';
-    }
+    protected $table = 'category';
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['parent_id'], 'integer'],
-            [['style'], 'required'],
-            [['cat_name'], 'string', 'max' => 90],
-            [['keywords', 'cat_desc', 'filter_attr'], 'string', 'max' => 255],
-            [['sort_order', 'show_in_nav', 'is_show'], 'string', 'max' => 1],
-            [['template_file'], 'string', 'max' => 50],
-            [['measure_unit'], 'string', 'max' => 15],
-            [['style'], 'string', 'max' => 150],
-            [['grade'], 'string', 'max' => 4],
-        ];
-    }
+    protected $pk = 'cat_id';
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'cat_id' => 'Cat ID',
-            'cat_name' => 'Cat Name',
-            'keywords' => 'Keywords',
-            'cat_desc' => 'Cat Desc',
-            'parent_id' => 'Parent ID',
-            'sort_order' => 'Sort Order',
-            'template_file' => 'Template File',
-            'measure_unit' => 'Measure Unit',
-            'show_in_nav' => 'Show In Nav',
-            'style' => 'Style',
-            'is_show' => 'Is Show',
-            'grade' => 'Grade',
-            'filter_attr' => 'Filter Attr',
-        ];
-    }
 }

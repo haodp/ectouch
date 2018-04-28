@@ -4,100 +4,196 @@
  * 设置自定义后台入口路由
  */
 
-return [
-    'index.php' => 'index/index',
-    'account_log.php' => 'account-log/index',
-    'ad_position.php' => 'ad-position/index',
-    'admin_logs.php' => 'admin-logs/index',
-    'ads.php' => 'ads/index',
-    'adsense.php' => 'adsense/index',
-    'affiliate_ck.php' => 'affiliate-ck/index',
-    'affiliate.php' => 'affiliate/index',
-    'agency.php' => 'agency/index',
-    'area_manage.php' => 'area-manage/index',
-    'article_auto.php' => 'article-auto/index',
-    'article.php' => 'article/index',
-    'articlecat.php' => 'articlecat/index',
-    'attention_list.php' => 'attention-list/index',
-    'attribute.php' => 'attribute/index',
-    'auction.php' => 'auction/index',
-    'bonus.php' => 'bonus/index',
-    'brand.php' => 'brand/index',
-    'captcha.php' => 'captcha/index',
-    'captcha_manage.php' => 'captcha-manage/index',
-    'card.php' => 'card/index',
-    'category.php' => 'category/index',
-    'check_file_priv.php' => 'check-file-priv/index',
-    'cloud.php' => 'cloud/index',
-    'comment_manage.php' => 'comment-manage/index',
-    'convert.php' => 'convert/index',
-    'cron.php' => 'cron/index',
-    'database.php' => 'database/index',
-    'edit_languages.php' => 'edit-languages/index',
-    'email_list.php' => 'email-list/index',
-    'exchange_goods.php' => 'exchange-goods/index',
-    'favourable.php' => 'favourable/index',
-    'filecheck.php' => 'filecheck/index',
-    'flashplay.php' => 'flashplay/index',
-    'flow_stats.php' => 'flow-stats/index',
-    'friend_link.php' => 'friend-link/index',
-    'gen_goods_script.php' => 'gen-goods-script/index',
-    'get_password.php' => 'get-password/index',
-    'goods_auto.php' => 'goods-auto/index',
-    'goods_batch.php' => 'goods-batch/index',
-    'goods_booking.php' => 'goods-booking/index',
-    'goods.php' => 'goods/index',
-    'goods_export.php' => 'goods-export/index',
-    'goods_type.php' => 'goods-type/index',
-    'group_buy.php' => 'group-buy/index',
-    'guest_stats.php' => 'guest-stats/index',
-    'help.php' => 'help/index',
-    'integrate.php' => 'integrate/index',
-    'license.php' => 'license/index',
-    'magazine_list.php' => 'magazine-list/index',
-    'mail_template.php' => 'mail-template/index',
-    'message.php' => 'message/index',
-    'navigator.php' => 'navigator/index',
-    'order.php' => 'order/index',
-    'order_stats.php' => 'order-stats/index',
-    'pack.php' => 'pack/index',
-    'package.php' => 'package/index',
-    'patch_num.php' => 'patch-num/index',
-    'payment.php' => 'payment/index',
-    'picture_batch.php' => 'picture-batch/index',
-    'privilege.php' => 'privilege/index',
-    'receive.php' => 'receive/index',
-    'reg_fields.php' => 'reg-fields/index',
-    'role.php' => 'role/index',
-    'sale_general.php' => 'sale-general/index',
-    'sale_list.php' => 'sale-list/index',
-    'sale_order.php' => 'sale-order/index',
-    'search_log.php' => 'search-log/index',
-    'searchengine_stats.php' => 'searchengine-stats/index',
-    'send.php' => 'send/index',
-    'shipping_area.php' => 'shipping-area/index',
-    'shipping.php' => 'shipping/index',
-    'shop_config.php' => 'shop-config/index',
-    'shophelp.php' => 'shophelp/index',
-    'shopinfo.php' => 'shopinfo/index',
-    'sitemap.php' => 'sitemap/index',
-    'sms.php' => 'sms/index',
-    'snatch.php' => 'snatch/index',
-    'sql.php' => 'sql/index',
-    'suppliers.php' => 'suppliers/index',
-    'suppliers_goods.php' => 'suppliers-goods/index',
-    'tag_manage.php' => 'tag-manage/index',
-    'template.php' => 'template/index',
-    'topic.php' => 'topic/index',
-    'user_account.php' => 'user-account/index',
-    'user_account_manage.php' => 'user-account-manage/index',
-    'user_msg.php' => 'user-msg/index',
-    'user_rank.php' => 'user-rank/index',
-    'users.php' => 'users/index',
-    'users_order.php' => 'users-order/index',
-    'view_sendlist.php' => 'view-sendlist/index',
-    'virtual_card.php' => 'virtual-card/index',
-    'visit_sold.php' => 'visit-sold/index',
-    'vote.php' => 'vote/index',
-    'wholesale.php' => 'wholesale/index',
-];
+Route::group(ADMIN_PATH, function () {
+
+    Route::any('index.php', 'dashboard/Index/index');
+
+    Route::any('account_log.php', 'dashboard/AccountLog/index');
+
+    Route::any('ad_position.php', 'dashboard/AdPosition/index');
+
+    Route::any('admin_logs.php', 'dashboard/AdminLogs/index');
+
+    Route::any('ads.php', 'dashboard/Ads/index');
+
+    Route::any('adsense.php', 'dashboard/Adsense/index');
+
+    Route::any('affiliate_ck.php', 'dashboard/AffiliateCk/index');
+
+    Route::any('affiliate.php', 'dashboard/Affiliate/index');
+
+    Route::any('agency.php', 'dashboard/Agency/index');
+
+    Route::any('area_manage.php', 'dashboard/AreaManage/index');
+
+    Route::any('article_auto.php', 'dashboard/ArticleAuto/index');
+
+    Route::any('article.php', 'dashboard/Article/index');
+
+    Route::any('articlecat.php', 'dashboard/Articlecat/index');
+
+    Route::any('attention_list.php', 'dashboard/AttentionList/index');
+
+    Route::any('attribute.php', 'dashboard/Attribute/index');
+
+    Route::any('auction.php', 'dashboard/Auction/index');
+
+    Route::any('bonus.php', 'dashboard/Bonus/index');
+
+    Route::any('brand.php', 'dashboard/Brand/index');
+
+    Route::any('captcha.php', 'dashboard/Captcha/index');
+
+    Route::any('captcha_manage.php', 'dashboard/CaptchaManage/index');
+
+    Route::any('card.php', 'dashboard/Card/index');
+
+    Route::any('category.php', 'dashboard/Category/index');
+
+    Route::any('check_file_priv.php', 'dashboard/CheckFilePriv/index');
+
+    Route::any('cloud.php', 'dashboard/Cloud/index');
+
+    Route::any('comment_manage.php', 'dashboard/CommentManage/index');
+
+    Route::any('convert.php', 'dashboard/Convert/index');
+
+    Route::any('cron.php', 'dashboard/Cron/index');
+
+    Route::any('database.php', 'dashboard/Database/index');
+
+    Route::any('edit_languages.php', 'dashboard/EditLanguages/index');
+
+    Route::any('email_list.php', 'dashboard/EmailList/index');
+
+    Route::any('exchange_goods.php', 'dashboard/ExchangeGoods/index');
+
+    Route::any('favourable.php', 'dashboard/Favourable/index');
+
+    Route::any('filecheck.php', 'dashboard/Filecheck/index');
+
+    Route::any('flashplay.php', 'dashboard/Flashplay/index');
+
+    Route::any('flow_stats.php', 'dashboard/FlowStats/index');
+
+    Route::any('friend_link.php', 'dashboard/FriendLink/index');
+
+    Route::any('gen_goods_script.php', 'dashboard/GenGoodsScript/index');
+
+    Route::any('get_password.php', 'dashboard/GetPassword/index');
+
+    Route::any('goods_auto.php', 'dashboard/GoodsAuto/index');
+
+    Route::any('goods_batch.php', 'dashboard/GoodsBatch/index');
+
+    Route::any('goods_booking.php', 'dashboard/GoodsBooking/index');
+
+    Route::any('goods.php', 'dashboard/Goods/index');
+
+    Route::any('goods_export.php', 'dashboard/GoodsExport/index');
+
+    Route::any('goods_type.php', 'dashboard/GoodsType/index');
+
+    Route::any('group_buy.php', 'dashboard/GroupBuy/index');
+
+    Route::any('guest_stats.php', 'dashboard/GuestStats/index');
+
+    Route::any('help.php', 'dashboard/Help/index');
+
+    Route::any('integrate.php', 'dashboard/Integrate/index');
+
+    Route::any('license.php', 'dashboard/License/index');
+
+    Route::any('magazine_list.php', 'dashboard/MagazineList/index');
+
+    Route::any('mail_template.php', 'dashboard/MailTemplate/index');
+
+    Route::any('message.php', 'dashboard/Message/index');
+
+    Route::any('navigator.php', 'dashboard/Navigator/index');
+
+    Route::any('order.php', 'dashboard/Order/index');
+
+    Route::any('order_stats.php', 'dashboard/OrderStats/index');
+
+    Route::any('pack.php', 'dashboard/Pack/index');
+
+    Route::any('package.php', 'dashboard/Package/index');
+
+    Route::any('patch_num.php', 'dashboard/PatchNum/index');
+
+    Route::any('payment.php', 'dashboard/Payment/index');
+
+    Route::any('picture_batch.php', 'dashboard/PictureBatch/index');
+
+    Route::any('privilege.php', 'dashboard/Privilege/index');
+
+    Route::any('receive.php', 'dashboard/Receive/index');
+
+    Route::any('reg_fields.php', 'dashboard/RegFields/index');
+
+    Route::any('role.php', 'dashboard/Role/index');
+
+    Route::any('sale_general.php', 'dashboard/SaleGeneral/index');
+
+    Route::any('sale_list.php', 'dashboard/SaleList/index');
+
+    Route::any('sale_order.php', 'dashboard/SaleOrder/index');
+
+    Route::any('search_log.php', 'dashboard/SearchLog/index');
+
+    Route::any('searchengine_stats.php', 'dashboard/SearchengineStats/index');
+
+    Route::any('send.php', 'dashboard/Send/index');
+
+    Route::any('shipping_area.php', 'dashboard/ShippingArea/index');
+
+    Route::any('shipping.php', 'dashboard/Shipping/index');
+
+    Route::any('shop_config.php', 'dashboard/ShopConfig/index');
+
+    Route::any('shophelp.php', 'dashboard/Shophelp/index');
+
+    Route::any('shopinfo.php', 'dashboard/Shopinfo/index');
+
+    Route::any('sitemap.php', 'dashboard/Sitemap/index');
+
+    Route::any('sms.php', 'dashboard/Sms/index');
+
+    Route::any('snatch.php', 'dashboard/Snatch/index');
+
+    Route::any('sql.php', 'dashboard/Sql/index');
+
+    Route::any('suppliers.php', 'dashboard/Suppliers/index');
+
+    Route::any('suppliers_goods.php', 'dashboard/SuppliersGoods/index');
+
+    Route::any('tag_manage.php', 'dashboard/TagManage/index');
+
+    Route::any('template.php', 'dashboard/Template/index');
+
+    Route::any('topic.php', 'dashboard/Topic/index');
+
+    Route::any('user_account.php', 'dashboard/UserAccount/index');
+
+    Route::any('user_account_manage.php', 'dashboard/UserAccountManage/index');
+
+    Route::any('user_msg.php', 'dashboard/UserMsg/index');
+
+    Route::any('user_rank.php', 'dashboard/UserRank/index');
+
+    Route::any('users.php', 'dashboard/Users/index');
+
+    Route::any('users_order.php', 'dashboard/UsersOrder/index');
+
+    Route::any('view_sendlist.php', 'dashboard/ViewSendlist/index');
+
+    Route::any('virtual_card.php', 'dashboard/VirtualCard/index');
+
+    Route::any('visit_sold.php', 'dashboard/VisitSold/index');
+
+    Route::any('vote.php', 'dashboard/Vote/index');
+
+    Route::any('wholesale.php', 'dashboard/Wholesale/index');
+
+});

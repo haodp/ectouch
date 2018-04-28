@@ -11,7 +11,7 @@ use app\extensions\Sms;
  */
 class SmsController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $action = isset($_REQUEST['act']) ? $_REQUEST['act'] : 'display_my_info';
         if (isset($_POST['sms_sign_update'])) {

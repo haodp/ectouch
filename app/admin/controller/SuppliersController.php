@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class SuppliersController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         define('SUPPLIERS_ACTION_LIST', 'delivery_view,back_view');
 

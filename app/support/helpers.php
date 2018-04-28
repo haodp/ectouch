@@ -81,177 +81,14 @@ function plugin_path($path = '')
 }
 
 /**
- * 获取应用主体
- * @param null $component
- * @return bool|mixed
- */
-function app($component = null)
-{
-    if (!is_null($component) && isset(Yii::$app->{$component})) {
-        return Yii::$app->{$component};
-    }
-
-    return false;
-}
-
-/**
- * Get / set the specified configuration value.
- *
- * If an array is passed as the key, we will assume you want to set an array of values.
- *
- * @param  array|string $key
- * @return mixed
- */
-function config($key = null)
-{
-    static $_config = [];
-    $item = 'params';
-    // 指定参数来源
-    if (strpos($key, '.')) {
-        list($item, $key) = explode('.', $key, 2);
-    }
-    if (!isset($_config[$item])) {
-        $_config[$item] = require config_path($item . '.php');
-    }
-    return isset($_config[$item][$key]) ? $_config[$item][$key] : null;
-}
-
-/**
- * 缓存管理
- * @param mixed $name 缓存名称，如果为数组表示进行缓存设置
- * @param mixed $value 缓存值
- * @param mixed $expire 缓存时间
- * @return mixed
- */
-function cache($name, $value = '', $expire = 3600)
-{
-    $cache = app('cache');
-    if ('' === $value) {
-        // 获取缓存
-        return 0 === strpos($name, '?') ? $cache->exists(substr($name, 1)) : $cache->get($name);
-    } elseif (is_null($value)) {
-        // 删除缓存
-        return $cache->delete($name);
-    } else {
-        // 缓存数据
-        return $cache->set($name, $value, $expire);
-    }
-}
-
-/**
- * Get / set the specified session value.
- * @param $name
- * @param string $value
- * @return mixed
- */
-function session($name, $value = '')
-{
-    if (is_null($name)) {
-        // 清除
-        app('session')->destroy();
-    } elseif ('' === $value) {
-        // 判断或获取
-        return 0 === strpos($name, '?') ? app('session')->has(substr($name, 1)) : app('session')->get($name);
-    } elseif (is_null($value)) {
-        // 删除
-        return app('session')->remove($name);
-    } else {
-        // 设置
-        return app('session')->set($name, $value);
-    }
-}
-
-/**
- * Cookie管理
- * @param string|array $name cookie名称，如果为数组表示进行cookie设置
- * @param mixed $value cookie值
- * @return mixed
- */
-function cookie($name, $value = '', $minutes = 0, $path = null, $domain = null, $secure = false, $httpOnly = true)
-{
-    if (is_null($name)) {
-        // 清除
-        app('response')->cookies->removeAll();
-    } elseif ('' === $value) {
-        // 获取
-        $cookie = app('request')->cookies;
-        return 0 === strpos($name, '?') ? $cookie->has(substr($name, 1)) : $cookie->getValue($name);
-    } elseif (is_null($value)) {
-        // 删除
-        return app('response')->cookies->remove($name);
-    } else {
-        // 设置
-        return app('response')->cookies->add(new \yii\web\Cookie([
-            'name' => $name,
-            'value' => $value,
-            'expire' => $minutes,
-            'path' => $path,
-            'domain' => $domain,
-            'secure' => $secure,
-            'httpOnly' => $httpOnly
-        ]));
-    }
-}
-
-/**
+ * 返回资源URL
+ * @param null $url
  * @return string
  */
-function csrf_field()
+function asset($url = null)
 {
-    $request = app('request');
-    return '<input type="hidden" name="' . $request->csrfParam . '" value="' . $request->getCsrfToken() . '" />';
-}
-
-/**
- * @return array
- */
-function input($name = '', $default = null)
-{
-    return Yii::$app->request->get($name, $default);
-}
-
-/**
- * @param $url
- * @param array $param
- * @return string
- */
-function url($url, $param = [])
-{
-    return yii\helpers\Url::toRoute(array_merge([$url], $param));
-}
-
-/**
- * Generate the URL to an application asset.
- *
- * @param  string $path
- * @return string
- */
-function asset($path = '/')
-{
-    if (is_valid_url($path)) {
-        return $path;
-    }
-    // Once we get the root URL, we will check to see if it contains an index.php
-    // file in the paths. If it does, we will remove it since it is not needed
-    // for asset paths, but only for routes to endpoints in the application.
-    $root = yii\helpers\Url::home();
-    $root = str_replace('/index.php', '', $root);
-
-    return rtrim($root, '/') . '/' . trim($path, '/');
-}
-
-/**
- * Determine if the given path is a valid URL.
- *
- * @param  string $path
- * @return bool
- */
-function is_valid_url($path)
-{
-    if (!preg_match('~^(#|//|https?://|mailto:|tel:)~', $path)) {
-        return filter_var($path, FILTER_VALIDATE_URL) !== false;
-    }
-    return true;
+    $url = is_null($url) ? '' : '/' . ltrim($url, '/');
+    return request()->rootUrl() . $url;
 }
 
 /**
@@ -295,8 +132,7 @@ function snake_case($str)
  */
 function is_mobile_device()
 {
-    $detect = new \Mobile_Detect();
-    return $detect->isMobile();
+    return request()->isMobile();
 }
 
 /**
@@ -312,7 +148,7 @@ function load_helper($files = [], $module = '')
     if (empty($module)) {
         $base_path = app_path('helpers/');
     } else {
-        $base_path = app_path($module . '/helpers/');
+        $base_path = app_path(ucfirst($module) . '/common/');
     }
     foreach ($files as $vo) {
         $helper = $base_path . $vo . '.php';
@@ -336,7 +172,7 @@ function load_lang($files = [], $module = '')
     if (empty($module)) {
         $base_path = resource_path('lang/' . $GLOBALS['_CFG']['lang'] . '/');
     } else {
-        $base_path = app_path($module . '/languages/' . $GLOBALS['_CFG']['lang'] . '/');
+        $base_path = app_path(ucfirst($module) . '/lang/' . $GLOBALS['_CFG']['lang'] . '/');
     }
     foreach ($files as $vo) {
         $helper = $base_path . $vo . '.php';
@@ -353,34 +189,16 @@ function load_lang($files = [], $module = '')
 
 /**
  * 浏览器友好的变量输出
- * @param mixed $var 变量
- * @param boolean $echo 是否输出 默认为True 如果为false 则返回输出字符串
- * @param string $label 标签 默认为空
- * @param boolean $strict 是否严谨 默认为true
- * @return void|string
+ * @param $var
+ * @param bool $echo
+ * @param null $label
+ * @return mixed|null|string|string[]
  */
-function dd($var, $echo = true, $label = null, $strict = true)
+function dd($var, $echo = true, $label = null)
 {
-    $label = ($label === null) ? '' : rtrim($label) . ' ';
-    if (!$strict) {
-        if (ini_get('html_errors')) {
-            $output = print_r($var, true);
-            $output = '<pre>' . $label . htmlspecialchars($output, ENT_QUOTES) . '</pre>';
-        } else {
-            $output = $label . print_r($var, true);
-        }
-    } else {
-        ob_start();
-        var_dump($var);
-        $output = ob_get_clean();
-        if (!extension_loaded('xdebug')) {
-            $output = preg_replace('/\]\=\>\n(\s+)/m', '] => ', $output);
-            $output = '<pre>' . $label . htmlspecialchars($output, ENT_QUOTES) . '</pre>';
-        }
-    }
     if ($echo) {
-        die($output);
+        dump($var, $echo, $label);
     } else {
-        return $output;
+        return dump($var, $echo, $label);
     }
 }

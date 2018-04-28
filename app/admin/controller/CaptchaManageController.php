@@ -8,7 +8,7 @@ namespace app\admin\controller;
  */
 class CaptchaManageController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 检查权限
         admin_priv('shop_config');

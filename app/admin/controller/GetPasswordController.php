@@ -9,7 +9,7 @@ namespace app\admin\controller;
  */
 class GetPasswordController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         // 操作项的初始化
         if (empty($_SERVER['REQUEST_METHOD'])) {

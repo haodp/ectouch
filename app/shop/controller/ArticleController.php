@@ -9,7 +9,7 @@ namespace app\shop\controller;
  */
 class ArticleController extends InitController
 {
-    public function actionIndex()
+    public function index()
     {
         $_REQUEST['id'] = intval($_GET['id']);
         $article_id = $_REQUEST['id'];
