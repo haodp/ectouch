@@ -7,6 +7,7 @@ use Log;
 use app\api\classes\Token;
 use app\api\classes\XXTEA;
 use app\api\model\BaseModel;
+use think\Controller as BaseController;
 
 class Controller extends BaseController
 {
