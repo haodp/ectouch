@@ -2,7 +2,7 @@
 
 namespace app\api\model;
 
-use think\Model;
+use dao\Model;
 
 class BaseModel extends Model
 {

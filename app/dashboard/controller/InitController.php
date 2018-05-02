@@ -7,7 +7,7 @@ use app\extensions\Error;
 use app\extensions\Mysql;
 use app\extensions\Captcha;
 use app\extensions\Template;
-use think\Controller;
+use dao\Controller;
 
 /**
  * Class InitController

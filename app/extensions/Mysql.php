@@ -2,7 +2,7 @@
 
 namespace app\extensions;
 
-use think\Db as DB;
+use dao\Db as DB;
 
 /**
  * MYSQL 公用类库

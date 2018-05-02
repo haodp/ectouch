@@ -94,20 +94,6 @@ if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
 
 /*
 |--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader for
-| our application. We just need to utilize it! We'll simply require it
-| into the script here so that we don't have to worry about manual
-| loading any of our classes later on. It feels great to relax.
-|
-*/
-
-require __DIR__ . '/../app/kernel/base.php';
-
-/*
-|--------------------------------------------------------------------------
 | Create The Application
 |--------------------------------------------------------------------------
 |
@@ -117,7 +103,7 @@ require __DIR__ . '/../app/kernel/base.php';
 |
 */
 
-$app = app\kernel\Container::get('app');
+$app = dao\Container::get('app');
 
 /*
 |--------------------------------------------------------------------------

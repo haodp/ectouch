@@ -15,6 +15,7 @@
     "require": {
         "php": "^7.2.5",
         "aliyuncs/oss-sdk-php": "^2.2",
+        "daophp/framework": "^1.0",
         "endroid/qr-code": "^3.2",
         "jellybool/translug": "^2.0",
         "jenssegers/agent": "^2.6",
@@ -25,12 +26,11 @@
         "phpoffice/phpspreadsheet": "^1.2",
         "riverslei/payment": "^4.1",
         "sentry/sentry": "^1.8",
-        "topthink/framework": "5.1.*",
         "workerman/phpsocket.io": "^1.1"
     },
     "autoload": {
         "psr-4": {
-            "app\\": "app"
+            "app\\": "app/"
         },
         "files": [
             "app/support/helpers.php"

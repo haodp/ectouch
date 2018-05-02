@@ -6,7 +6,7 @@ use app\extensions\Shop;
 use app\extensions\Error;
 use app\extensions\Mysql;
 use app\extensions\Template;
-use think\Controller;
+use dao\Controller;
 
 class InitController extends Controller
 {

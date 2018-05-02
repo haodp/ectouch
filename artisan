@@ -39,4 +39,4 @@ $app->path(__DIR__ . '/app/')->initialize();
 |
 */
 
-app\kernel\Console::init();
+dao\Console::init();

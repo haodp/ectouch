@@ -91,7 +91,7 @@ return [
     'route_complete_match'   => false,
     // 使用注解路由
     'route_annotation'       => false,
-    // 域名根，如thinkphp.cn
+    // 域名根，如ectouch.cn
     'url_domain_root'        => '',
     // 是否自动转换URL中的控制器和操作名
     'url_convert'            => true,
@@ -111,17 +111,17 @@ return [
     'request_cache_except'   => [],
 
     // 默认跳转页面对应的模板文件
-    'dispatch_success_tmpl'  => Env::get('think_path') . 'support/tpl/dispatch_jump.tpl',
-    'dispatch_error_tmpl'    => Env::get('think_path') . 'support/tpl/dispatch_jump.tpl',
+    'dispatch_success_tmpl'  => Env::get('dao_path') . 'support/tpl/dispatch_jump.tpl',
+    'dispatch_error_tmpl'    => Env::get('dao_path') . 'support/tpl/dispatch_jump.tpl',
 
     // 异常页面的模板文件
-    'exception_tmpl'         => Env::get('think_path') . 'support/tpl/exception.tpl',
+    'exception_tmpl'         => Env::get('dao_path') . 'support/tpl/exception.tpl',
 
     // 错误显示信息,非调试模式有效
     'error_message'          => '页面错误！请稍后再试～',
     // 显示错误信息
     'show_error_msg'         => false,
-    // 异常处理handle类 留空使用 \think\exception\Handle
+    // 异常处理handle类 留空使用 \dao\exception\Handle
     'exception_handle'       => '',
 
     // 应用运行模式

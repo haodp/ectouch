@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use think\Model;
+use dao\Model;
 
 /**
  * Class BookingGoods

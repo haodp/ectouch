@@ -47,8 +47,8 @@ return [
     'sql_explain'     => false,
     // Builder类
     'builder'         => '',
-    // Query类
-    'query'           => '\\think\\db\\Query',
+    // Query类 留空使用 \dao\db\Query
+    'query'           => '',
     // 是否需要断线重连
     'break_reconnect' => false,
     // 断线标识字符串
