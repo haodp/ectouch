@@ -65,8 +65,8 @@ class InitController extends Controller
         load_lang(['common', 'log_action', PHP_SELF], 'admin');
 
         define('__ROOT__', asset('/'));
-        define('__PUBLIC__', asset('/vendor'));
-        define('__TPL__', asset('/vendor/admin'));
+        define('__PUBLIC__', asset('/static'));
+        define('__TPL__', asset('/static/admin'));
 
         // 创建 Smarty 对象。
         $this->smarty = $GLOBALS['smarty'] = new Template();
