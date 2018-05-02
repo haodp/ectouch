@@ -3,8 +3,11 @@
   "license": "MIT",
   "homepage": "https://www.ectouch.cn",
   "dependencies": {
-    "layui": "lay#^2.2.45",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "jquery.cookie": "jquery-cookie#^1.4.1",
     "jquery-pjax": "^2.0.1",
-    "jquery.cookie": "jquery-cookie#^1.4.1"
+    "layui": "lay#^2.2.45",
+    "ueditor": "^1.4.3"
   }
 }
