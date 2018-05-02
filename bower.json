@@ -1,0 +1,10 @@
+{
+  "name": "ectouch",
+  "license": "MIT",
+  "homepage": "https://www.ectouch.cn",
+  "dependencies": {
+    "layui": "lay#^2.2.45",
+    "jquery-pjax": "^2.0.1",
+    "jquery.cookie": "jquery-cookie#^1.4.1"
+  }
+}

@@ -55,7 +55,7 @@ class Send
     public function __call($method, $args)
     {
         if (!isset(self::$objArr[$this->send])) {
-            $sendDriver = __NAMESPACE__ . '\Send\\' . ucfirst($this->config['driver']) . 'Driver';
+            $sendDriver = __NAMESPACE__ . '\send\\' . ucfirst($this->config['driver']) . 'Driver';
             if (!class_exists($sendDriver)) {
                 throw new \Exception("Send Driver '{$sendDriver}' not found'", 500);
             }

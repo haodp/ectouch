@@ -7,6 +7,8 @@
  * @homepage https://www.ectouch.cn
  */
 
+// define('APP_DEBUG', false);
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
