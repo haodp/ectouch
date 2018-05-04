@@ -2,7 +2,7 @@
 
 namespace App\Channels\Wechat;
 
-use App\Extensions\Wechat as Weixin;
+use app\libraries\Wechat as Weixin;
 
 class Wechat
 {

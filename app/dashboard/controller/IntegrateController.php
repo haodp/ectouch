@@ -2,7 +2,7 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Mysql;
+use app\libraries\Mysql;
 
 /**
  * 第三方程序会员数据整合插件管理

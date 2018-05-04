@@ -2,7 +2,7 @@
 
 namespace app\shop\controller;
 
-use app\extensions\Json;
+use app\libraries\Json;
 
 /**
  * Class IndexController

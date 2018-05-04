@@ -1,6 +1,6 @@
 <?php
 
-namespace app\extensions;
+namespace app\libraries;
 
 define('SMTP_STATUS_NOT_CONNECTED', 1, true);
 define('SMTP_STATUS_CONNECTED', 2, true);
@@ -8,7 +8,7 @@ define('SMTP_STATUS_CONNECTED', 2, true);
 /**
  * SMTP 邮件类
  * Class Smtp
- * @package app\extensions
+ * @package app\libraries
  */
 class Smtp
 {

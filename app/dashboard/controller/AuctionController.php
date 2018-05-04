@@ -2,7 +2,7 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Exchange;
+use app\libraries\Exchange;
 
 /**
  * 拍卖活动管理

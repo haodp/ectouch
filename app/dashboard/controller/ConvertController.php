@@ -2,7 +2,7 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Mysql;
+use app\libraries\Mysql;
 
 /**
  * 转换程序

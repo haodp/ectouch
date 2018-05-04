@@ -2,7 +2,7 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Sms;
+use app\libraries\Sms;
 
 /**
  * 短信模块

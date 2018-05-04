@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Extensions;
+namespace app\extensions;
 
 use \DomainException;
 use \UnexpectedValueException;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 
 class Token
 {

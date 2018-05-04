@@ -2,7 +2,7 @@
 
 namespace app\shop\controller;
 
-use app\extensions\Captcha;
+use app\libraries\Captcha;
 
 /**
  * 留言板

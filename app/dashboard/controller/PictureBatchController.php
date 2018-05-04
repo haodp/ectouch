@@ -2,7 +2,7 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Image;
+use app\libraries\Image;
 
 /**
  * 图片批量处理程序

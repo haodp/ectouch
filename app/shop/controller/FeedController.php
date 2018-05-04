@@ -2,7 +2,7 @@
 
 namespace app\shop\controller;
 
-use app\extensions\rss\RSSBuilder;
+use app\libraries\rss\RSSBuilder;
 
 /**
  * RSS Feed 生成程序

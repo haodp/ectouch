@@ -2,7 +2,7 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Image;
+use app\libraries\Image;
 
 /**
  * 商品批量上传、修改

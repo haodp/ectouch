@@ -2,8 +2,8 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Captcha;
-use app\extensions\Exchange;
+use app\libraries\Captcha;
+use app\libraries\Exchange;
 
 /**
  * 管理员信息以及权限管理程序

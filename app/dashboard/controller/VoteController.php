@@ -2,7 +2,7 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Exchange;
+use app\libraries\Exchange;
 
 /**
  * 调查管理程序

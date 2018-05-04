@@ -2,8 +2,8 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\Image;
-use app\extensions\Exchange;
+use app\libraries\Image;
+use app\libraries\Exchange;
 
 /**
  * 广告管理程序

@@ -2,8 +2,8 @@
 
 namespace app\dashboard\controller;
 
-use app\extensions\sitemap\GoogleSitemap;
-use app\extensions\sitemap\GoogleSitemapItem;
+use app\libraries\sitemap\GoogleSitemap;
+use app\libraries\sitemap\GoogleSitemapItem;
 
 /**
  * 站点地图生成程序

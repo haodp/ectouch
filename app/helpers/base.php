@@ -1,8 +1,8 @@
 <?php
 
-use app\extensions\Smtp;
-use app\extensions\Iconv;
-use app\extensions\Image;
+use app\libraries\Smtp;
+use app\libraries\Iconv;
+use app\libraries\Image;
 
 /**
  * 截取UTF-8编码下字符串的函数

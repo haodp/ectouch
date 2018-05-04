@@ -2,7 +2,7 @@
 
 namespace app\plugins\integrates;
 
-use app\extensions\Mysql;
+use app\libraries\Mysql;
 
 /**
  * 用户整合插件基类

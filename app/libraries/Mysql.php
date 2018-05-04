@@ -1,13 +1,13 @@
 <?php
 
-namespace app\extensions;
+namespace app\libraries;
 
 use dao\Db as DB;
 
 /**
  * MYSQL 公用类库
  * Class Mysql
- * @package app\extensions
+ * @package app\libraries
  */
 class Mysql
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Extensions;
+namespace app\extensions;
 
 class Header
 {

@@ -2,7 +2,7 @@
 
 namespace App\Channels\Sms\Driver;
 
-use App\Extensions\Http;
+use app\libraries\Http;
 
 class Ihuyi
 {
