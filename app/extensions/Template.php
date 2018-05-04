@@ -76,28 +76,6 @@ class Template
      */
     public function display($filename, $cache_id = '')
     {
-        /**
-         * 自动返回ajax对象
-         */
-        if (!defined('ECS_ADMIN') && (request()->isAjax() || isset($_GET['_ajax']))) {
-            // 过滤语言包
-            unset($this->_var['lang']);
-            // 过滤敏感配置
-            $ignore = [
-                'certificate_id', 'token', 'ent_id', 'ent_ac', 'ent_sign', 'ent_email',
-                'smtp_user', 'smtp_pass', 'integrate_config', 'hash_code', 'install_date',
-                'sms_user_name', 'sms_password', 'points_rule'
-            ];
-            foreach ($ignore as $value) {
-                unset($this->_var['cfg'][$value]);
-                unset($this->_var['config'][$value]);
-            }
-            // 封装数据
-            $output['status'] = is_array($this->_var) ? 'success' : 'fail';
-            $output['data'] = $this->_var;
-            return $output;
-        }
-
         $this->_seterror++;
         error_reporting(E_ALL ^ E_NOTICE);
 
@@ -357,10 +335,6 @@ class Template
         } elseif ($tag{0} == '*' && substr($tag, -1) == '*') { // 注释部分
             return '';
         } elseif ($tag{0} == '$') { // 变量
-//            if(strpos($tag,"'") || strpos($tag,"]"))
-//            {
-//                 return '';
-//            }
             return '<?php echo ' . $this->get_val(substr($tag, 1)) . '; ?>';
         } elseif ($tag{0} == '/') { // 结束 tag
             switch (substr($tag, 1)) {
