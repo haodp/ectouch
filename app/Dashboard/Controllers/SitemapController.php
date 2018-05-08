@@ -1,14 +1,14 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\sitemap\GoogleSitemap;
-use app\libraries\sitemap\GoogleSitemapItem;
+use App\Libraries\Sitemap\GoogleSitemap;
+use App\Libraries\Sitemap\GoogleSitemapItem;
 
 /**
  * 站点地图生成程序
  * Class SitemapController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class SitemapController extends InitController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\affiliate;
+namespace App\Services\Affiliate;
 
 class LogService
 {

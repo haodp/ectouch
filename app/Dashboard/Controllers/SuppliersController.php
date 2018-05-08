@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 供货商管理
  * Class SuppliersController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class SuppliersController extends InitController
 {

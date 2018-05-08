@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Pack
- * @package app\models
+ * @package App\Models
  * @property $pack_name
  * @property $pack_img
  * @property $pack_fee

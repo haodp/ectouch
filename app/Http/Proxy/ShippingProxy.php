@@ -1,10 +1,10 @@
 <?php
 
-namespace app\proxies;
+namespace App\Proxy;
 
 /**
  * Class ShippingProxy
- * @package app\proxies
+ * @package App\Proxy
  */
 class ShippingProxy
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Template
- * @package app\models
+ * @package App\Models
  * @property $filename
  * @property $region
  * @property $library

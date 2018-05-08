@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 角色管理信息以及权限管理
  * Class RoleController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class RoleController extends InitController
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class FriendLink
- * @package app\models
+ * @package App\Models
  * @property $link_name
  * @property $link_url
  * @property $link_logo

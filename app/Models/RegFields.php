@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class RegFields
- * @package app\models
+ * @package App\Models
  * @property $reg_field_name
  * @property $dis_order
  * @property $display

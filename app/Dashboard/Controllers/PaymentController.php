@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 支付方式管理
  * Class PaymentController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class PaymentController extends InitController
 {

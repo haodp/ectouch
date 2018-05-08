@@ -1,12 +1,12 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Image;
+use App\Libraries\Image;
 
 /**
  * Class IndexController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class IndexController extends InitController
 {

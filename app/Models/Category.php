@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Category
- * @package app\models
+ * @package App\Models
  * @property string $cat_name 分类名称
  * @property string $keywords 分类关键词
  * @property string $cat_desc 分类描述

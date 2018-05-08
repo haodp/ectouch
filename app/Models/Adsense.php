@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Adsense
- * @package app\models
+ * @package App\Models
  * @property $from_ad
  * @property $referer
  * @property $clicks

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\mail;
+namespace App\Services\Mail;
 
 class SendService
 {

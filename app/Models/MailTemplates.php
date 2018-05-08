@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class MailTemplates
- * @package app\models
+ * @package App\Models
  * @property $template_code
  * @property $is_html
  * @property $template_subject

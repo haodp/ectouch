@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class BonusType
- * @package app\models
+ * @package App\Models
  * @property $type_name
  * @property $type_money
  * @property $send_type

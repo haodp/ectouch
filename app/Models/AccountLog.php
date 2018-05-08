@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AccountLog
- * @package app\models
+ * @package App\Models
  * @property integer $log_id 自增ID
  * @property integer $user_id 用户ID
  * @property double $user_money 金额

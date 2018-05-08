@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 广告位置管理程序
  * Class AdPositionController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class AdPositionController extends InitController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\bonus;
+namespace App\Services\Bonus;
 
 class TypeService
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\libraries;
+namespace App\Libraries;
 
 /**
  * 模版类
  * Class Template
- * @package app\libraries
+ * @package App\Libraries
  */
 class Template
 {

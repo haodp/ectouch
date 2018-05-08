@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AdCustom
- * @package app\models
+ * @package App\Models
  * @property integer $ad_id 自增ID
  * @property integer $ad_type 广告类型
  * @property string $ad_name 广告名称

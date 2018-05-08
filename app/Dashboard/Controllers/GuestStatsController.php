@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 客户统计
  * Class GuestStatsController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class GuestStatsController extends InitController
 {

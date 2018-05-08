@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Stats
- * @package app\models
+ * @package App\Models
  * @property $access_time
  * @property $ip_address
  * @property $visit_times

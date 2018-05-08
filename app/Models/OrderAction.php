@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class OrderAction
- * @package app\models
+ * @package App\Models
  * @property $order_id
  * @property $action_user
  * @property $order_status

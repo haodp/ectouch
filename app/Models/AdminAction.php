@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AdminAction
- * @package app\models
+ * @package App\Models
  * @property integer $action_id 自增ID
  * @property integer $parent_id 父级ID
  * @property string $action_code 权限名称

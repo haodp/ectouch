@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 商品类型管理
  * Class GoodsTypeController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class GoodsTypeController extends InitController
 {

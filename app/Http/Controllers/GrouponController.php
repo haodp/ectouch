@@ -1,10 +1,10 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * Class GrouponController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class GrouponController extends InitController
 {

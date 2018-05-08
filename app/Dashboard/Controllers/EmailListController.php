@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 邮件列表管理
  * Class EmailListController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class EmailListController extends InitController
 {

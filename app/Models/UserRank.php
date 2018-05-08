@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserRank
- * @package app\models
+ * @package App\Models
  * @property $rank_name
  * @property $min_points
  * @property $max_points

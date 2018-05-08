@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Comment
- * @package app\models
+ * @package App\Models
  * @property $comment_type
  * @property $id_value
  * @property $email

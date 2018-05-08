@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 调查管理程序
  * Class VoteController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class VoteController extends InitController
 {

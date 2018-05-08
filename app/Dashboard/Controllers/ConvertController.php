@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Mysql;
+use App\Libraries\Mysql;
 
 /**
  * 转换程序
  * Class ConvertController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class ConvertController extends InitController
 {

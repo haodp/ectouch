@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class EmailSendlist
- * @package app\models
+ * @package App\Models
  * @property $email
  * @property $template_id
  * @property $email_content

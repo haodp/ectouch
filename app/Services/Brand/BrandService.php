@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\brand;
+namespace App\Services\Brand;
 
 class BrandService
 {

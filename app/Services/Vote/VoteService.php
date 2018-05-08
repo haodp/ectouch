@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\vote;
+namespace App\Services\Vote;
 
 class VoteService
 {

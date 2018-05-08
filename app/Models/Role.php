@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Role
- * @package app\models
+ * @package App\Models
  * @property $role_name
  * @property $action_list
  * @property $role_describe

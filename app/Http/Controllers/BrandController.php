@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 品牌列表
  * Class BrandController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class BrandController extends InitController
 {

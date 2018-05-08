@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Region
- * @package app\models
+ * @package App\Models
  * @property $parent_id
  * @property $region_name
  * @property $region_type

@@ -1,14 +1,14 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
-use app\libraries\Json;
-use app\libraries\Captcha;
+use App\Libraries\Json;
+use App\Libraries\Captcha;
 
 /**
  * 提交用户评论
  * Class CommentController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class CommentController extends InitController
 {

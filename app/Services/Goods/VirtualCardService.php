@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\goods;
+namespace App\Services\Goods;
 
 class VirtualCardService
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 用户评论管理
  * Class CommentManageController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class CommentManageController extends InitController
 {

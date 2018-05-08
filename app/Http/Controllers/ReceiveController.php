@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 处理收回确认的页面
  * Class ReceiveController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class ReceiveController extends InitController
 {

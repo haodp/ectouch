@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Card
- * @package app\models
+ * @package App\Models
  * @property $card_name
  * @property $card_img
  * @property $card_fee

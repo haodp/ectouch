@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AdminMessage
- * @package app\models
+ * @package App\Models
  * @property $sender_id
  * @property $receiver_id
  * @property $sent_time

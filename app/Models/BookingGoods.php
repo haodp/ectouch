@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class BookingGoods
- * @package app\models
+ * @package App\Models
  * @property $user_id
  * @property $email
  * @property $link_man

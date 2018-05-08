@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 超值礼包管理
  * Class PackageController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class PackageController extends InitController
 {

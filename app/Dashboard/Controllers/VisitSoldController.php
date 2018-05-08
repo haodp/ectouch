@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 访问购买比例
  * Class VisitSoldController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class VisitSoldController extends InitController
 {

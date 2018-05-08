@@ -1,13 +1,13 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
-use app\libraries\Captcha;
+use App\Libraries\Captcha;
 
 /**
  * 生成验证码
  * Class CaptchaController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class CaptchaController extends InitController
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Vote
- * @package app\models
+ * @package App\Models
  * @property $vote_name
  * @property $start_time
  * @property $end_time

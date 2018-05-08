@@ -1,13 +1,13 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
-use app\libraries\Sms;
+use App\Libraries\Sms;
 
 /**
  * 批发
  * Class WholesaleController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class WholesaleController extends InitController
 {

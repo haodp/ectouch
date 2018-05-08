@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 文章分类管理程序
  * Class ArticlecatController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class ArticlecatController extends InitController
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 生成显示商品的js代码
  * Class GenGoodsScriptController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class GenGoodsScriptController extends InitController
 {

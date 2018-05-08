@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\collect;
+namespace App\Services\Collect;
 
 class BrandService
 {

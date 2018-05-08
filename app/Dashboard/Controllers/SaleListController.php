@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 销售明细列表
  * Class SaleListController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class SaleListController extends InitController
 {

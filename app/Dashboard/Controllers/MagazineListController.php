@@ -1,10 +1,10 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * Class MagazineListController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class MagazineListController extends InitController
 {

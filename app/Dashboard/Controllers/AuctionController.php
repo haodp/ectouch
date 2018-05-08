@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 拍卖活动管理
  * Class AuctionController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class AuctionController extends InitController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\trade;
+namespace App\Services\Trade;
 
 class TradeService
 {

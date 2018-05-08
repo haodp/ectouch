@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 标签云
  * Class TagCloudController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class TagCloudController extends InitController
 {

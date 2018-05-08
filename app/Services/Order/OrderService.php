@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\order;
+namespace App\Services\Order;
 
 class OrderService
 {

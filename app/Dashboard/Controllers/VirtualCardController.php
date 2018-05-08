@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 虚拟卡商品管理
  * Class VirtualCardController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class VirtualCardController extends InitController
 {

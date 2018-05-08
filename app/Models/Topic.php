@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Topic
- * @package app\models
+ * @package App\Models
  * @property $topic_id
  * @property $title
  * @property $intro

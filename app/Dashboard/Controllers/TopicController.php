@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 专题管理
  * Class TopicController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class TopicController extends InitController
 {

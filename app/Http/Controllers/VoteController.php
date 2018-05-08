@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 调查程序
  * Class VoteController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class VoteController extends InitController
 {

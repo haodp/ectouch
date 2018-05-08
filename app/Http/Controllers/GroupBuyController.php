@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 团购商品
  * Class GroupBuyController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class GroupBuyController extends InitController
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 生成商品列表
  * Class GoodsScriptController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class GoodsScriptController extends InitController
 {

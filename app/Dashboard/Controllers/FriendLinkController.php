@@ -1,14 +1,14 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Image;
-use app\libraries\Exchange;
+use App\Libraries\Image;
+use App\Libraries\Exchange;
 
 /**
  * 友情链接管理
  * Class FriendLinkController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class FriendLinkController extends InitController
 {

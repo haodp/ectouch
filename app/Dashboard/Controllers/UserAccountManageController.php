@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 会员资金管理程序
  * Class UserAccountManageController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class UserAccountManageController extends InitController
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PackageGoods
- * @package app\models
+ * @package App\Models
  * @property $package_id
  * @property $goods_id
  * @property $product_id

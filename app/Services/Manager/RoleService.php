@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\manager;
+namespace App\Services\Manager;
 
 class RoleService
 {

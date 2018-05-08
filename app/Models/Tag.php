@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Tag
- * @package app\models
+ * @package App\Models
  * @property $user_id
  * @property $goods_id
  * @property $tag_words

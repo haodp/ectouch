@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\supplier;
+namespace App\Services\Supplier;
 
 class SupplierService
 {

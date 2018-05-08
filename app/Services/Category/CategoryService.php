@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\category;
+namespace App\Services\Category;
 
 class CategoryService
 {

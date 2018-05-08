@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 记录管理员操作日志
  * Class AdminLogsController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class AdminLogsController extends InitController
 {

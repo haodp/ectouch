@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class LinkGoods
- * @package app\models
+ * @package App\Models
  * @property $goods_id
  * @property $link_goods_id
  * @property $is_double

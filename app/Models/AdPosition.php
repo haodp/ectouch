@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AdPosition
- * @package app\models
+ * @package App\Models
  * @property $position_name
  * @property $ad_width
  * @property $ad_height

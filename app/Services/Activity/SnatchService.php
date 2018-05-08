@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\activity;
+namespace App\Services\Activity;
 
 class SnatchService
 {

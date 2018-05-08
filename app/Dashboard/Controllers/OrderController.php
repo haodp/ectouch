@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 订单管理
  * Class OrderController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class OrderController extends InitController
 {

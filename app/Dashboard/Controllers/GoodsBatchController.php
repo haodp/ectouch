@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Image;
+use App\Libraries\Image;
 
 /**
  * 商品批量上传、修改
  * Class GoodsBatchController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class GoodsBatchController extends InitController
 {

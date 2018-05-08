@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 帮助信息管理
  * Class ShophelpController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class ShophelpController extends InitController
 {

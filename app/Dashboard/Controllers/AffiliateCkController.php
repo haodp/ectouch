@@ -1,10 +1,10 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * Class AffiliateCkController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class AffiliateCkController extends InitController
 {

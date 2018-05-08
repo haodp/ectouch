@@ -1,14 +1,14 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Captcha;
-use app\libraries\Exchange;
+use App\Libraries\Captcha;
+use App\Libraries\Exchange;
 
 /**
  * 管理员信息以及权限管理程序
  * Class PrivilegeController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class PrivilegeController extends InitController
 {

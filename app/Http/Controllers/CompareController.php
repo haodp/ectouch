@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 商品比较程序
  * Class CompareController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class CompareController extends InitController
 {

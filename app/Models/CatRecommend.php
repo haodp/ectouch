@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class CatRecommend
- * @package app\models
+ * @package App\Models
  * @property integer $cat_id
  * @property $recommend_type
  */

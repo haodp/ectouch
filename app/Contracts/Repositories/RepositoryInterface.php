@@ -1,10 +1,10 @@
 <?php
 
-namespace app\contracts\repositories;
+namespace App\Contracts\Repositories;
 
 /**
  * Interface RepositoryInterface
- * @package app\contracts\repositories
+ * @package App\Contracts\Repositories
  */
 interface RepositoryInterface
 {

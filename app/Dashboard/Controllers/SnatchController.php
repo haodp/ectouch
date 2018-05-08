@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 夺宝奇兵管理
  * Class SnatchController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class SnatchController extends InitController
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 配送区域管理
  * Class ShippingAreaController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class ShippingAreaController extends InitController
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class GoodsActivity
- * @package app\models
+ * @package App\Models
  * @property $act_name
  * @property $act_desc
  * @property $act_type

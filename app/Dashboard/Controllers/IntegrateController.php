@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Mysql;
+use App\Libraries\Mysql;
 
 /**
  * 第三方程序会员数据整合插件管理
  * Class IntegrateController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class IntegrateController extends InitController
 {

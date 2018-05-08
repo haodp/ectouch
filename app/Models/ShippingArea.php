@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ShippingArea
- * @package app\models
+ * @package App\Models
  * @property $shipping_area_name
  * @property $shipping_id
  * @property $configure

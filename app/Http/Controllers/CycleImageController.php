@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 轮播图片程序
  * Class CycleImageController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class CycleImageController extends InitController
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Nav
- * @package app\models
+ * @package App\Models
  * @property $ctype
  * @property $cid
  * @property $name

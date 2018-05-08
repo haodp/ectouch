@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class BackOrder
- * @package app\models
+ * @package App\Models
  * @property $delivery_sn
  * @property $order_sn
  * @property $order_id

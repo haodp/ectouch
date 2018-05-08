@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 管理员留言
  * Class MessageController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class MessageController extends InitController
 {

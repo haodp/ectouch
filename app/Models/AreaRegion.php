@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AreaRegion
- * @package app\models
+ * @package App\Models
  * @property $shipping_area_id
  * @property $region_id
  */

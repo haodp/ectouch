@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ExchangeGoods
- * @package app\models
+ * @package App\Models
  * @property $exchange_integral
  * @property $is_exchange
  * @property $is_hot

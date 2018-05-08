@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 系统文件检测
  * Class CheckFilePrivController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class CheckFilePrivController extends InitController
 {

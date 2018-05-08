@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AdminLog
- * @package app\models
+ * @package App\Models
  * @property integer $log_id 自增ID
  * @property integer $log_time 日志时间
  * @property integer $user_id 用户ID

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Brand
- * @package app\models
+ * @package App\Models
  * @property string $brand_name 品牌名称
  * @property string $brand_logo 品牌图片
  * @property string $brand_desc 品牌描述

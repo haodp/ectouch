@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserAccount
- * @package app\models
+ * @package App\Models
  * @property $user_id
  * @property $admin_user
  * @property $amount

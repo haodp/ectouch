@@ -1,10 +1,10 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * Class SearchLogController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class SearchLogController extends InitController
 {

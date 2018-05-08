@@ -1,10 +1,10 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * Class AttentionListController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class AttentionListController extends InitController
 {

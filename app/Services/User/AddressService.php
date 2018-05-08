@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\user;
+namespace App\Services\User;
 
 class AddressService
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Searchengine
- * @package app\models
+ * @package App\Models
  * @property $date
  * @property $searchengine
  * @property $count

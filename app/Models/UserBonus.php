@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserBonus
- * @package app\models
+ * @package App\Models
  * @property $bonus_type_id
  * @property $bonus_sn
  * @property $user_id

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
-use app\libraries\Json;
+use App\Libraries\Json;
 
 /**
  * Class IndexController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class IndexController extends InitController
 {

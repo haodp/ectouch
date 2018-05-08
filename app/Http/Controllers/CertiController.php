@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 证书反查文件
  * Class CertiController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class CertiController extends InitController
 {

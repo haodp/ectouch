@@ -1,12 +1,12 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * Class RegFieldsController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class RegFieldsController extends InitController
 {

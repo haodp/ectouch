@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 积分兑换商品
  * Class ExchangeGoodsController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class ExchangeGoodsController extends InitController
 {

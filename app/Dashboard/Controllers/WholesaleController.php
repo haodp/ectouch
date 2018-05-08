@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 批发管理
  * Class WholesaleController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class WholesaleController extends InitController
 {

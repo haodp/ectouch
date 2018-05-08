@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AutoManage
- * @package app\models
+ * @package App\Models
  * @property $item_id
  * @property $type
  * @property $starttime

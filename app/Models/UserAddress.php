@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserAddress
- * @package app\models
+ * @package App\Models
  * @property $address_name
  * @property $user_id
  * @property $consignee

@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 客户留言
  * Class UserMsgController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class UserMsgController extends InitController
 {

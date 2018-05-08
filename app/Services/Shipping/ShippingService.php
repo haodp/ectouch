@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\shipping;
+namespace App\Services\Shipping;
 
 class ShippingService
 {

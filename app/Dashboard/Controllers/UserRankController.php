@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 会员等级管理
  * Class UserRankController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class UserRankController extends InitController
 {

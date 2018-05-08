@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\ad;
+namespace App\Services\Ad;
 
 class AdPositionService
 {

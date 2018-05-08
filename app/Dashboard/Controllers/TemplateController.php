@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 模版管理
  * Class TemplateController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class TemplateController extends InitController
 {

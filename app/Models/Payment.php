@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Payment
- * @package app\models
+ * @package App\Models
  * @property $pay_code
  * @property $pay_name
  * @property $pay_fee

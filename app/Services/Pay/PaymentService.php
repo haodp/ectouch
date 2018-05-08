@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\pay;
+namespace App\Services\Pay;
 
 class PaymentService
 {

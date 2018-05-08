@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\shop;
+namespace App\Services\Shop;
 
 class PackService
 {

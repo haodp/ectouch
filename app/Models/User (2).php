@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
- * @package app\models
- * @package app\models
+ * @package App\Models
+ * @package App\Models
  * @property $email
  * @property $user_name
  * @property $password

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\article;
+namespace App\Services\Article;
 
 class ArticleService
 {

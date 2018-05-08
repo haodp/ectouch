@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
-use app\libraries\Shop;
-use app\libraries\Error;
-use app\libraries\Mysql;
-use app\libraries\Template;
+use App\Libraries\Shop;
+use App\Libraries\Error;
+use App\Libraries\Mysql;
+use App\Libraries\Template;
 use dao\Controller;
 
 class InitController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\region;
+namespace App\Services\Region;
 
 class RegionService
 {

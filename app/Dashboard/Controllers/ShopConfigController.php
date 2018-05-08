@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 管理中心商店设置
  * Class ShopConfigController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class ShopConfigController extends InitController
 {

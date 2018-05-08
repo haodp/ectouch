@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Feedback
- * @package app\models
+ * @package App\Models
  * @property $parent_id
  * @property $user_id
  * @property $user_name

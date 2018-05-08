@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 证书编辑页
  * Class LicenseController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class LicenseController extends InitController
 {

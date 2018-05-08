@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 找回管理员密码
  * Class GetPasswordController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class GetPasswordController extends InitController
 {

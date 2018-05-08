@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AuctionLog
- * @package app\models
+ * @package App\Models
  * @property $act_id
  * @property $bid_user
  * @property $bid_price

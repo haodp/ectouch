@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 帮助信息接口
  * Class HelpController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class HelpController extends InitController
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Json;
-use app\libraries\Transport;
+use App\Libraries\Json;
+use App\Libraries\Transport;
 
 /**
  * 云服务接口
  * Class CloudController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class CloudController extends InitController
 {

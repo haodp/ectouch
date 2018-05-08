@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class VirtualCard
- * @package app\models
+ * @package App\Models
  * @property $goods_id
  * @property $card_sn
  * @property $card_password

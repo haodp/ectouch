@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\controller\v2;
+namespace App\Api\Controllers\V2;
 
 use app\api\controller\Controller;
 use app\api\model\v2\ShopConfig;

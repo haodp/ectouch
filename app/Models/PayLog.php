@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PayLog
- * @package app\models
+ * @package App\Models
  * @property $order_id
  * @property $order_amount
  * @property $order_type

@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * 商品分类管理
  * Class CategoryController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class CategoryController extends InitController
 {

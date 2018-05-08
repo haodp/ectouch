@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services\agency;
+namespace App\Services\Agency;
 
 class AgencyService
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Shop;
-use app\libraries\Error;
-use app\libraries\Mysql;
-use app\libraries\Captcha;
-use app\libraries\Template;
+use App\Libraries\Shop;
+use App\Libraries\Error;
+use App\Libraries\Mysql;
+use App\Libraries\Captcha;
+use App\Libraries\Template;
 use dao\Controller;
 
 /**
  * Class InitController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class InitController extends Controller
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
 /**
  * 搜索引擎关键字统计
  * Class SearchengineStatsController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class SearchengineStatsController extends InitController
 {

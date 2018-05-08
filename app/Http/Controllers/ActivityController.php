@@ -1,11 +1,11 @@
 <?php
 
-namespace app\shop\controller;
+namespace App\Http\Controllers;
 
 /**
  * 优惠活动
  * Class ActivityController
- * @package app\shop\controller
+ * @package App\Http\Controllers
  */
 class ActivityController extends InitController
 {

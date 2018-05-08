@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Suppliers
- * @package app\models
+ * @package App\Models
  * @property $suppliers_name
  * @property $suppliers_desc
  * @property $is_check

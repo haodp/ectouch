@@ -1,13 +1,13 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Sms;
+use App\Libraries\Sms;
 
 /**
  * 短信模块
  * Class SmsController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class SmsController extends InitController
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use dao\Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Attribute
- * @package app\models
+ * @package App\Models
  * @property $cat_id
  * @property $attr_name
  * @property $attr_input_type

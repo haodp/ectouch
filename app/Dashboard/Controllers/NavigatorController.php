@@ -1,12 +1,12 @@
 <?php
 
-namespace app\dashboard\controller;
+namespace App\Dashboard\Controllers;
 
-use app\libraries\Exchange;
+use App\Libraries\Exchange;
 
 /**
  * Class NavigatorController
- * @package app\dashboard\controller
+ * @package App\Dashboard\Controllers
  */
 class NavigatorController extends InitController
 {
