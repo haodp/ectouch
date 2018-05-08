@@ -162,11 +162,8 @@ class AdPositionController extends InitController
             $this->smarty->assign('record_count', $position_list['record_count']);
             $this->smarty->assign('page_count', $position_list['page_count']);
 
-            return make_json_result(
-                $this->smarty->fetch('ad_position_list.htm'),
-                '',
-                ['filter' => $position_list['filter'], 'page_count' => $position_list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('ad_position_list.htm'), '',
+                ['filter' => $position_list['filter'], 'page_count' => $position_list['page_count']]);
         }
 
         /**
@@ -267,7 +264,7 @@ class AdPositionController extends InitController
 
             $url = 'ad_position.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
     }
 

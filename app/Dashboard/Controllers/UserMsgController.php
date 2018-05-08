@@ -52,7 +52,7 @@ class UserMsgController extends InitController
 
             $this->db->query($sql);
 
-            $this->redirect("user_msg.php?act=add&order_id=$_POST[order_id]&user_id=$_POST[user_id]");
+            return $this->redirect("user_msg.php?act=add&order_id=$_POST[order_id]&user_id=$_POST[user_id]");
         }
 
         if ($_REQUEST['act'] == 'remove_msg') {
@@ -71,7 +71,7 @@ class UserMsgController extends InitController
                 }
             }
 
-            $this->redirect("user_msg.php?act=add&order_id=$_GET[order_id]&user_id=$_GET[user_id]");
+            return $this->redirect("user_msg.php?act=add&order_id=$_GET[order_id]&user_id=$_GET[user_id]");
         }
 
         /**
@@ -86,7 +86,7 @@ class UserMsgController extends InitController
                 // 清除缓存
                 clear_cache_files();
 
-                $this->redirect("user_msg.php?act=view&id=$_REQUEST[id]");
+                return $this->redirect("user_msg.php?act=view&id=$_REQUEST[id]");
             } else {
                 // 禁止留言显示
                 $sql = "UPDATE " . $this->ecs->table('feedback') . " SET msg_status = 0 WHERE msg_id = '$_REQUEST[id]'";
@@ -95,7 +95,7 @@ class UserMsgController extends InitController
                 // 清除缓存
                 clear_cache_files();
 
-                $this->redirect("user_msg.php?act=view&id=$_REQUEST[id]");
+                return $this->redirect("user_msg.php?act=view&id=$_REQUEST[id]");
             }
         }
 
@@ -103,6 +103,7 @@ class UserMsgController extends InitController
          * 列出所有留言
          */
         if ($_REQUEST['act'] == 'list_all') {
+
             $msg_list = $this->msg_list();
 
             $this->smarty->assign('msg_list', $msg_list['msg_list']);
@@ -155,7 +156,7 @@ class UserMsgController extends InitController
 
                 admin_log(addslashes($msg_title), 'remove', 'message');
                 $url = 'user_msg.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
-                $this->redirect($url);
+                return $this->redirect($url);
             } else {
                 return make_json_error($GLOBALS['db']->error());
             }
@@ -175,15 +176,15 @@ class UserMsgController extends InitController
                         $this->db->query("DELETE FROM " . $this->ecs->table('feedback') . " WHERE " . db_create_in($_POST['checkboxes'], 'parent_id'));
                         break;
 
-                    case 'allow':
+                    case 'allow' :
                         $this->db->query("UPDATE " . $this->ecs->table('feedback') . " SET msg_status = 1  WHERE " . db_create_in($_POST['checkboxes'], 'msg_id'));
                         break;
 
-                    case 'deny':
+                    case 'deny' :
                         $this->db->query("UPDATE " . $this->ecs->table('feedback') . " SET msg_status = 0,msg_area =1  WHERE " . db_create_in($_POST['checkboxes'], 'msg_id'));
                         break;
 
-                    default:
+                    default :
                         break;
                 }
 
@@ -253,7 +254,7 @@ class UserMsgController extends InitController
                 }
             }
 
-            $this->redirect("?act=view&id=" . $_REQUEST['msg_id'] . "&send_ok=$send_ok");
+            return $this->redirect("?act=view&id=" . $_REQUEST['msg_id'] . "&send_ok=$send_ok");
         }
 
         /**
@@ -268,7 +269,7 @@ class UserMsgController extends InitController
             // 更新数据库
             $this->db->query("UPDATE " . $this->ecs->table('feedback') . " SET message_img = '' WHERE msg_id = '$_GET[id]'");
 
-            $this->redirect("user_msg.php?act=view&id=" . $_GET['id']);
+            return $this->redirect("user_msg.php?act=view&id=" . $_GET['id']);
         }
     }
 
@@ -310,7 +311,7 @@ class UserMsgController extends InitController
             "LIMIT " . $filter['start'] . ', ' . $filter['page_size'];
 
         $msg_list = $GLOBALS['db']->getAll($sql);
-        foreach ($msg_list as $key => $value) {
+        foreach ($msg_list AS $key => $value) {
             if ($value['order_id'] > 0) {
                 $msg_list[$key]['order_sn'] = $GLOBALS['db']->getOne("SELECT order_sn FROM " . $GLOBALS['ecs']->table('order_info') . " WHERE order_id= " . $value['order_id']);
             }

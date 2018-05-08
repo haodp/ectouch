@@ -10,6 +10,7 @@ use App\Libraries\Image;
  */
 class IndexController extends InitController
 {
+
     public function index()
     {
         load_helper('order');
@@ -19,12 +20,12 @@ class IndexController extends InitController
          */
         if ($_REQUEST['act'] == 'list') {
             // 强制访问index.php，避免url异常
-            $absolute_url = request()->url();
+            $absolute_url = request()->fullUrl();
             if (stripos($absolute_url, 'index.php') === false) {
-                $this->redirect('index.php');
+                return $this->redirect('index.php');
             }
 
-            load_helper(['menu', 'priv'], 'admin');
+            load_conf(['menu', 'priv'], 'admin');
 
             $modules = $GLOBALS['modules'];
             $purview = $GLOBALS['purview'];
@@ -112,9 +113,9 @@ class IndexController extends InitController
          */
         if ($_REQUEST['act'] == 'main') {
             //寮€搴楀悜瀵肩?涓€姝
-            if (session('?shop_guide') && session('shop_guide') === true) {
-                session('shop_guide', null);
-                $this->redirect("index.php?act=first");
+            if (session()->has('shop_guide') && session('shop_guide') === true) {
+                session(['shop_guide' => null]);
+                return $this->redirect("index.php?act=first");
             }
 
             $gd = gd_version();
@@ -807,8 +808,7 @@ class IndexController extends InitController
          * 拖拽工具栏
          */
         if ($_REQUEST['act'] == 'drag') {
-            return $this->smarty->display('drag.htm');
-            ;
+            return $this->smarty->display('drag.htm');;
         }
 
         /**
@@ -817,7 +817,7 @@ class IndexController extends InitController
          */
         if ($_REQUEST['act'] == 'check_order') {
             if (empty(session('last_check'))) {
-                session('last_check', gmtime());
+                session(['last_check' => gmtime()]);
 
                 return make_json_result('', '', ['new_orders' => 0, 'new_paid' => 0]);
             }
@@ -832,7 +832,7 @@ class IndexController extends InitController
                 ' WHERE pay_time >= ' . session('last_check');
             $arr['new_paid'] = $this->db->getOne($sql);
 
-            session('last_check', gmtime());
+            session(['last_check' => gmtime()]);
 
             if (!(is_numeric($arr['new_orders']) && is_numeric($arr['new_paid']))) {
                 return make_json_error($this->db->error());

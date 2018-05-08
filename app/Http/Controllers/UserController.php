@@ -318,7 +318,7 @@ class UserController extends InitController
                 $ucdata = isset($this->user->ucdata) ? $this->user->ucdata : '';
                 return show_message($GLOBALS['_LANG']['login_success'] . $ucdata, [$GLOBALS['_LANG']['back_up_page'], $GLOBALS['_LANG']['profile_lnk']], [$back_act, 'user.php'], 'info');
             } else {
-                session('login_fail', session('login_fail') + 1);
+                session(['login_fail' => session('login_fail') + 1]);
                 return show_message($GLOBALS['_LANG']['login_failure'], $GLOBALS['_LANG']['relogin_lnk'], 'user.php', 'error');
             }
         }
@@ -360,7 +360,7 @@ class UserController extends InitController
                 $result['ucdata'] = $ucdata;
                 $result['content'] = $this->smarty->fetch('library/member_info.lbi');
             } else {
-                session('login_fail', session('login_fail') + 1);
+                session(['login_fail' => session('login_fail') + 1]);
                 if (session('login_fail') > 2) {
                     $this->smarty->assign('enabled_captcha', 1);
                     $result['html'] = $this->smarty->fetch('library/member_info.lbi');
@@ -571,9 +571,9 @@ class UserController extends InitController
                 return show_message($GLOBALS['_LANG']['no_passwd_question'], $GLOBALS['_LANG']['back_home_lnk'], './', 'info');
             }
 
-            session('temp_user', $user_question_arr['user_id']);  //设置临时用户，不具有有效身份
-            session('temp_user_name', $user_question_arr['user_name']);  //设置临时用户，不具有有效身份
-            session('passwd_answer', $user_question_arr['passwd_answer']);   //存储密码问题答案，减少一次数据库访问
+            session(['temp_user' => $user_question_arr['user_id']]);  //设置临时用户，不具有有效身份
+            session(['temp_user_name' => $user_question_arr['user_name']]);  //设置临时用户，不具有有效身份
+            session(['passwd_answer' => $user_question_arr['passwd_answer']]);   //存储密码问题答案，减少一次数据库访问
 
             $captcha = intval($GLOBALS['_CFG']['captcha']);
             if (($captcha & CAPTCHA_LOGIN) && (!($captcha & CAPTCHA_LOGIN_FAIL) || (($captcha & CAPTCHA_LOGIN_FAIL) && session('login_fail') > 2)) && gd_version() > 0) {
@@ -606,10 +606,10 @@ class UserController extends InitController
             if (empty($_POST['passwd_answer']) || $_POST['passwd_answer'] != session('passwd_answer')) {
                 return show_message($GLOBALS['_LANG']['wrong_passwd_answer'], $GLOBALS['_LANG']['back_retry_answer'], 'user.php?act=qpassword_name', 'info');
             } else {
-                session('user_id', session('temp_user'));
-                session('user_name', session('temp_user_name'));
-                session('temp_user', null);
-                session('temp_user_name', null);
+                session(['user_id' => session('temp_user')]);
+                session(['user_name' => session('temp_user_name')]);
+                session(['temp_user' => null]);
+                session(['temp_user_name' => null]);
                 $this->smarty->assign('uid', session('user_id'));
                 $this->smarty->assign('action', 'reset_password');
                 return $this->smarty->display('user_passport.dwt');
@@ -797,7 +797,7 @@ class UserController extends InitController
             $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
             if (cancel_order($order_id, $user_id)) {
-                return $this->redirect("user.php?act=order_list");
+                return redirect("user.php?act=order_list");
             } else {
                 return $this->err->show($GLOBALS['_LANG']['order_list_lnk'], 'user.php?act=order_list');
             }
@@ -893,7 +893,7 @@ class UserController extends InitController
             $consignee_id = intval($_GET['id']);
 
             if (drop_consignee($consignee_id)) {
-                return $this->redirect("user.php?act=address_list");
+                return redirect("user.php?act=address_list");
             } else {
                 return show_message($GLOBALS['_LANG']['del_address_false']);
             }
@@ -936,7 +936,7 @@ class UserController extends InitController
                 $this->db->query('DELETE FROM ' . $this->ecs->table('collect_goods') . " WHERE rec_id='$collection_id' AND user_id ='$user_id'");
             }
 
-            return $this->redirect("user.php?act=collection_list");
+            return redirect("user.php?act=collection_list");
         }
 
         /**
@@ -947,7 +947,7 @@ class UserController extends InitController
             if ($rec_id) {
                 $this->db->query('UPDATE ' . $this->ecs->table('collect_goods') . "SET is_attention = 1 WHERE rec_id='$rec_id' AND user_id ='$user_id'");
             }
-            return $this->redirect("user.php?act=collection_list");
+            return redirect("user.php?act=collection_list");
         }
 
         /**
@@ -958,7 +958,7 @@ class UserController extends InitController
             if ($rec_id) {
                 $this->db->query('UPDATE ' . $this->ecs->table('collect_goods') . "SET is_attention = 0 WHERE rec_id='$rec_id' AND user_id ='$user_id'");
             }
-            return $this->redirect("user.php?act=collection_list");
+            return redirect("user.php?act=collection_list");
         }
 
         /**
@@ -1064,7 +1064,7 @@ class UserController extends InitController
             $tag_words = isset($_GET['tag_words']) ? trim($_GET['tag_words']) : '';
             delete_tag($tag_words, $user_id);
 
-            return $this->redirect("user.php?act=tag_list");
+            return redirect("user.php?act=tag_list");
         }
 
         /**
@@ -1145,12 +1145,8 @@ class UserController extends InitController
             }
 
             if (add_booking($booking)) {
-                return show_message(
-                    $GLOBALS['_LANG']['booking_success'],
-                    $GLOBALS['_LANG']['back_booking_list'],
-                    'user.php?act=booking_list',
-                    'info'
-                );
+                return show_message($GLOBALS['_LANG']['booking_success'], $GLOBALS['_LANG']['back_booking_list'], 'user.php?act=booking_list',
+                    'info');
             } else {
                 return $this->err->show($GLOBALS['_LANG']['booking_list_lnk'], 'user.php?act=booking_list');
             }
@@ -1164,12 +1160,12 @@ class UserController extends InitController
 
             $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
             if ($id == 0 || $user_id == 0) {
-                return $this->redirect("user.php?act=booking_list");
+                return redirect("user.php?act=booking_list");
             }
 
             $result = delete_booking($id, $user_id);
             if ($result) {
-                return $this->redirect("user.php?act=booking_list");
+                return redirect("user.php?act=booking_list");
             }
         }
 
@@ -1182,7 +1178,7 @@ class UserController extends InitController
             $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
             if (affirm_received($order_id, $user_id)) {
-                return $this->redirect("user.php?act=order_list");
+                return redirect("user.php?act=order_list");
             } else {
                 return $this->err->show($GLOBALS['_LANG']['order_list_lnk'], 'user.php?act=order_list');
             }
@@ -1398,12 +1394,12 @@ class UserController extends InitController
 
             $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
             if ($id == 0 || $user_id == 0) {
-                return $this->redirect("user.php?act=account_log");
+                return redirect("user.php?act=account_log");
             }
 
             $result = del_user_account($id, $user_id);
             if ($result) {
-                return $this->redirect("user.php?act=account_log");
+                return redirect("user.php?act=account_log");
             }
         }
 
@@ -1418,12 +1414,12 @@ class UserController extends InitController
             $payment_id = isset($_GET['pid']) ? intval($_GET['pid']) : 0;
 
             if ($surplus_id == 0) {
-                return $this->redirect("user.php?act=account_log");
+                return redirect("user.php?act=account_log");
             }
 
             //如果原来的支付方式已禁用或者已删除, 重新选择支付方式
             if ($payment_id == 0) {
-                return $this->redirect("user.php?act=account_deposit&id=" . $surplus_id . "");
+                return redirect("user.php?act=account_deposit&id=" . $surplus_id . "");
             }
 
             //获取单条会员帐目信息
@@ -1526,7 +1522,7 @@ class UserController extends InitController
             $result = ['error' => 0, 'message' => ''];
             $goods_id = $_GET['id'];
 
-            if (!session('?user_id') || session('user_id') == 0) {
+            if (!session()->has('user_id') || session('user_id') == 0) {
                 $result['error'] = 1;
                 $result['message'] = $GLOBALS['_LANG']['login_please'];
                 die($json->encode($result));
@@ -1575,7 +1571,7 @@ class UserController extends InitController
                     $this->db->query($sql);
                 }
             }
-            return $this->redirect("user.php?act=message_list&order_id=$order_id");
+            return redirect("user.php?act=message_list&order_id=$order_id");
         }
 
         /**
@@ -1587,7 +1583,7 @@ class UserController extends InitController
                 $sql = "DELETE FROM " . $this->ecs->table('comment') . " WHERE comment_id = '$id' AND user_id = '$user_id'";
                 $this->db->query($sql);
             }
-            return $this->redirect("user.php?act=comment_list");
+            return redirect("user.php?act=comment_list");
         }
 
         /**
@@ -1659,13 +1655,13 @@ class UserController extends InitController
         if ($action == 'act_edit_surplus') {
             // 检查是否登录
             if (session('user_id') <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 检查订单号
             $order_id = intval($_POST['order_id']);
             if ($order_id <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 检查余额
@@ -1680,12 +1676,12 @@ class UserController extends InitController
             // 取得订单
             $order = order_info($order_id);
             if (empty($order)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 检查订单用户跟当前用户是否一致
             if (session('user_id') != $order['user_id']) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 检查订单是否未付款，检查应付款金额是否大于0
@@ -1750,7 +1746,7 @@ class UserController extends InitController
             log_account_change($user['user_id'], (-1) * $surplus, 0, 0, 0, $change_desc);
 
             // 跳转
-            return $this->redirect('user.php?act=order_detail&order_id=' . $order_id . "");
+            return redirect('user.php?act=order_detail&order_id=' . $order_id . "");
         }
 
         /**
@@ -1759,41 +1755,41 @@ class UserController extends InitController
         if ($action == 'act_edit_payment') {
             // 检查是否登录
             if (session('user_id') <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 检查支付方式
             $pay_id = intval($_POST['pay_id']);
             if ($pay_id <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             load_helper('order');
             $payment_info = payment_info($pay_id);
             if (empty($payment_info)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 检查订单号
             $order_id = intval($_POST['order_id']);
             if ($order_id <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 取得订单
             $order = order_info($order_id);
             if (empty($order)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 检查订单用户跟当前用户是否一致
             if (session('user_id') != $order['user_id']) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 检查订单是否未付款和未发货 以及订单金额是否为0 和支付id是否为改变
             if ($order['pay_status'] != PS_UNPAYED || $order['shipping_status'] != SS_UNSHIPPED || $order['goods_amount'] <= 0 || $order['pay_id'] == $pay_id) {
-                return $this->redirect("user.php?act=order_detail&order_id=$order_id");
+                return redirect("user.php?act=order_detail&order_id=$order_id");
             }
 
             $order_amount = $order['order_amount'] - $order['pay_fee'];
@@ -1806,7 +1802,7 @@ class UserController extends InitController
             $this->db->query($sql);
 
             // 跳转
-            return $this->redirect("user.php?act=order_detail&order_id=$order_id");
+            return redirect("user.php?act=order_detail&order_id=$order_id");
         }
 
         /**
@@ -1827,7 +1823,7 @@ class UserController extends InitController
                 'order_id' => isset($_POST['order_id']) ? intval($_POST['order_id']) : 0
             ];
             if (save_order_address($address, $user_id)) {
-                return $this->redirect('user.php?act=order_detail&order_id=' . $address['order_id'] . "");
+                return redirect('user.php?act=order_detail&order_id=' . $address['order_id'] . "");
             } else {
                 return $this->err->show($GLOBALS['_LANG']['order_list_lnk'], 'user.php?act=order_list');
             }
@@ -2045,12 +2041,12 @@ class UserController extends InitController
             $job = $_GET['job'];
 
             if ($job == 'add' || $job == 'del') {
-                if (session('?last_email_query')) {
+                if (session()->has('last_email_query')) {
                     if (time() - session('last_email_query') <= 30) {
                         die($GLOBALS['_LANG']['order_query_toofast']);
                     }
                 }
-                session('last_email_query', time());
+                session(['last_email_query' => time()]);
             }
 
             $email = trim($_GET['email']);
@@ -2199,14 +2195,14 @@ class UserController extends InitController
 
             $result = ['error' => 0, 'message' => '', 'content' => ''];
 
-            if (session('?last_order_query')) {
+            if (session()->has('last_order_query')) {
                 if (time() - session('last_order_query') <= 10) {
                     $result['error'] = 1;
                     $result['message'] = $GLOBALS['_LANG']['order_query_toofast'];
                     die($json->encode($result));
                 }
             }
-            session('last_order_query', time());
+            session(['last_order_query' => time()]);
 
             if (empty($order_sn)) {
                 $result['error'] = 1;
@@ -2469,7 +2465,7 @@ class UserController extends InitController
          * 清除商品浏览历史
          */
         if ($action == 'clear_history') {
-            cookie('history', null);
+            \Cookie::queue('history', null);
         }
     }
 }

@@ -22,7 +22,7 @@ $_LANG['article_list'] = '帮助文章列表';
 $_LANG['cat_list'] = '帮助分类列表';
 $_LANG['select_plz'] = '请选择...';
 
-// 提示信息
+/* 提示信息 */
 $_LANG['catname_exist'] = '此分类名已经存在！';
 $_LANG['title_exist'] = '此文章主题已经存在！';
 $_LANG['catadd_fail'] = '添加分类失败';
@@ -45,6 +45,5 @@ $_LANG['js_languages']['remove_confirm'] = '你确认要删除该记录吗？';;
 $_LANG['js_languages']['no_title'] = '没有输入文章标题';;
 $_LANG['js_languages']['no_cat'] = '没有选择帮助文章分类';
 $_LANG['js_languages']['chap'] = '篇';
-
 
 return $_LANG;

@@ -1,12 +1,12 @@
 <?php
 
 /**
- *  管理中心管理员操作内容语言文件
+ * 管理中心管理员操作内容语言文件
  */
 
-/**
- * 操作类型
- */
+/*------------------------------------------------------ */
+//-- 操作类型
+/*------------------------------------------------------ */
 $_LANG['log_action']['add'] = '添加';
 $_LANG['log_action']['remove'] = '删除';
 $_LANG['log_action']['edit'] = '编辑';
@@ -21,9 +21,9 @@ $_LANG['log_action']['batch_restore'] = '批量还原';
 $_LANG['log_action']['batch_upload'] = '批量上传';
 $_LANG['log_action']['batch_edit'] = '批量编辑';
 
-/**
- * 操作内容
- */
+/*------------------------------------------------------ */
+//-- 操作内容
+/*------------------------------------------------------ */
 $_LANG['log_action']['users'] = '会员账号';
 $_LANG['log_action']['shipping'] = '配送方式';
 $_LANG['log_action']['shipping_area'] = '配送区域';
@@ -79,5 +79,4 @@ $_LANG['log_action']['exchange_goods'] = '积分可兑换的商品';
 $_LANG['log_action']['suppliers'] = '供货商管理';
 
 $_LANG['log_action']['reg_fields'] = '会员注册项';
-
 return $_LANG;

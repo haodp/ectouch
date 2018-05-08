@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  SQL查询语言项
+ * SQL查询语言项
  */
 
 $_LANG['title'] = '运行 SQL 查询';

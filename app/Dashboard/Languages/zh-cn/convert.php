@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  转换程序语言文件
+ * 转换程序语言文件
  */
 
 $_LANG['confirm_convert'] = '注意：执行转换程序将会使现有数据丢失，请您三思而行！！！';
@@ -44,5 +44,4 @@ $_LANG['js_languages']['host_not_null'] = '主机名称或地址不能为空';
 $_LANG['js_languages']['db_not_null'] = '数据库名称不能为空';
 $_LANG['js_languages']['user_not_null'] = '登录帐号不能为空';
 $_LANG['js_languages']['path_not_null'] = '原商城根目录不能为空';
-
 return $_LANG;

@@ -1,8 +1,9 @@
 <?php
 
 /**
- *  评论管理的语言文件
+ * 评论管理的语言文件
  */
+
 $_LANG['comment_id'] = '编号';
 $_LANG['user_name'] = '用户名';
 $_LANG['from'] = '于';
@@ -24,7 +25,7 @@ $_LANG['no_reply'] = '未回复';
 $_LANG['yes_reply'] = '已回复';
 $_LANG['admin_user_name'] = '管理员';
 
-$_LANG['type'] = ['商品','文章'];
+$_LANG['type'] = array('商品','文章');
 
 $_LANG['ip_address'] = 'IP地址';
 $_LANG['comment_rank'] = '评论等级';
@@ -55,7 +56,7 @@ $_LANG['batch_drop_success'] = '执行成功!';
 
 $_LANG['back_list'] = '返回评论列表';
 
-// JS提示信息
+/* JS提示信息 */
 $_LANG['js_languages']['no_content'] = '回复的评论内容不能为空!';
 $_LANG['have_reply_content'] = '提示: 此条评论已有回复, 如果继续回复将更新原来回复的内容!';
 

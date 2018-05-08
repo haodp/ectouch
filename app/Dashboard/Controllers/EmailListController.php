@@ -53,11 +53,8 @@ class EmailListController extends InitController
             $sort_flag = sort_flag($emaildb['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('email_list.htm'),
-                '',
-                ['filter' => $emaildb['filter'], 'page_count' => $emaildb['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('email_list.htm'), '',
+                ['filter' => $emaildb['filter'], 'page_count' => $emaildb['page_count']]);
         }
 
         /**

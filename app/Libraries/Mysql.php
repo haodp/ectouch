@@ -2,7 +2,7 @@
 
 namespace App\Libraries;
 
-use dao\Db as DB;
+use Illuminate\Support\Facades\DB;
 
 /**
  * MYSQL 公用类库
@@ -40,9 +40,22 @@ class Mysql
     {
         $m = strtolower(substr(ltrim(trim($sql), '('), 0, 6));
         if ($m == 'select' || substr($m, 0, 4) == 'desc' || substr($m, 0, 4) == 'show') {
-            $res = DB::query($sql);
+            $result = DB::select($sql);
+            if (empty($result)) {
+                $res = $result;
+            } else {
+                foreach ($result as $vo) {
+                    $res[] = get_object_vars($vo);
+                }
+            }
+        } elseif ($m == 'update') {
+            $res = DB::update($sql);
+        } elseif ($m == 'insert') {
+            $res = DB::insert($sql);
+        } elseif ($m == 'delete') {
+            $res = DB::delete($sql);
         } else {
-            $res = DB::execute($sql);
+            $res = DB::statement($sql);
         }
 
         return $res;

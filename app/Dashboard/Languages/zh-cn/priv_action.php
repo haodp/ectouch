@@ -1,9 +1,10 @@
 <?php
 
 /**
- *  权限名称语言文件
+ * 权限名称语言文件
  */
-// 权限管理的一级分组
+
+ /* 权限管理的一级分组 */
 $_LANG['goods'] = '商品管理';
 $_LANG['cms_manage'] = '文章管理';
 $_LANG['users_manage'] = '会员管理';
@@ -15,7 +16,7 @@ $_LANG['email'] = '邮件管理';
 $_LANG['templates_manage'] = '模板管理';
 $_LANG['db_manage'] = '数据库管理';
 $_LANG['sms_manage'] = '短信管理';
-
+$_LANG['menu_tools'] = '工具箱';
 //商品管理部分的权限
 $_LANG['goods_manage'] = '商品添加/编辑';
 $_LANG['remove_back'] = '商品删除/恢复';
@@ -99,7 +100,16 @@ $_LANG['sale_order_stats'] = '订单销售统计';
 $_LANG['client_flow_stats'] = '客户流量统计';
 $_LANG['delivery_view'] = '查看发货单';
 $_LANG['back_view'] = '查看退货单';
-
+/* 售后服务权限 by ECTOUCH Leah*/
+$_LANG['service_manage'] = '退换货管理';
+$_LANG['service_type'] = '售后服务类型';
+$_LANG['back_cause_list'] = '退换货原因';
+$_LANG['add_return_cause'] = '添加退换货原因';
+$_LANG['aftermarket_list'] = '退换货列表';
+$_LANG['aftermarket_rf_edit'] = '编辑退换货订单状态';
+$_LANG['aftermarket_rc_edit'] = '编辑退换货订单审核状态';
+$_LANG['aftermarket_ff_edit'] = '编辑退换货订单退款状态';
+$_LANG['aftermarket_edit'] = '添加编辑退换货订单';//by Leah E
 //促销管理
 $_LANG['snatch_manage'] = '夺宝奇兵';
 $_LANG['bonus_manage'] = '红包管理';
@@ -141,5 +151,53 @@ $_LANG['sms_send']        = '发送短信';
 $_LANG['sms_charge']      = '短信充值';
 $_LANG['send_history']    = '发送记录';
 $_LANG['charge_history']  = '充值记录 ';
+
+/*DRP_START*/
+$_LANG['ext_fenxiao'] = '微分销';
+$_LANG['drp_config'] = '微分销设置';
+$_LANG['drp_audit'] = '分销商审核';
+$_LANG['drp_users'] = '分销商管理';
+$_LANG['drp_yongjin'] = '销售佣金设置';
+$_LANG['drp_order_list'] = '销售订单管理';
+$_LANG['drp_affiliate'] = '分成佣金设置';
+$_LANG['drp_affiliate_ck'] = '分成订单管理';
+$_LANG['drp_ranking'] = '分销商排行榜';
+$_LANG['drp_log'] = '佣金提现管理';
+/*DRP_END*/
+
+//拼团
+$_LANG['team']         = '拼团';
+$_LANG['team_index']        = '频道列表';
+$_LANG['team_add']      = '添加频道';
+$_LANG['team_order']    = '拼团订单';
+
+//众筹
+$_LANG['crowd_index']  = '众筹 ';
+$_LANG['crowd']         = '微筹项目列表';
+$_LANG['crowd_category_list']        = '微筹分类';
+$_LANG['crowd_order_list']      = '微筹订单列表';
+$_LANG['crowd_message_list']    = '微筹订单评论';
+$_LANG['crowd_article_list']  = '问答中心 ';
+
+$_LANG['ext_wechat'] = '微信通';
+$_LANG['wechat_config'] = '公众号设置';
+$_LANG['wechat_masssend'] = '群发消息';
+$_LANG['wechat_autoreply'] = '自动回复';
+$_LANG['wechat_selfmenu'] = '自定义菜单';
+$_LANG['wechat_tmplmsg'] = '模板消息';
+$_LANG['wechat_contactmanage'] = '用户管理';
+$_LANG['wechat_appmsg'] = '素材管理';
+$_LANG['wechat_qrcode'] = '扫码引荐';
+$_LANG['wechat_extends'] = '扩展功能';
+// $_LANG['wechat_remind'] = '提醒设置';
+$_LANG['wechat_customer'] = '多客服设置';
+
+//工具箱
+$_LANG['navigator']       = '导航设置';
+$_LANG['authorization']   = '登录插件';
+$_LANG['mail_settings']   = '邮件服务器设置';
+$_LANG['view_sendlist']   = '邮件队列管理';
+$_LANG['captcha_manage']  = '验证码管理';
+$_LANG['upgrade']         = '在线更新';
 
 return $_LANG;

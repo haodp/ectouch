@@ -1,8 +1,10 @@
 <?php
+
 /**
- *  生成显示商品的js代码语言文件
+ * 生成显示商品的js代码语言文件
  */
-$_LANG['label_category'] = '选择商品分类：';
+
+ $_LANG['label_category'] = '选择商品分类：';
 $_LANG['label_brand'] = '选择商品品牌：';
 $_LANG['label_intro_type'] = '选择推荐类型：';
 $_LANG['label_need_image'] = '是否显示商品图片：';
@@ -32,5 +34,4 @@ $_LANG['js_languages']['goods_num_must_over_0'] = '商品数量应该大于0';
 
 $_LANG['js_languages']['rows_num_must_be_int'] = '排列显示条目数应该是整数';
 $_LANG['js_languages']['rows_num_must_over_0'] = '排列显示条目数应该大于0';
-
 return $_LANG;

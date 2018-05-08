@@ -50,11 +50,8 @@ class AgencyController extends InitController
             $sort_flag = sort_flag($agency_list['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('agency_list.htm'),
-                '',
-                ['filter' => $agency_list['filter'], 'page_count' => $agency_list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('agency_list.htm'), '',
+                ['filter' => $agency_list['filter'], 'page_count' => $agency_list['page_count']]);
         }
 
         /**
@@ -105,7 +102,7 @@ class AgencyController extends InitController
 
             $url = 'agency.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**

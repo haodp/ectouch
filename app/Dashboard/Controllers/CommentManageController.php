@@ -48,11 +48,8 @@ class CommentManageController extends InitController
             $sort_flag = sort_flag($list['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('comment_list.htm'),
-                '',
-                ['filter' => $list['filter'], 'page_count' => $list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('comment_list.htm'), '',
+                ['filter' => $list['filter'], 'page_count' => $list['page_count']]);
         }
 
         /**
@@ -184,7 +181,7 @@ class CommentManageController extends InitController
             // 记录管理员操作
             admin_log(addslashes($GLOBALS['_LANG']['reply']), 'edit', 'users_comment');
 
-            $this->redirect("comment_manage.php?act=reply&id=$_REQUEST[comment_id]&send_ok=$send_ok");
+            return $this->redirect("comment_manage.php?act=reply&id=$_REQUEST[comment_id]&send_ok=$send_ok");
         }
 
         /**
@@ -201,7 +198,7 @@ class CommentManageController extends InitController
                 // 清除缓存
                 clear_cache_files();
 
-                $this->redirect("comment_manage.php?act=reply&id=$_REQUEST[id]");
+                return $this->redirect("comment_manage.php?act=reply&id=$_REQUEST[id]");
             } else {
                 // 禁止评论显示
                 $sql = "UPDATE " . $this->ecs->table('comment') . " SET status = 0 WHERE comment_id = '$_REQUEST[id]'";
@@ -210,7 +207,7 @@ class CommentManageController extends InitController
                 // 清除缓存
                 clear_cache_files();
 
-                $this->redirect("comment_manage.php?act=reply&id=$_REQUEST[id]");
+                return $this->redirect("comment_manage.php?act=reply&id=$_REQUEST[id]");
             }
         }
 
@@ -232,7 +229,7 @@ class CommentManageController extends InitController
 
             $url = 'comment_manage.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**

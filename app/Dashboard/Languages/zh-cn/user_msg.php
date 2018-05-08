@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  用户留言语言项
+ * 用户留言语言项
  */
 
 $_LANG['msg_title'] = '留言标题';
@@ -23,7 +23,7 @@ $_LANG['delete'] = '删除留言';
 
 $_LANG['from'] = '于';
 
-$_LANG['type'] = ['留言','投诉','询问','售后','求购','商家留言'];
+$_LANG['type'] = array('留言','投诉','询问','售后','求购','商家留言');
 
 $_LANG['reply'] = '回复';
 $_LANG['replyed'] = '已回复';
@@ -43,7 +43,7 @@ $_LANG['email'] = 'email';
 $_LANG['msg_for_order'] = '对订单 %s 的留言';
 $_LANG['order_detail'] = '订单详情';
 $_LANG['confirm_delete'] = '你是否确认要删除该留言';
-// js
+/* js */
 $_LANG['js_languages']['no_content'] = '内容不能为空';
 $_LANG['js_languages']['no_reply_content'] = '回复内容不能为空';
 $_LANG['js_languages']['no_title'] = '主题不能为空';

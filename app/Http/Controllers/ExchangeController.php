@@ -31,10 +31,10 @@ class ExchangeController extends InitController
 
             $sort = (isset($_REQUEST['sort']) && in_array(trim(strtolower($_REQUEST['sort'])), ['goods_id', 'exchange_integral', 'last_update'])) ? trim($_REQUEST['sort']) : $default_sort_order_type;
             $order = (isset($_REQUEST['order']) && in_array(trim(strtoupper($_REQUEST['order'])), ['ASC', 'DESC'])) ? trim($_REQUEST['order']) : $default_sort_order_method;
-            $display = cookie('display');
+            $display = request()->cookie('display');
             $display = (isset($_REQUEST['display']) && in_array(trim(strtolower($_REQUEST['display'])), ['list', 'grid', 'text'])) ? trim($_REQUEST['display']) : ($display ? $display : $default_display_type);
             $display = in_array($display, ['list', 'grid', 'text']) ? $display : 'text';
-            cookie('display', $display, 1440 * 7);
+            \Cookie::queue('display', $display, 1440 * 7);
 
             // 页面的缓存ID
             $cache_id = sprintf('%X', crc32($cat_id . '-' . $display . '-' . $sort . '-' . $order . '-' . $page . '-' . $size . '-' . session('user_rank') . '-' .
@@ -122,7 +122,7 @@ class ExchangeController extends InitController
 
                 if ($goods === false) {
                     // 如果没有找到任何记录则跳回到首页
-                    return $this->redirect('/');
+                    return redirect('/');
                 } else {
                     if ($goods['brand_id'] > 0) {
                         $goods['goods_brand_url'] = build_uri('brand', ['bid' => $goods['brand_id']], $goods['goods_brand']);
@@ -190,13 +190,13 @@ class ExchangeController extends InitController
             // 查询：取得参数：商品id
             $goods_id = isset($_POST['goods_id']) ? intval($_POST['goods_id']) : 0;
             if ($goods_id <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 查询：取得兑换商品信息
             $goods = $this->get_exchange_goods_info($goods_id);
             if (empty($goods)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
             // 查询：检查兑换商品是否有库存
             if ($goods['goods_number'] == 0 && $GLOBALS['_CFG']['use_storage'] == 1) {
@@ -277,12 +277,12 @@ class ExchangeController extends InitController
             $this->db->autoExecute($this->ecs->table('cart'), $cart, 'INSERT');
 
             // 记录购物流程类型：团购
-            session('flow_type', CART_EXCHANGE_GOODS);
-            session('extension_code', 'exchange_goods');
-            session('extension_id', $goods_id);
+            session(['flow_type' => CART_EXCHANGE_GOODS]);
+            session(['extension_code' => 'exchange_goods']);
+            session(['extension_id' => $goods_id]);
 
             // 进入收货人页面
-            return $this->redirect("flow.php?step=consignee");
+            return redirect("flow.php?step=consignee");
         }
     }
 

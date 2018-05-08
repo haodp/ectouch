@@ -44,7 +44,7 @@ class VisitSoldController extends InitController
                 header("Content-Disposition: attachment; filename=$filename.xls");
                 $data = "{$GLOBALS['_LANG'][visit_buy]}\t\n";
                 $data .= "{$GLOBALS['_LANG'][order_by]}\t{$GLOBALS['_LANG'][goods_name]}\t{$GLOBALS['_LANG'][fav_exponential]}\t{$GLOBALS['_LANG'][buy_times]}\t{$GLOBALS['_LANG'][visit_buy]}\n";
-                foreach ($click_sold_info as $k => $row) {
+                foreach ($click_sold_info AS $k => $row) {
                     $order_by = $k + 1;
                     $data .= "$order_by\t$row[goods_name]\t$row[click_count]\t$row[sold_times]\t$row[scale]\n";
                 }
@@ -82,6 +82,7 @@ class VisitSoldController extends InitController
      */
     private function click_sold_info($cat_id, $brand_id, $show_num)
     {
+
         $where = " WHERE o.order_id = og.order_id AND g.goods_id = og.goods_id " . order_query_sql('finished', 'o.');
         $limit = " LIMIT " . $show_num;
 

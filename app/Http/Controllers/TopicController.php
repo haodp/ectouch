@@ -20,7 +20,7 @@ class TopicController extends InitController
 
         if (empty($topic)) {
             // 如果没有找到任何记录则跳回到首页
-            return $this->redirect('/');
+            return redirect('/');
         }
 
         $templates = empty($topic['template']) ? 'topic.dwt' : $topic['template'];

@@ -1,6 +1,7 @@
 <?php
+
 /**
- *  管理中心商店设置语言文件
+ * 管理中心商店设置语言文件
  */
 
 $_LANG['cfg_name']['basic'] = '基本设置';
@@ -61,6 +62,7 @@ $_LANG['cfg_name']['can_invoice'] = '能否开发票';
 $_LANG['cfg_name']['user_notice'] = '用户中心公告';
 $_LANG['cfg_name']['shop_notice'] = '商店公告';
 $_LANG['cfg_name']['shop_reg_closed'] = '是否关闭注册';
+$_LANG['cfg_name']['shop_url'] = 'PC端网址';
 $_LANG['cfg_name']['send_mail_on'] = '是否开启自动发送邮件';
 $_LANG['cfg_name']['auto_generate_gallery'] = '上传商品是否自动生成相册图';
 $_LANG['cfg_name']['retain_original_img'] = '上传商品时是否保留原图';
@@ -68,6 +70,11 @@ $_LANG['cfg_name']['member_email_validate'] = '是否开启会员邮件验证';
 $_LANG['cfg_name']['send_verify_email'] = '用户注册时自动发送验证邮件';
 $_LANG['cfg_name']['message_board'] = '是否启用留言板功能';
 $_LANG['cfg_name']['message_check'] = '用户留言是否需要审核';
+$_LANG['cfg_name']['sign_points'] = '签到赠送积分';
+$_LANG['cfg_name']['virtual_order'] = '是否显示首页订单提示轮播';
+$_LANG['cfg_range']['virtual_order']['0'] = '不显示';
+$_LANG['cfg_range']['virtual_order']['1'] = '显示';
+
 //$_LANG['cfg_name']['use_package'] = '是否使用包装';
 //$_LANG['cfg_name']['use_card'] = '是否使用贺卡';
 $_LANG['cfg_name']['use_integral'] = '是否使用积分';
@@ -128,10 +135,15 @@ $_LANG['cfg_name']['show_attr_in_cart'] = '购物车里是否显示商品属性'
 $_LANG['test_mail_title'] = '测试邮件';
 $_LANG['cfg_name']['email_content']  = '您好！这是一封检测邮件服务器设置的测试邮件。收到此邮件，意味着您的邮件服务器设置正确！您可以进行其它邮件发送的操作了！';
 $_LANG['cfg_name']['sms'] = '短信设置';
+$_LANG['cfg_name']['sms_ecmoban_user'] = '短信接口用户名';
+$_LANG['cfg_name']['sms_ecmoban_password'] = '短信接口密码';
 $_LANG['cfg_name']['sms_shop_mobile'] = '商家的手机号码';
 $_LANG['cfg_name']['sms_order_placed'] = '客户下订单时是否给商家发短信';
 $_LANG['cfg_name']['sms_order_payed'] = '客户付款时是否给商家发短信';
 $_LANG['cfg_name']['sms_order_shipped'] = '商家发货时是否给客户发短信';
+$_LANG['cfg_name']['sms_signin'] = '客户注册时是否发送短信验证码';
+$_LANG['cfg_range']['sms_signin']['1'] = '发短信';
+$_LANG['cfg_range']['sms_signin']['0'] = '不发短信';
 $_LANG['cfg_name']['attr_related_number'] = '属性关联的商品数量';
 $_LANG['cfg_name']['top10_time'] = '排行统计的时间';
 $_LANG['cfg_name']['goods_gallery_number'] = '商品详情页相册图片数量';
@@ -381,13 +393,13 @@ $_LANG['cfg_range']['visit_stats']['off'] = '关闭';
 
 $_LANG['rewrite_confirm_apache'] = "URL Rewrite 功能要求您的 Web Server 必须是 Apache，\\n并且起用了 rewrite 模块。\\n同时请您确认是否已经将htaccess.txt文件重命名为.htaccess。\\n如果服务器上还有其他的重写规则请去掉注释,请将RewriteBase行的注释去掉,并将路径设置为服务器请求的绝对路径";
 $_LANG['rewrite_confirm_iis'] = "URL Rewrite 功能要求您的 Web Server 必须安装IIS，\\n并且起用了 ISAPI Rewrite 模块。\\n如果您使用的是ISAPI Rewrite商业版，请您确认是否已经将httpd.txt文件重命名为httpd.ini。如果您使用的是ISAPI Rewrite免费版，请您确认是否已经将httpd.txt文件内的内容复制到ISAPI Rewrite安装目录中httpd.ini里。";
-$_LANG['gzip_confirm'] = "GZip 功能需要您的服务器支持 zlib 扩展库。\\n如果您发现开启Gzip后页面出现乱码，可能是您的服务器已经开启了Gzip，您不需要在 ECSHOP 中再次开启。";
+$_LANG['gzip_confirm'] = "GZip 功能需要您的服务器支持 zlib 扩展库。\\n如果您发现开启Gzip后页面出现乱码，可能是您的服务器已经开启了Gzip，您不需要在商城系统中再次开启。";
 $_LANG['retain_original_confirm'] = "如果您不保留商品原图，在“图片批量处理”的时候，\\n将不会重新生成不包含原图的商品图片。请慎重使用该功能！";
 $_LANG['msg_invalid_file'] = '您上传了一个非法的文件类型。该文件名为：%s';
 $_LANG['msg_upload_failed'] = '上传文件 %s 失败，请检查 %s 目录是否可写。';
 $_LANG['smtp_ssl_confirm'] = '此功能要求您的php必须支持OpenSSL模块, 如果您要使用此功能，请联系您的空间商确认支持此模块';
 
-// 邮件设置语言项
+/* 邮件设置语言项 */
 $_LANG['cfg_name']['mail_service'] = '邮件服务';
 $_LANG['cfg_desc']['mail_service'] = '如果您选择了采用服务器内置的 Mail 服务，您不需要填写下面的内容。';
 $_LANG['cfg_range']['mail_service'][0] = '采用服务器内置的 Mail 服务';
@@ -416,11 +428,11 @@ $_LANG['js_languages']['reply_email_empty'] = '您没有填写邮件回复地址
 $_LANG['js_languages']['test_email_empty']  = '您没有填写发送测试邮件的地址!';
 $_LANG['js_languages']['email_address_same']  = '邮件回复地址与发送测试邮件的地址不能相同!';
 
-$_LANG['cfg_name']['wap']   = 'WAP设置';
-$_LANG['cfg_name']['wap_config']    = '是否使用WAP功能';
+$_LANG['cfg_name']['wap']   = '微商城设置';
+$_LANG['cfg_name']['wap_config']    = '是否使用微商城功能';
 $_LANG['cfg_range']['wap_config'][0] = '关闭';
 $_LANG['cfg_range']['wap_config'][1] = '开启';
-$_LANG['cfg_name']['wap_logo']      = 'WAP LOGO上传';
+$_LANG['cfg_name']['wap_logo']      = '微商城LOGO上传';
 $_LANG['cfg_desc']['wap_logo']      = '为了更好地兼容各种手机类型，LOGO 最好为png图片';
 
 $_LANG['cfg_desc']['wap_config'] = '此功能只支持简体中文且只在中国大陆区有效';
@@ -435,4 +447,6 @@ $_LANG['back_shop_config'] = '返回商店设置';
 $_LANG['back_mail_settings'] = '返回邮件服务器设置';
 $_LANG['mail_settings'] = '邮件服务器设置';
 
+$_LANG['sms_url'] = '<a href="#" target="_blank">点此注册手机短信服务</a>';
+$_LANG['cfg_name']['sender_name'] = '寄件人姓名';
 return $_LANG;

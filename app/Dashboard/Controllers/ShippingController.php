@@ -100,6 +100,7 @@ class ShippingController extends InitController
          * 卸载配送方式
          */
         if ($_REQUEST['act'] == 'uninstall') {
+
             admin_priv('ship_manage');
 
             // 获得该配送方式的ID
@@ -172,7 +173,7 @@ class ShippingController extends InitController
             $this->db->query("UPDATE " . $this->ecs->table('shipping') . " SET print_bg = '" . addslashes($modules[0]['print_bg']) . "',  config_lable = '" . addslashes($modules[0]['config_lable']) . "' WHERE shipping_code = '$code' LIMIT 1");
 
             $url = "shipping.php?act=edit_print_template&shipping=$shipping_id";
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**
@@ -302,6 +303,7 @@ class ShippingController extends InitController
 
             $lnk[] = ['text' => $GLOBALS['_LANG']['go_back'], 'href' => 'shipping.php?act=list'];
             return sys_msg($GLOBALS['_LANG']['edit_template_success'], 0, $lnk);
+
         }
 
         /**
@@ -411,6 +413,7 @@ class ShippingController extends InitController
     private function get_site_root_url()
     {
         return 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/' . ADMIN_PATH . '/shipping.php', '', PHP_SELF);
+
     }
 
     /**

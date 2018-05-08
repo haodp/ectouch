@@ -117,7 +117,7 @@ function shipping_fee($shipping_code, $shipping_config, $goods_weight, $goods_am
         $shipping_config = unserialize($shipping_config);
     }
 
-    $shippingClass = 'app\\plugins\\shipping\\' . camel_case($shipping_code, true);
+    $shippingClass = 'App\\Plugins\\Shipping\\' . camel_case($shipping_code, true);
 
     if (class_exists($shippingClass)) {
         $obj = new $shippingClass($shipping_config);
@@ -143,7 +143,7 @@ function shipping_insure_fee($shipping_code, $goods_amount, $insure)
         // 如果保价费用不是百分比则直接返回该数值
         return floatval($insure);
     } else {
-        $shippingClass = 'app\\plugins\\shipping\\' . camel_case($shipping_code, true);
+        $shippingClass = 'App\\Plugins\\Shipping\\' . camel_case($shipping_code, true);
 
         if (class_exists($shippingClass)) {
             $shipping = new $shippingClass();
@@ -683,9 +683,9 @@ function order_fee($order, $goods, $consignee)
     $total['integral_formated'] = price_format($total['integral_money'], false);
 
     // 保存订单信息
-    session('flow_order', $order);
+    session(['flow_order' => $order]);
 
-    $se_flow_type = session('?flow_type') ? session('flow_type') : '';
+    $se_flow_type = session()->has('flow_type') ? session('flow_type') : '';
 
     // 支付费用
     if (!empty($order['pay_id']) && ($total['real_goods_count'] > 0 || $se_flow_type != CART_EXCHANGE_GOODS)) {
@@ -732,12 +732,8 @@ function order_fee($order, $goods, $consignee)
  */
 function update_order($order_id, $order)
 {
-    return $GLOBALS['db']->autoExecute(
-        $GLOBALS['ecs']->table('order_info'),
-        $order,
-        'UPDATE',
-        "order_id = '$order_id'"
-    );
+    return $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('order_info'),
+        $order, 'UPDATE', "order_id = '$order_id'");
 }
 
 /**
@@ -1212,12 +1208,8 @@ function user_info($user_id)
  */
 function update_user($user_id, $user)
 {
-    return $GLOBALS['db']->autoExecute(
-        $GLOBALS['ecs']->table('users'),
-        $user,
-        'UPDATE',
-        "user_id = '$user_id'"
-    );
+    return $GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('users'),
+        $user, 'UPDATE', "user_id = '$user_id'");
 }
 
 /**
@@ -1508,7 +1500,7 @@ function get_cart_goods()
  */
 function get_consignee($user_id)
 {
-    if (session('?flow_consignee')) {
+    if (session()->has('flow_consignee')) {
         // 如果存在session，则直接返回session中的收货人信息
 
         return session('flow_consignee');
@@ -1683,7 +1675,7 @@ function change_user_bonus($bonus_id, $order_id, $is_used = true)
  */
 function flow_order_info()
 {
-    $order = session('?flow_order') ? session('flow_order') : [];
+    $order = session()->has('flow_order') ? session('flow_order') : [];
 
     // 初始化配送和支付方式
     if (!isset($order['shipping_id']) || !isset($order['pay_id'])) {
@@ -1725,7 +1717,7 @@ function flow_order_info()
     }
 
     // 扩展信息
-    if (session('?flow_type') && intval(session('flow_type')) != CART_GENERAL_GOODS) {
+    if (session()->has('flow_type') && intval(session('flow_type')) != CART_GENERAL_GOODS) {
         $order['extension_code'] = session('extension_code');
         $order['extension_id'] = session('extension_id');
     }
@@ -1811,13 +1803,8 @@ function merge_order($from_order_sn, $to_order_sn)
         $region_id_list = [$order['country'], $order['province'], $order['city'], $order['district']];
         $shipping_area = shipping_area_info($order['shipping_id'], $region_id_list);
 
-        $order['shipping_fee'] = shipping_fee(
-            $shipping_area['shipping_code'],
-            unserialize($shipping_area['configure']),
-            $weight_price['weight'],
-            $weight_price['amount'],
-            $weight_price['number']
-        );
+        $order['shipping_fee'] = shipping_fee($shipping_area['shipping_code'],
+            unserialize($shipping_area['configure']), $weight_price['weight'], $weight_price['amount'], $weight_price['number']);
 
         // 如果保价了，重新计算保价费
         if ($order['insure_fee'] > 0) {
@@ -1951,7 +1938,7 @@ function &get_shipping_object($shipping_id)
         return $object;
     }
 
-    $shippingClass = 'app\\plugins\\shipping\\' . camel_case($shipping['shipping_code'], true);
+    $shippingClass = 'App\\Plugins\\Shipping\\' . camel_case($shipping['shipping_code'], true);
     $object = new $shippingClass();
     
     return $object;

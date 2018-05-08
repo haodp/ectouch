@@ -7,5 +7,4 @@ $_LANG['start_date'] = '开始日期';
 $_LANG['end_date'] = '结束日期';
 $_LANG['query'] = '查询';
 
-
 return $_LANG;

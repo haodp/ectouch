@@ -484,7 +484,7 @@ class CategoryController extends InitController
 
             $url = 'category.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
     }
 

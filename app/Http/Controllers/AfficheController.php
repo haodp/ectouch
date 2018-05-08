@@ -13,7 +13,7 @@ class AfficheController extends InitController
     {
         // 没有指定广告的id及跳转地址
         if (empty($_GET['ad_id'])) {
-            return $this->redirect('/');
+            return redirect('/');
         } else {
             $ad_id = intval($_GET['ad_id']);
         }
@@ -86,8 +86,8 @@ class AfficheController extends InitController
             $goods_id = !empty($_GET['goods_id']) ? intval($_GET['goods_id']) : 0;
 
             // 存入SESSION中,购物后一起存到订单数据表里
-            session('from_ad', $ad_id);
-            session('referer', stripslashes($site_name));
+            session(['from_ad' => $ad_id]);
+            session(['referer' => stripslashes($site_name)]);
 
             // 如果是商品的站外JS
             if ($ad_id == '-1') {
@@ -106,7 +106,7 @@ class AfficheController extends InitController
 
                 $uri = build_uri('goods', ['gid' => $goods_id], $row['goods_name']);
 
-                return $this->redirect($uri);
+                return redirect($uri);
             } else {
                 // 更新站内广告的点击次数
                 $this->db->query('UPDATE ' . $this->ecs->table('ad') . " SET click_count = click_count + 1 WHERE ad_id = '$ad_id'");
@@ -128,7 +128,7 @@ class AfficheController extends InitController
                     $uri = $this->ecs->url();
                 }
 
-                return $this->redirect($uri);
+                return redirect($uri);
             }
         }
     }

@@ -26,8 +26,8 @@ class PrivilegeController extends InitController
          */
         if ($_REQUEST['act'] == 'logout') {
             // 清除cookie
-            cookie('cp_admin_id', null);
-            cookie('cp_admin_pass', null);
+            \Cookie::queue('cp_admin_id', null);
+            \Cookie::queue('cp_admin_pass', null);
 
             session(null);
 
@@ -90,7 +90,7 @@ class PrivilegeController extends InitController
 
                 // 登录成功
                 set_admin_session($row['user_id'], $row['user_name'], $row['action_list'], $row['last_login']);
-                session('suppliers_id', $row['suppliers_id']);
+                session(['suppliers_id' => $row['suppliers_id']]);
                 if (empty($row['ec_salt'])) {
                     $ec_salt = rand(1, 9999);
                     $new_possword = md5(md5($_POST['password']) . $ec_salt);
@@ -100,7 +100,7 @@ class PrivilegeController extends InitController
                 }
 
                 if ($row['action_list'] == 'all' && empty($row['last_login'])) {
-                    session('shop_guide', true);
+                    session(['shop_guide' => true]);
                 }
 
                 // 更新最后登录时间和IP
@@ -110,14 +110,14 @@ class PrivilegeController extends InitController
 
                 if (isset($_POST['remember'])) {
                     $time = 60 * 24 * 365;
-                    cookie('cp_admin_id', $row['user_id'], $time);
-                    cookie('cp_admin_pass', md5($row['password'] . $GLOBALS['_CFG']['hash_code']), $time);
+                    \Cookie::queue('cp_admin_id', $row['user_id'], $time);
+                    \Cookie::queue('cp_admin_pass', md5($row['password'] . $GLOBALS['_CFG']['hash_code']), $time);
                 }
 
                 // 清除购物车中过期的数据
                 $this->clear_cart();
 
-                $this->redirect("index.php");
+                return $this->redirect("index.php");
             } else {
                 return sys_msg($GLOBALS['_LANG']['login_faild'], 1);
             }
@@ -402,7 +402,7 @@ class PrivilegeController extends InitController
                 return sys_msg($GLOBALS['_LANG']['edit_admininfo_cannot'], 0, $link);
             }
 
-            load_helper(['menu', 'priv'], 'admin');
+            load_conf(['menu', 'priv'], 'admin');
 
             $modules = $GLOBALS['modules'];
             $purview = $GLOBALS['purview'];
@@ -547,7 +547,7 @@ class PrivilegeController extends InitController
             $this->db->query($sql);
             // 动态更新管理员的SESSION
             if (session("admin_id") == $_POST['id']) {
-                session("action_list", $act_list);
+                session(["action_list" => $act_list]);
             }
 
             // 记录管理员操作
@@ -593,7 +593,7 @@ class PrivilegeController extends InitController
 
             $url = 'privilege.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
             exit;
         }
     }

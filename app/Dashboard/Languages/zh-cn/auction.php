@@ -1,10 +1,10 @@
 <?php
 
 /**
- *  管理中心拍卖活动语言文件
+ * 管理中心拍卖活动语言文件
  */
 
-// menu
+/* menu */
 $_LANG['auction_list'] = '拍卖活动列表';
 $_LANG['add_auction'] = '添加拍卖活动';
 $_LANG['edit_auction'] = '编辑拍卖活动';
@@ -15,7 +15,7 @@ $_LANG['add_auction_ok'] = '添加拍卖活动成功';
 $_LANG['edit_auction_ok'] = '编辑拍卖活动成功';
 $_LANG['settle_deposit_ok'] = '处理冻结的保证金成功';
 
-// list
+/* list */
 $_LANG['act_is_going'] = '仅显示进行中的活动';
 $_LANG['act_name'] = '拍卖活动名称';
 $_LANG['goods_name'] = '商品名称';
@@ -31,7 +31,7 @@ $_LANG['js_languages']['batch_drop_confirm'] = '您确实要删除选中的拍�
 $_LANG['batch_drop_ok'] = '操作完成（已经有人出价的拍卖活动不能删除）';
 $_LANG['no_record_selected'] = '没有选择记录';
 
-// info
+/* info */
 $_LANG['label_act_name'] = '拍卖活动名称：';
 $_LANG['notice_act_name'] = '如果留空，取拍卖商品的名称（该名称仅用于后台，前台不会显示）';
 $_LANG['label_act_desc'] = '拍卖活动描述：';
@@ -73,7 +73,7 @@ $_LANG['js_languages']['deposit_not_number'] = '保证金格式不正确（数�
 $_LANG['js_languages']['start_lt_end'] = '拍卖开始时间不能大于结束时间';
 $_LANG['js_languages']['search_is_null'] = '没有搜索到任何商品，请重新搜索';
 
-// log
+/* log */
 $_LANG['bid_user'] = '买家';
 $_LANG['bid_price'] = '出价';
 $_LANG['bid_time'] = '时间';

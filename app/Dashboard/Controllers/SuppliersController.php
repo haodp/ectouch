@@ -55,11 +55,8 @@ class SuppliersController extends InitController
             $sort_flag = sort_flag($result['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('suppliers_list.htm'),
-                '',
-                ['filter' => $result['filter'], 'page_count' => $result['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('suppliers_list.htm'), '',
+                ['filter' => $result['filter'], 'page_count' => $result['page_count']]);
         }
 
         /**
@@ -118,7 +115,7 @@ class SuppliersController extends InitController
                 $order_exists = $this->db->getOne($sql, true);
                 if ($order_exists > 0) {
                     $url = 'suppliers.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
-                    $this->redirect($url);
+                    return $this->redirect($url);
                 }
 
                 // 判断供货商是否存在商品
@@ -128,7 +125,7 @@ class SuppliersController extends InitController
                 $goods_exists = $this->db->getOne($sql, true);
                 if ($goods_exists > 0) {
                     $url = 'suppliers.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
-                    $this->redirect($url);
+                    return $this->redirect($url);
                 }
 
                 $sql = "DELETE FROM " . $this->ecs->table('suppliers') . "
@@ -150,7 +147,7 @@ class SuppliersController extends InitController
             }
 
             $url = 'suppliers.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**
@@ -426,7 +423,7 @@ class SuppliersController extends InitController
             // 分页大小
             $filter['page'] = empty($_REQUEST['page']) || (intval($_REQUEST['page']) <= 0) ? 1 : intval($_REQUEST['page']);
 
-            $cp_page_size = cookie('cp_page_size');
+            $cp_page_size = request()->cookie('cp_page_size');
             if (isset($_REQUEST['page_size']) && intval($_REQUEST['page_size']) > 0) {
                 $filter['page_size'] = intval($_REQUEST['page_size']);
             } elseif (!empty($cp_page_size) && intval($cp_page_size) > 0) {

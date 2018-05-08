@@ -1,18 +1,4 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            One of three columns
-        </div>
-        <div class="col-sm">
-            One of three columns
-        </div>
-        <div class="col-sm">
-            One of three columns
-        </div>
-    </div>
-</div>
-
 
 <div id="ectouch-slide" style="position: relative;">
     <div class="aui-slide-wrap" >

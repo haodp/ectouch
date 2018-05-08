@@ -295,7 +295,7 @@ class ArticlecatController extends InitController
 
             $url = 'articlecat.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**

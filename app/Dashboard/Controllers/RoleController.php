@@ -28,8 +28,8 @@ class RoleController extends InitController
          */
         if ($_REQUEST['act'] == 'logout') {
             // 清除cookie
-            cookie('cp_admin_id', null);
-            cookie('cp_admin_pass', null);
+            \Cookie::queue('cp_admin_id', null);
+            \Cookie::queue('cp_admin_pass', null);
 
             session(null);
 
@@ -234,7 +234,7 @@ class RoleController extends InitController
                 $url = 'role.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
             }
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
     }
 

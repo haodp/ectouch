@@ -55,8 +55,7 @@ class FlowStatsController extends InitController
             } else {
                 $tmp_time = local_strtotime(local_date('Y-m-d'));
                 $start_date_arr[] = local_strtotime(local_date('Y-m') . '-1');
-                $end_date_arr[] = local_strtotime(local_date('Y-m') . '-31');
-                ;
+                $end_date_arr[] = local_strtotime(local_date('Y-m') . '-31');;
             }
 
             /**
@@ -88,7 +87,8 @@ class FlowStatsController extends InitController
                 $general_xml = sprintf($general_xml, $max);
             } else {
                 $general_xml = "<graph caption='{$GLOBALS['_LANG']['general_stats']}' lineThickness='1' showValues='0' formatNumberScale='0' anchorRadius='2'   divLineAlpha='20' divLineColor='CC3300' divLineIsDashed='1' showAlternateHGridColor='1' alternateHGridAlpha='5' alternateHGridColor='CC3300' shadowAlpha='40' labelStep='2' numvdivlines='5' chartRightMargin='35' bgColor='FFFFFF,CC3300' bgAngle='270' bgAlpha='10,10' outCnvBaseFontSize='12' baseFontSize='12' >";
-                foreach ($start_date_arr as $k => $val) {
+                foreach ($start_date_arr AS $k => $val) {
+
                     $seriesName = local_date('Y-m', $start_date_arr[$k]);
                     $general_xml .= "<dataset seriesName='$seriesName' color='" . chart_color($k) . "' anchorBorderColor='" . chart_color($k) . "' anchorBgColor='" . chart_color($k) . "'>";
                     $sql = "SELECT FLOOR((access_time - $start_date_arr[$k]) / (24 * 3600)) AS sn, access_time, COUNT(*) AS access_count" .
@@ -148,7 +148,7 @@ class FlowStatsController extends InitController
                 $area_xml .= '</graph>';
             } else {
                 $where = '';
-                foreach ($start_date_arr as $k => $val) {
+                foreach ($start_date_arr AS $k => $val) {
                     if ($where != '') {
                         $where .= ' or ';
                     }
@@ -170,17 +170,17 @@ class FlowStatsController extends InitController
                 }
                 $area_xml = "<chart palette='2' caption='{$GLOBALS['_LANG'][area_stats]}' shownames='1' showvalues='0' numberPrefix='' useRoundEdges='1' legendBorderAlpha='0' outCnvBaseFontSize='13' baseFontSize='13'>";
                 $area_xml .= "<categories>";
-                foreach ($area_arr as $k => $v) {
+                foreach ($area_arr AS $k => $v) {
                     $area_xml .= "<category label='$k'/>";
                 }
                 $area_xml .= "</categories>";
                 $key = 0;
-                foreach ($start_date_arr as $val) {
+                foreach ($start_date_arr AS $val) {
                     $key++;
                     $date = local_date('Y-m', $val);
                     $area_xml .= "<dataset seriesName='$date' color='" . chart_color($key) . "' showValues='0'>";
 
-                    foreach ($area_arr as $k => $v) {
+                    foreach ($area_arr AS $k => $v) {
                         if (isset($category[$date][$k])) {
                             $area_xml .= "<set value='" . $category[$date][$k] . "'/>";
                         } else {
@@ -216,7 +216,7 @@ class FlowStatsController extends InitController
                 $from_xml .= '</graph>';
             } else {
                 $where = '';
-                foreach ($start_date_arr as $k => $val) {
+                foreach ($start_date_arr AS $k => $val) {
                     if ($where != '') {
                         $where .= ' or ';
                     }
@@ -239,18 +239,18 @@ class FlowStatsController extends InitController
                 }
                 $from_xml = "<chart palette='2' caption='{$GLOBALS['_LANG'][from_stats]}' shownames='1' showvalues='0' numberPrefix='' useRoundEdges='1' legendBorderAlpha='0' outCnvBaseFontSize='13' baseFontSize='13'>";
                 $from_xml .= "<categories>";
-                foreach ($domain_arr as $k => $v) {
+                foreach ($domain_arr AS $k => $v) {
                     $from = $k == '' ? $GLOBALS['_LANG']['input_url'] : $k;
                     $from_xml .= "<category label='$from'/>";
                 }
                 $from_xml .= "</categories>";
                 $key = 0;
-                foreach ($start_date_arr as $val) {
+                foreach ($start_date_arr AS $val) {
                     $key++;
                     $date = local_date('Y-m', $val);
                     $from_xml .= "<dataset seriesName='$date' color='" . chart_color($key) . "' showValues='0'>";
 
-                    foreach ($domain_arr as $k => $v) {
+                    foreach ($domain_arr AS $k => $v) {
                         if (isset($category[$date][$k])) {
                             $from_xml .= "<set value='" . $category[$date][$k] . "'/>";
                         } else {

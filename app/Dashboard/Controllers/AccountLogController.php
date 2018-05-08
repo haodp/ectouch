@@ -28,10 +28,8 @@ class AccountLogController extends InitController
             }
             $this->smarty->assign('user', $user);
 
-            if (empty($_REQUEST['account_type']) || !in_array(
-                $_REQUEST['account_type'],
-                    ['user_money', 'frozen_money', 'rank_points', 'pay_points']
-            )) {
+            if (empty($_REQUEST['account_type']) || !in_array($_REQUEST['account_type'],
+                    ['user_money', 'frozen_money', 'rank_points', 'pay_points'])) {
                 $account_type = '';
             } else {
                 $account_type = $_REQUEST['account_type'];
@@ -67,10 +65,8 @@ class AccountLogController extends InitController
             }
             $this->smarty->assign('user', $user);
 
-            if (empty($_REQUEST['account_type']) || !in_array(
-                $_REQUEST['account_type'],
-                    ['user_money', 'frozen_money', 'rank_points', 'pay_points']
-            )) {
+            if (empty($_REQUEST['account_type']) || !in_array($_REQUEST['account_type'],
+                    ['user_money', 'frozen_money', 'rank_points', 'pay_points'])) {
                 $account_type = '';
             } else {
                 $account_type = $_REQUEST['account_type'];
@@ -83,11 +79,8 @@ class AccountLogController extends InitController
             $this->smarty->assign('record_count', $account_list['record_count']);
             $this->smarty->assign('page_count', $account_list['page_count']);
 
-            return make_json_result(
-                $this->smarty->fetch('account_list.htm'),
-                '',
-                ['filter' => $account_list['filter'], 'page_count' => $account_list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('account_list.htm'), '',
+                ['filter' => $account_list['filter'], 'page_count' => $account_list['page_count']]);
         }
 
         /**

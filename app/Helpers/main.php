@@ -8,7 +8,7 @@
  */
 function update_user_info()
 {
-    if (!session('?user_id')) {
+    if (!session()->has('user_id')) {
         return false;
     }
 
@@ -24,10 +24,10 @@ function update_user_info()
         " WHERE u.user_id = '" . session('user_id') . "'";
     if ($row = $GLOBALS['db']->getRow($sql)) {
         // 更新SESSION
-        session('last_time', $row['last_login']);
-        session('last_ip', $row['last_ip']);
-        session('login_fail', 0);
-        session('email', $row['email']);
+        session(['last_time' => $row['last_login']]);
+        session(['last_ip' => $row['last_ip']]);
+        session(['login_fail' => 0]);
+        session(['email' => $row['email']]);
 
         /*判断是否是特殊等级，可能后台把特殊会员组更改普通会员组*/
         if ($row['user_rank'] > 0) {
@@ -44,21 +44,21 @@ function update_user_info()
             // 非特殊等级，根据等级积分计算用户等级（注意：不包括特殊等级）
             $sql = 'SELECT rank_id, discount FROM ' . $GLOBALS['ecs']->table('user_rank') . " WHERE special_rank = '0' AND min_points <= " . intval($row['rank_points']) . ' AND max_points > ' . intval($row['rank_points']);
             if ($row = $GLOBALS['db']->getRow($sql)) {
-                session('user_rank', $row['rank_id']);
-                session('discount', $row['discount'] / 100.00);
+                session(['user_rank' => $row['rank_id']]);
+                session(['discount' => $row['discount'] / 100.00]);
             } else {
-                session('user_rank', 0);
-                session('discount', 1);
+                session(['user_rank' => 0]);
+                session(['discount' => 1]);
             }
         } else {
             // 特殊等级
             $sql = 'SELECT rank_id, discount FROM ' . $GLOBALS['ecs']->table('user_rank') . " WHERE rank_id = '$row[user_rank]'";
             if ($row = $GLOBALS['db']->getRow($sql)) {
-                session('user_rank', $row['rank_id']);
-                session('discount', $row['discount'] / 100.00);
+                session(['user_rank' => $row['rank_id']]);
+                session(['discount' => $row['discount'] / 100.00]);
             } else {
-                session('user_rank', 0);
-                session('discount', 1);
+                session(['user_rank' => 0]);
+                session(['discount' => 1]);
             }
         }
     }
@@ -396,23 +396,9 @@ function get_shop_help()
  * @param   string $price_max 最高价格
  * @return  void
  */
-function assign_pager(
-    $app,
-    $cat,
-    $record_count,
-    $size,
-    $sort,
-    $order,
-    $page = 1,
-                      $keywords = '',
-    $brand = 0,
-    $price_min = 0,
-    $price_max = 0,
-    $display_type = 'list',
-    $filter_attr = '',
-    $url_format = '',
-    $sch_array = ''
-) {
+function assign_pager($app, $cat, $record_count, $size, $sort, $order, $page = 1,
+                      $keywords = '', $brand = 0, $price_min = 0, $price_max = 0, $display_type = 'list', $filter_attr = '', $url_format = '', $sch_array = '')
+{
     $sch = ['keywords' => $keywords,
         'sort' => $sort,
         'order' => $order,
@@ -815,7 +801,8 @@ function is_spider($record = true)
 /**
  * 获得客户端的操作系统
  *
- * @return string
+ * @access  private
+ * @return  void
  */
 function get_os()
 {
@@ -823,80 +810,9 @@ function get_os()
         return 'Unknown';
     }
 
-    $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-    $os    = '';
+    $agent = new Jenssegers\Agent\Agent();
 
-    if (strpos($agent, 'win') !== false) {
-        if (strpos($agent, 'nt 5.1') !== false) {
-            $os = 'Windows XP';
-        } elseif (strpos($agent, 'nt 5.2') !== false) {
-            $os = 'Windows 2003';
-        } elseif (strpos($agent, 'nt 6.0') !== false) {
-            $os = 'Windows Vista';
-        } elseif (strpos($agent, 'nt 6.1') !== false) {
-            $os = 'Windows 7';
-        } elseif (strpos($agent, 'nt 6.2') !== false) {
-            $os = 'Windows 8';
-        } elseif (strpos($agent, 'nt 6.3') !== false) {
-            $os = 'Windows 8.1';
-        } elseif (strpos($agent, 'nt 10.0') !== false) {
-            $os = 'Windows 10';
-        } elseif (strpos($agent, 'nt 5.0') !== false) {
-            $os = 'Windows 2000';
-        } elseif (strpos($agent, 'nt 6.0') !== false) {
-            $os = 'Windows Vista';
-        } elseif (strpos($agent, 'nt') !== false) {
-            $os = 'Windows NT';
-        } elseif (strpos($agent, 'win 9x') !== false && strpos($agent, '4.90') !== false) {
-            $os = 'Windows ME';
-        } elseif (strpos($agent, '98') !== false) {
-            $os = 'Windows 98';
-        } elseif (strpos($agent, '95') !== false) {
-            $os = 'Windows 95';
-        } elseif (strpos($agent, '32') !== false) {
-            $os = 'Windows 32';
-        } elseif (strpos($agent, 'ce') !== false) {
-            $os = 'Windows CE';
-        }
-    } elseif (strpos($agent, 'linux') !== false) {
-        $os = 'Linux';
-    } elseif (strpos($agent, 'unix') !== false) {
-        $os = 'Unix';
-    } elseif (strpos($agent, 'sun') !== false && strpos($agent, 'os') !== false) {
-        $os = 'SunOS';
-    } elseif (strpos($agent, 'ibm') !== false && strpos($agent, 'os') !== false) {
-        $os = 'IBM OS/2';
-    } elseif (strpos($agent, 'mac') !== false && strpos($agent, 'pc') !== false) {
-        $os = 'Macintosh';
-    } elseif (strpos($agent, 'powerpc') !== false) {
-        $os = 'PowerPC';
-    } elseif (strpos($agent, 'aix') !== false) {
-        $os = 'AIX';
-    } elseif (strpos($agent, 'hpux') !== false) {
-        $os = 'HPUX';
-    } elseif (strpos($agent, 'netbsd') !== false) {
-        $os = 'NetBSD';
-    } elseif (strpos($agent, 'bsd') !== false) {
-        $os = 'BSD';
-    } elseif (strpos($agent, 'osf1') !== false) {
-        $os = 'OSF1';
-    } elseif (strpos($agent, 'irix') !== false) {
-        $os = 'IRIX';
-    } elseif (strpos($agent, 'freebsd') !== false) {
-        $os = 'FreeBSD';
-    } elseif (strpos($agent, 'teleport') !== false) {
-        $os = 'teleport';
-    } elseif (strpos($agent, 'flashget') !== false) {
-        $os = 'flashget';
-    } elseif (strpos($agent, 'webzip') !== false) {
-        $os = 'webzip';
-    } elseif (strpos($agent, 'offline') !== false) {
-        $os = 'offline';
-    } else {
-        $os = 'Unknown';
-    }
-
-    return $os;
+    return $agent->platform();
 }
 
 /**
@@ -912,9 +828,9 @@ function visit_stats()
     }
     $time = gmtime();
     // 检查客户端是否存在访问统计的cookie
-    $visit_times = cookie('visit_times');
+    $visit_times = request()->cookie('visit_times');
     $visit_times = !empty($visit_times) ? intval($visit_times) + 1 : 1;
-    cookie('visit_times', $visit_times, 1440 * 365);
+    \Cookie::queue('visit_times', $visit_times, 1440 * 365);
 
     $browser = get_user_browser();
     $os = get_os();
@@ -1452,9 +1368,9 @@ function set_affiliate()
             } else {
                 $c = 1;
             }
-            cookie('affiliate_uid', intval($_GET['u']), 60 * $config['config']['expire'] * $c);
+            \Cookie::queue('affiliate_uid', intval($_GET['u']), 60 * $config['config']['expire'] * $c);
         } else {
-            cookie('affiliate_uid', intval($_GET['u']), 60 * 24); // 过期时间为 1 天
+            \Cookie::queue('affiliate_uid', intval($_GET['u']), 60 * 24); // 过期时间为 1 天
         }
     }
 }
@@ -1470,13 +1386,13 @@ function set_affiliate()
  **/
 function get_affiliate()
 {
-    $affiliate_uid = cookie('affiliate_uid');
+    $affiliate_uid = request()->cookie('affiliate_uid');
     if (!empty($affiliate_uid)) {
         $uid = intval($affiliate_uid);
         if ($GLOBALS['db']->getOne('SELECT user_id FROM ' . $GLOBALS['ecs']->table('users') . "WHERE user_id = '$uid'")) {
             return $uid;
         } else {
-            cookie('affiliate_uid', null);
+            \Cookie::queue('affiliate_uid', null);
         }
     }
 

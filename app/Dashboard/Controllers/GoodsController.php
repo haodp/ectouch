@@ -133,7 +133,7 @@ class GoodsController extends InitController
             if ($is_add) {
                 // 默认值
                 $last_choose = [0, 0];
-                $cp_last_choose = cookie('cp_last_choose');
+                $cp_last_choose = request()->cookie('cp_last_choose');
                 if (!empty($cp_last_choose)) {
                     $last_choose = explode('|', $cp_last_choose);
                 }
@@ -956,7 +956,7 @@ class GoodsController extends InitController
             }
 
             // 记录上一次选择的分类和品牌
-            cookie('cp_last_choose', $catgory_id . '|' . $brand_id, 1440);
+            \Cookie::queue('cp_last_choose', $catgory_id . '|' . $brand_id, 1440);
             // 清空缓存
             clear_cache_files();
 
@@ -1342,11 +1342,8 @@ class GoodsController extends InitController
 
             $tpl = $is_delete ? 'goods_trash.htm' : 'goods_list.htm';
 
-            return make_json_result(
-                $this->smarty->fetch($tpl),
-                '',
-                ['filter' => $goods_list['filter'], 'page_count' => $goods_list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch($tpl), '',
+                ['filter' => $goods_list['filter'], 'page_count' => $goods_list['page_count']]);
         }
 
         /**
@@ -1366,7 +1363,7 @@ class GoodsController extends InitController
 
                 $url = 'goods.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-                $this->redirect($url);
+                return $this->redirect($url);
             }
         }
 
@@ -1387,7 +1384,7 @@ class GoodsController extends InitController
 
             $url = 'goods.php?act=query&' . str_replace('act=restore_goods', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**
@@ -1499,7 +1496,7 @@ class GoodsController extends InitController
             clear_cache_files();
             $url = 'goods.php?act=query&' . str_replace('act=drop_goods', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**
@@ -1552,6 +1549,7 @@ class GoodsController extends InitController
          * 搜索商品，仅返回名称及ID
          */
         if ($_REQUEST['act'] == 'get_goods_list') {
+
             $json = new Json();
 
             $filters = $json->decode($_GET['JSON']);
@@ -1572,6 +1570,7 @@ class GoodsController extends InitController
          * 把商品加入关联
          */
         if ($_REQUEST['act'] == 'add_link_goods') {
+
             $json = new Json();
 
             check_authz_json('goods_manage');
@@ -1611,6 +1610,7 @@ class GoodsController extends InitController
          * 删除关联商品
          */
         if ($_REQUEST['act'] == 'drop_link_goods') {
+
             $json = new Json();
 
             check_authz_json('goods_manage');
@@ -1658,6 +1658,7 @@ class GoodsController extends InitController
          * 增加一个配件
          */
         if ($_REQUEST['act'] == 'add_group_goods') {
+
             $json = new Json();
 
             check_authz_json('goods_manage');
@@ -1690,6 +1691,7 @@ class GoodsController extends InitController
          * 删除一个配件
          */
         if ($_REQUEST['act'] == 'drop_group_goods') {
+
             $json = new Json();
 
             check_authz_json('goods_manage');
@@ -1723,6 +1725,7 @@ class GoodsController extends InitController
          * 搜索文章
          */
         if ($_REQUEST['act'] == 'get_article_list') {
+
             $json = new Json();
 
             $filters = (array)$json->decode(json_str_iconv($_GET['JSON']));
@@ -1749,6 +1752,7 @@ class GoodsController extends InitController
          * 添加关联文章
          */
         if ($_REQUEST['act'] == 'add_goods_article') {
+
             $json = new Json();
 
             check_authz_json('goods_manage');
@@ -1780,6 +1784,7 @@ class GoodsController extends InitController
          * 删除关联文章
          */
         if ($_REQUEST['act'] == 'drop_goods_article') {
+
             $json = new Json();
 
             check_authz_json('goods_manage');
@@ -1922,11 +1927,8 @@ class GoodsController extends InitController
             $sort_flag = sort_flag($product['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('product_info.htm'),
-                '',
-                ['filter' => $product['filter'], 'page_count' => $product['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('product_info.htm'), '',
+                ['filter' => $product['filter'], 'page_count' => $product['page_count']]);
         }
 
         /**
@@ -1961,7 +1963,7 @@ class GoodsController extends InitController
 
                 $url = 'goods.php?act=product_query&' . str_replace('act=product_remove', '', $_SERVER['QUERY_STRING']);
 
-                $this->redirect($url);
+                return $this->redirect($url);
             }
         }
 

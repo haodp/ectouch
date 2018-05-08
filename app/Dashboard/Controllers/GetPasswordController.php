@@ -28,7 +28,7 @@ class GetPasswordController extends InitController
                 $adminid = !empty($_GET['uid']) ? intval($_GET['uid']) : 0;
 
                 if ($adminid == 0 || empty($code)) {
-                    $this->redirect("privilege.php?act=login");
+                    return $this->redirect("privilege.php?act=login");
                 }
 
                 // 以用户的原密码，与code的值匹配
@@ -66,7 +66,7 @@ class GetPasswordController extends InitController
                 $admin_email = !empty($_POST['email']) ? trim($_POST['email']) : '';
 
                 if (empty($admin_username) || empty($admin_email)) {
-                    $this->redirect("privilege.php?act=login");
+                    return $this->redirect("privilege.php?act=login");
                 }
 
                 // 管理员用户名和邮件地址是否匹配，并取得原密码
@@ -92,13 +92,8 @@ class GetPasswordController extends InitController
                     $content = $this->smarty->fetch('str:' . $template['template_content']);
 
                     // 发送确认重置密码的确认邮件
-                    if (send_mail(
-                        $admin_username,
-                        $admin_email,
-                        $template['template_subject'],
-                        $content,
-                        $template['is_html']
-                    )) {
+                    if (send_mail($admin_username, $admin_email, $template['template_subject'], $content,
+                        $template['is_html'])) {
                         //提示信息
                         $link[0]['text'] = $GLOBALS['_LANG']['back'];
                         $link[0]['href'] = 'privilege.php?act=login';
@@ -122,7 +117,7 @@ class GetPasswordController extends InitController
                 $code = isset($_POST['code']) ? trim($_POST['code']) : '';
 
                 if (empty($new_password) || empty($code) || $adminid == 0) {
-                    $this->redirect("privilege.php?act=login");
+                    return $this->redirect("privilege.php?act=login");
                 }
 
                 // 以用户的原密码，与code的值匹配

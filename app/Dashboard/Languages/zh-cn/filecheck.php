@@ -17,12 +17,11 @@ $_LANG['filecheck_unknown'] = '未知';
 $_LANG['filecheck_check_ok'] = '正确';
 $_LANG['jump_info'] = '如果您的浏览器没有自动跳转，请点击这里';
 $_LANG['tips'] = '技巧提示: ';
-$_LANG['filecheck_tips'] = '<li>“<em class="edited">被修改</em>”、“<em class="del">被删除</em>” 中的列出的文件，请即刻通过 FTP 或其他工具检查其文件的正确性，以确保ECTouch网店功能的正常使用。</li>
+$_LANG['filecheck_tips'] = '<li>“<em class="edited">被修改</em>”、“<em class="del">被删除</em>” 中的列出的文件，请即刻通过 FTP 或其他工具检查其文件的正确性，以确保网店功能的正常使用。</li>
     <li>“<em class="unknown">未知</em>” 中的列出的文件，请检查网店是否被人非法放入了其他文件。</li>
     <li style="">“<em class="unknown">一周内被修改</em>” 中列出的文件，请确认最近是否修改过。</li>';
 $_LANG['filename'] = '文件名';
 $_LANG['filesize'] = '文件大小';
 $_LANG['filemtime'] = '最后修改时间';
 $_LANG['filecheck_nofound_md5file'] = '不存在校验文件，无法进行此操作';
-
 return $_LANG;

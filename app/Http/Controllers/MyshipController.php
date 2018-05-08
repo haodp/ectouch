@@ -59,12 +59,8 @@ class MyshipController extends InitController
 
         foreach ($shipping_list as $key => $val) {
             $shipping_cfg = unserialize_config($val['configure']);
-            $shipping_fee = shipping_fee(
-                $val['shipping_code'],
-                unserialize($val['configure']),
-                $cart_weight_price['weight'],
-                $cart_weight_price['amount']
-            );
+            $shipping_fee = shipping_fee($val['shipping_code'], unserialize($val['configure']),
+                $cart_weight_price['weight'], $cart_weight_price['amount']);
 
             $shipping_list[$key]['format_shipping_fee'] = price_format($shipping_fee, false);
             $shipping_list[$key]['fee'] = $shipping_fee;

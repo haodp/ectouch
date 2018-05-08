@@ -126,22 +126,22 @@ class OrderController extends InitController
             }
 
             // 取得上一个、下一个订单号
-            $cp_lastfilter = cookie('cp_lastfilter');
+            $cp_lastfilter = request()->cookie('cp_lastfilter');
             if (!empty($cp_lastfilter)) {
                 $filter = unserialize(urldecode($cp_lastfilter));
                 if (!empty($filter['composite_status'])) {
                     $where = '';
                     //综合状态
                     switch ($filter['composite_status']) {
-                        case CS_AWAIT_PAY:
+                        case CS_AWAIT_PAY :
                             $where .= order_query_sql('await_pay');
                             break;
 
-                        case CS_AWAIT_SHIP:
+                        case CS_AWAIT_SHIP :
                             $where .= order_query_sql('await_ship');
                             break;
 
-                        case CS_FINISHED:
+                        case CS_FINISHED :
                             $where .= order_query_sql('finished');
                             break;
 
@@ -301,8 +301,8 @@ class OrderController extends InitController
 
             $attr = [];
             $arr = [];
-            foreach ($goods_attr as $index => $array_val) {
-                foreach ($array_val as $value) {
+            foreach ($goods_attr AS $index => $array_val) {
+                foreach ($array_val AS $value) {
                     $arr = explode(':', $value);//以 : 号将属性拆开
                     $attr[$index][] = @['name' => $arr[0], 'value' => $arr[1]];
                 }
@@ -694,6 +694,7 @@ class OrderController extends InitController
 
             // 如果使用库存，且发货时减库存，则修改库存
             if ($GLOBALS['_CFG']['use_storage'] == '1' && $GLOBALS['_CFG']['stock_dec_time'] == SDT_SHIP) {
+
                 foreach ($delivery_stock_result as $value) {
 
                     // 商品（实货）、超级礼包（实货）
@@ -775,13 +776,10 @@ class OrderController extends InitController
 
                 // 如果需要，发短信
                 if ($GLOBALS['_CFG']['sms_order_shipped'] == '1' && $order['mobile'] != '') {
+
                     $sms = new sms();
-                    $sms->send($order['mobile'], sprintf(
-                        $GLOBALS['_LANG']['order_shipped_sms'],
-                        $order['order_sn'],
-                        local_date($GLOBALS['_LANG']['sms_time_format']),
-                        $GLOBALS['_CFG']['shop_name']
-                    ), 0);
+                    $sms->send($order['mobile'], sprintf($GLOBALS['_LANG']['order_shipped_sms'], $order['order_sn'],
+                        local_date($GLOBALS['_LANG']['sms_time_format']), $GLOBALS['_CFG']['shop_name']), 0);
                 }
             }
 
@@ -1096,11 +1094,11 @@ class OrderController extends InitController
                 $this->db->query($sql);
 
                 // 下一步
-                $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=goods");
+                return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=goods");
             } // 编辑商品信息
             elseif ('edit_goods' == $step) {
                 if (isset($_POST['rec_id'])) {
-                    foreach ($_POST['rec_id'] as $key => $rec_id) {
+                    foreach ($_POST['rec_id'] AS $key => $rec_id) {
                         $sql = "SELECT goods_number " .
                             'FROM ' . $GLOBALS['ecs']->table('goods') .
                             "WHERE goods_id =" . $_POST['goods_id'][$key];
@@ -1110,6 +1108,7 @@ class OrderController extends InitController
                         $goods_attr = $_POST['goods_attr'][$key];
                         $product_id = intval($_POST['product_id'][$key]);
                         if ($product_id) {
+
                             $sql = "SELECT product_number " .
                                 'FROM ' . $GLOBALS['ecs']->table('products') .
                                 " WHERE product_id =" . $_POST['product_id'][$key];
@@ -1125,6 +1124,8 @@ class OrderController extends InitController
                             $this->db->query($sql);
                         } else {
                             return sys_msg($GLOBALS['_LANG']['goods_num_err']);
+
+
                         }
                     }
 
@@ -1146,7 +1147,7 @@ class OrderController extends InitController
                 }
 
                 // 跳回订单商品
-                $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=goods");
+                return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=goods");
             } // 添加商品
             elseif ('add_goods' == $step) {
                 // 取得参数
@@ -1158,12 +1159,12 @@ class OrderController extends InitController
                         $temp_array = $_POST['spec_' . $i];
                         $temp_array_count = count($_POST['spec_' . $i]);
                         for ($j = 0; $j < $temp_array_count; $j++) {
-                            if ($temp_array[$j] !== null) {
+                            if ($temp_array[$j] !== NULL) {
                                 $goods_attr .= ',' . $temp_array[$j];
                             }
                         }
                     } else {
-                        if ($_POST['spec_' . $i] !== null) {
+                        if ($_POST['spec_' . $i] !== NULL) {
                             $goods_attr .= ',' . $_POST['spec_' . $i];
                         }
                     }
@@ -1267,12 +1268,12 @@ class OrderController extends InitController
                 admin_log($sn, 'edit', 'order');
 
                 // 跳回订单商品
-                $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=goods");
+                return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=goods");
             } // 商品
             elseif ('goods' == $step) {
                 // 下一步
                 if (isset($_POST['next'])) {
-                    $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=consignee");
+                    return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=consignee");
                 } // 完成
                 elseif (isset($_POST['finish'])) {
                     // 初始化提示信息和链接
@@ -1288,7 +1289,7 @@ class OrderController extends InitController
                         return sys_msg(join(chr(13), $msgs), 0, $links);
                     } else {
                         // 跳转到订单详情
-                        $this->redirect("order.php?act=info&order_id=" . $order_id . "");
+                        return $this->redirect("order.php?act=info&order_id=" . $order_id . "");
                     }
                 }
             } // 保存收货人信息
@@ -1309,10 +1310,10 @@ class OrderController extends InitController
                     // 下一步
                     if (exist_real_goods($order_id)) {
                         // 存在实体商品，去配送方式
-                        $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=shipping");
+                        return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=shipping");
                     } else {
                         // 不存在实体商品，去支付方式
-                        $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=payment");
+                        return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=payment");
                     }
                 } elseif (isset($_POST['finish'])) {
                     // 如果是编辑且存在实体商品，检查收货人地区的改变是否影响原来选的配送
@@ -1327,7 +1328,7 @@ class OrderController extends InitController
 
                         // 判断订单的配送是否在可用配送之内
                         $exist = false;
-                        foreach ($shipping_list as $shipping) {
+                        foreach ($shipping_list AS $shipping) {
                             if ($shipping['shipping_id'] == $order['shipping_id']) {
                                 $exist = true;
                                 break;
@@ -1345,16 +1346,16 @@ class OrderController extends InitController
 
                     // 完成
                     if ($agency_changed) {
-                        $this->redirect("order.php?act=list");
+                        return $this->redirect("order.php?act=list");
                     } else {
-                        $this->redirect("order.php?act=info&order_id=" . $order_id . "");
+                        return $this->redirect("order.php?act=info&order_id=" . $order_id . "");
                     }
                 }
             } // 保存配送信息
             elseif ('shipping' == $step) {
                 // 如果不存在实体商品，退出
                 if (!exist_real_goods($order_id)) {
-                    die('Hacking Attemp');
+                    die ('Hacking Attemp');
                 }
 
                 // 取得订单信息
@@ -1397,7 +1398,7 @@ class OrderController extends InitController
 
                 if (isset($_POST['next'])) {
                     // 下一步
-                    $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=payment");
+                    return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=payment");
                 } elseif (isset($_POST['finish'])) {
                     // 初始化提示信息和链接
                     $msgs = [];
@@ -1423,7 +1424,7 @@ class OrderController extends InitController
                         return sys_msg(join(chr(13), $msgs), 0, $links);
                     } else {
                         // 完成
-                        $this->redirect("order.php?act=info&order_id=" . $order_id);
+                        return $this->redirect("order.php?act=info&order_id=" . $order_id);
                     }
                 }
             } // 保存支付信息
@@ -1467,7 +1468,7 @@ class OrderController extends InitController
 
                 if (isset($_POST['next'])) {
                     // 下一步
-                    $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=other");
+                    return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=other");
                 } elseif (isset($_POST['finish'])) {
                     // 初始化提示信息和链接
                     $msgs = [];
@@ -1482,7 +1483,7 @@ class OrderController extends InitController
                         return sys_msg(join(chr(13), $msgs), 0, $links);
                     } else {
                         // 完成
-                        $this->redirect("order.php?act=info&order_id=" . $order_id);
+                        return $this->redirect("order.php?act=info&order_id=" . $order_id);
                     }
                 }
             } elseif ('other' == $step) {
@@ -1528,10 +1529,10 @@ class OrderController extends InitController
 
                 if (isset($_POST['next'])) {
                     // 下一步
-                    $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=money");
+                    return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=money");
                 } elseif (isset($_POST['finish'])) {
                     // 完成
-                    $this->redirect("order.php?act=info&order_id=" . $order_id);
+                    return $this->redirect("order.php?act=info&order_id=" . $order_id);
                 }
             } elseif ('money' == $step) {
                 // 取得订单信息
@@ -1598,6 +1599,7 @@ class OrderController extends InitController
                                 if (intval($_POST['integral']) > $user['pay_points'] + $old_order['integral']) {
                                     return sys_msg($GLOBALS['_LANG']['pay_points_not_enough']);
                                 }
+
                             }
                             if ($order['order_amount'] > 0) {
                                 // 如果设置了余额，再使用余额支付
@@ -1695,14 +1697,14 @@ class OrderController extends InitController
                     if (!empty($msgs)) {
                         return sys_msg(join(chr(13), $msgs), 0, $links);
                     } else {
-                        $this->redirect("order.php?act=info&order_id=" . $order_id);
+                        return $this->redirect("order.php?act=info&order_id=" . $order_id);
                     }
                 }
             } // 保存发货后的配送方式和发货单号
             elseif ('invoice' == $step) {
                 // 如果不存在实体商品，退出
                 if (!exist_real_goods($order_id)) {
-                    die('Hacking Attemp');
+                    die ('Hacking Attemp');
                 }
 
                 // 保存订单
@@ -1722,7 +1724,7 @@ class OrderController extends InitController
                 admin_log($sn, 'edit', 'order');
 
                 if (isset($_POST['finish'])) {
-                    $this->redirect("order.php?act=info&order_id=" . $order_id);
+                    return $this->redirect("order.php?act=info&order_id=" . $order_id);
                 }
             }
         }
@@ -1780,7 +1782,7 @@ class OrderController extends InitController
                 // 取得订单商品
                 $goods_list = order_goods($order_id);
                 if (!empty($goods_list)) {
-                    foreach ($goods_list as $key => $goods) {
+                    foreach ($goods_list AS $key => $goods) {
                         // 计算属性数
                         $attr = $goods['goods_attr'];
                         if ($attr == '') {
@@ -1846,7 +1848,7 @@ class OrderController extends InitController
             elseif ('shipping' == $step) {
                 // 如果不存在实体商品
                 if (!exist_real_goods($order_id)) {
-                    die('Hacking Attemp');
+                    die ('Hacking Attemp');
                 }
 
                 // 取得可用的配送方式列表
@@ -1857,14 +1859,9 @@ class OrderController extends InitController
 
                 // 取得配送费用
                 $total = order_weight_price($order_id);
-                foreach ($shipping_list as $key => $shipping) {
-                    $shipping_fee = shipping_fee(
-                        $shipping['shipping_code'],
-                        unserialize($shipping['configure']),
-                        $total['weight'],
-                        $total['amount'],
-                        $total['number']
-                    );
+                foreach ($shipping_list AS $key => $shipping) {
+                    $shipping_fee = shipping_fee($shipping['shipping_code'],
+                        unserialize($shipping['configure']), $total['weight'], $total['amount'], $total['number']);
                     $shipping_list[$key]['shipping_fee'] = $shipping_fee;
                     $shipping_list[$key]['format_shipping_fee'] = price_format($shipping_fee);
                     $shipping_list[$key]['free_money'] = price_format($shipping['configure']['free_money']);
@@ -1935,7 +1932,7 @@ class OrderController extends InitController
             elseif ('invoice' == $step) {
                 // 如果不存在实体商品
                 if (!exist_real_goods($order_id)) {
-                    die('Hacking Attemp');
+                    die ('Hacking Attemp');
                 }
 
                 // 取得可用的配送方式列表
@@ -1998,7 +1995,7 @@ class OrderController extends InitController
                 $this->update_order_amount($order_id);
 
                 // 跳回订单商品
-                $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=goods");
+                return $this->redirect("order.php?act=" . $step_act . "&order_id=" . $order_id . "&step=goods");
             } // 取消刚添加或编辑的订单
             elseif ('cancel_order' == $func) {
                 $step_act = $_GET['step_act'];
@@ -2010,10 +2007,10 @@ class OrderController extends InitController
                             " WHERE order_id = '$order_id' LIMIT 1";
                         $this->db->query($sql);
                     }
-                    $this->redirect("order.php?act=list");
+                    return $this->redirect("order.php?act=list");
                 } else {
                     // 如果是编辑，返回订单信息
-                    $this->redirect("order.php?act=info&order_id=" . $order_id);
+                    return $this->redirect("order.php?act=info&order_id=" . $order_id);
                 }
             } // 编辑订单时由于订单已付款且金额减少而退款
             elseif ('refund' == $func) {
@@ -2029,7 +2026,7 @@ class OrderController extends InitController
                 update_order($order_id, ['order_amount' => 0, 'money_paid' => $order['money_paid'] - $refund_amount]);
 
                 // 返回订单详情
-                $this->redirect("order.php?act=info&order_id=" . $order_id);
+                return $this->redirect("order.php?act=info&order_id=" . $order_id);
             } // 载入退款页面
             elseif ('load_refund' == $func) {
                 $refund_amount = floatval($_REQUEST['refund_amount']);
@@ -2324,6 +2321,7 @@ class OrderController extends InitController
                 $anonymous = $order['user_id'] == 0;
                 $action = $GLOBALS['_LANG']['op_return'];
                 $operation = 'return';
+
             } // 指派
             elseif (isset($_POST['assign'])) {
                 // 取得参数
@@ -2353,6 +2351,7 @@ class OrderController extends InitController
                     foreach ($query_array as $value) {
                         $this->db->query("UPDATE " . $this->ecs->table($value) . " SET agency_id = '$new_agency_id' " .
                             "WHERE order_id = '$order_id'");
+
                     }
                 }
 
@@ -2540,8 +2539,8 @@ class OrderController extends InitController
 
                     $attr = [];
                     $arr = [];
-                    foreach ($goods_attr as $index => $array_val) {
-                        foreach ($array_val as $value) {
+                    foreach ($goods_attr AS $index => $array_val) {
+                        foreach ($array_val AS $value) {
                             $arr = explode(':', $value);//以 : 号将属性拆开
                             $attr[$index][] = @['name' => $arr[0], 'value' => $arr[1]];
                         }
@@ -2561,7 +2560,7 @@ class OrderController extends InitController
             elseif (isset($_POST['to_delivery'])) {
                 $url = 'order.php?act=delivery_list&order_sn=' . $_REQUEST['order_sn'];
 
-                $this->redirect($url);
+                return $this->redirect($url);
             }
 
             // 直接处理还是跳到详细页面
@@ -2586,11 +2585,11 @@ class OrderController extends InitController
                 // 直接处理
                 if (!$batch) {
                     // 一个订单
-                    $this->redirect("order.php?act=operate_post&order_id=" . $order_id .
+                    return $this->redirect("order.php?act=operate_post&order_id=" . $order_id .
                         "&operation=" . $operation . "&action_note=" . urlencode($action_note));
                 } else {
                     // 多个订单
-                    $this->redirect("order.php?act=batch_operate_post&order_id=" . $order_id .
+                    return $this->redirect("order.php?act=batch_operate_post&order_id=" . $order_id .
                         "&operation=" . $operation . "&action_note=" . urlencode($action_note));
                 }
             }
@@ -2966,13 +2965,8 @@ class OrderController extends InitController
                 if ($order['order_status'] == OS_SPLITED) {
                     // 操作失败
                     $links[] = ['text' => $GLOBALS['_LANG']['order_info'], 'href' => 'order.php?act=info&order_id=' . $order_id];
-                    return sys_msg(sprintf(
-                        $GLOBALS['_LANG']['order_splited_sms'],
-                        $order['order_sn'],
-                        $GLOBALS['_LANG']['os'][OS_SPLITED],
-                        $GLOBALS['_LANG']['ss'][SS_SHIPPED_ING],
-                        $GLOBALS['_CFG']['shop_name']
-                    ), 1, $links);
+                    return sys_msg(sprintf($GLOBALS['_LANG']['order_splited_sms'], $order['order_sn'],
+                        $GLOBALS['_LANG']['os'][OS_SPLITED], $GLOBALS['_LANG']['ss'][SS_SHIPPED_ING], $GLOBALS['_CFG']['shop_name']), 1, $links);
                 }
 
                 // 取得订单商品
@@ -3420,6 +3414,7 @@ class OrderController extends InitController
                     }
                     // todo 计算并退回红包
                     return_order_bonus($order_id);
+
                 }
 
                 // 如果使用库存，则增加库存（不论何时减库存都需要）
@@ -3596,7 +3591,7 @@ class OrderController extends InitController
             if ($GLOBALS['db']->errno() == 0) {
                 $url = 'order.php?act=query&' . str_replace('act=remove_order', '', $_SERVER['QUERY_STRING']);
 
-                $this->redirect($url);
+                return $this->redirect($url);
             } else {
                 return make_json_error($GLOBALS['db']->errorMsg());
             }
@@ -3606,6 +3601,7 @@ class OrderController extends InitController
          * 根据关键字和id搜索用户
          */
         if ($_REQUEST['act'] == 'search_users') {
+
             $json = new Json();
 
             $id_name = empty($_GET['id_name']) ? '' : json_str_iconv(trim($_GET['id_name']));
@@ -3758,8 +3754,8 @@ class OrderController extends InitController
             }
             $attr = [];
             $arr = [];
-            foreach ($goods_attr as $index => $array_val) {
-                foreach ($array_val as $value) {
+            foreach ($goods_attr AS $index => $array_val) {
+                foreach ($array_val AS $value) {
                     $arr = explode(':', $value);//以 : 号将属性拆开
                     $attr[$index][] = @['name' => $arr[0], 'value' => $arr[1]];
                 }
@@ -3780,25 +3776,26 @@ class OrderController extends InitController
      */
     private function get_status_list($type = 'all')
     {
+
         $list = [];
 
         if ($type == 'all' || $type == 'order') {
             $pre = $type == 'all' ? 'os_' : '';
-            foreach ($GLOBALS['_LANG']['os'] as $key => $value) {
+            foreach ($GLOBALS['_LANG']['os'] AS $key => $value) {
                 $list[$pre . $key] = $value;
             }
         }
 
         if ($type == 'all' || $type == 'shipping') {
             $pre = $type == 'all' ? 'ss_' : '';
-            foreach ($GLOBALS['_LANG']['ss'] as $key => $value) {
+            foreach ($GLOBALS['_LANG']['ss'] AS $key => $value) {
                 $list[$pre . $key] = $value;
             }
         }
 
         if ($type == 'all' || $type == 'payment') {
             $pre = $type == 'all' ? 'ps_' : '';
-            foreach ($GLOBALS['_LANG']['ps'] as $key => $value) {
+            foreach ($GLOBALS['_LANG']['ps'] AS $key => $value) {
                 $list[$pre . $key] = $value;
             }
         }
@@ -4174,24 +4171,24 @@ class OrderController extends InitController
 
             //综合状态
             switch ($filter['composite_status']) {
-                case CS_AWAIT_PAY:
+                case CS_AWAIT_PAY :
                     $where .= order_query_sql('await_pay');
                     break;
 
-                case CS_AWAIT_SHIP:
+                case CS_AWAIT_SHIP :
                     $where .= order_query_sql('await_ship');
                     break;
 
-                case CS_FINISHED:
+                case CS_FINISHED :
                     $where .= order_query_sql('finished');
                     break;
 
-                case PS_PAYING:
+                case PS_PAYING :
                     if ($filter['composite_status'] != -1) {
                         $where .= " AND o.pay_status = '$filter[composite_status]' ";
                     }
                     break;
-                case OS_SHIPPED_PART:
+                case OS_SHIPPED_PART :
                     if ($filter['composite_status'] != -1) {
                         $where .= " AND o.shipping_status  = '$filter[composite_status]'-2 ";
                     }
@@ -4217,7 +4214,7 @@ class OrderController extends InitController
             // 分页大小
             $filter['page'] = empty($_REQUEST['page']) || (intval($_REQUEST['page']) <= 0) ? 1 : intval($_REQUEST['page']);
 
-            $cp_page_size = cookie('cp_page_size');
+            $cp_page_size = request()->cookie('cp_page_size');
             if (isset($_REQUEST['page_size']) && intval($_REQUEST['page_size']) > 0) {
                 $filter['page_size'] = intval($_REQUEST['page_size']);
             } elseif (!empty($cp_page_size) && intval($cp_page_size) > 0) {
@@ -4247,7 +4244,7 @@ class OrderController extends InitController
                 " ORDER BY $filter[sort_by] $filter[sort_order] " .
                 " LIMIT " . ($filter['page'] - 1) * $filter['page_size'] . ",$filter[page_size]";
 
-            foreach (['order_sn', 'consignee', 'email', 'address', 'zipcode', 'tel', 'user_name'] as $val) {
+            foreach (['order_sn', 'consignee', 'email', 'address', 'zipcode', 'tel', 'user_name'] AS $val) {
                 $filter[$val] = stripslashes($filter[$val]);
             }
             set_filter($filter, $sql);
@@ -4259,7 +4256,7 @@ class OrderController extends InitController
         $row = $GLOBALS['db']->getAll($sql);
 
         // 格式话数据
-        foreach ($row as $key => $value) {
+        foreach ($row AS $key => $value) {
             $row[$key]['formated_order_amount'] = price_format($value['order_amount']);
             $row[$key]['formated_money_paid'] = price_format($value['money_paid']);
             $row[$key]['formated_total_fee'] = price_format($value['total_fee']);
@@ -4377,8 +4374,8 @@ class OrderController extends InitController
 
         $attr = [];
         $arr = [];
-        foreach ($goods_attr as $index => $array_val) {
-            foreach ($array_val as $value) {
+        foreach ($goods_attr AS $index => $array_val) {
+            foreach ($array_val AS $value) {
                 $arr = explode(':', $value);//以 : 号将属性拆开
                 $attr[$index][] = @['name' => $arr[0], 'value' => $arr[1]];
             }
@@ -4840,7 +4837,7 @@ class OrderController extends InitController
             // 分页大小
             $filter['page'] = empty($_REQUEST['page']) || (intval($_REQUEST['page']) <= 0) ? 1 : intval($_REQUEST['page']);
 
-            $cp_page_size = cookie('cp_page_size');
+            $cp_page_size = request()->cookie('cp_page_size');
             if (isset($_REQUEST['page_size']) && intval($_REQUEST['page_size']) > 0) {
                 $filter['page_size'] = intval($_REQUEST['page_size']);
             } elseif (!empty($cp_page_size) && intval($cp_page_size) > 0) {
@@ -4878,7 +4875,7 @@ class OrderController extends InitController
         $row = $GLOBALS['db']->getAll($sql);
 
         // 格式化数据
-        foreach ($row as $key => $value) {
+        foreach ($row AS $key => $value) {
             $row[$key]['add_time'] = local_date($GLOBALS['_CFG']['time_format'], $value['add_time']);
             $row[$key]['update_time'] = local_date($GLOBALS['_CFG']['time_format'], $value['update_time']);
             if ($value['status'] == 1) {
@@ -4948,7 +4945,7 @@ class OrderController extends InitController
             // 分页大小
             $filter['page'] = empty($_REQUEST['page']) || (intval($_REQUEST['page']) <= 0) ? 1 : intval($_REQUEST['page']);
 
-            $cp_page_size = cookie('cp_page_size');
+            $cp_page_size = request()->cookie('cp_page_size');
             if (isset($_REQUEST['page_size']) && intval($_REQUEST['page_size']) > 0) {
                 $filter['page_size'] = intval($_REQUEST['page_size']);
             } elseif (!empty($cp_page_size) && intval($cp_page_size) > 0) {
@@ -4979,7 +4976,7 @@ class OrderController extends InitController
         $row = $GLOBALS['db']->getAll($sql);
 
         // 格式化数据
-        foreach ($row as $key => $value) {
+        foreach ($row AS $key => $value) {
             $row[$key]['return_time'] = local_date($GLOBALS['_CFG']['time_format'], $value['return_time']);
             $row[$key]['add_time'] = local_date($GLOBALS['_CFG']['time_format'], $value['add_time']);
             $row[$key]['update_time'] = local_date($GLOBALS['_CFG']['time_format'], $value['update_time']);
@@ -5382,5 +5379,6 @@ class OrderController extends InitController
     private function get_site_root_url()
     {
         return 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/' . ADMIN_PATH . '/order.php', '', PHP_SELF);
+
     }
 }

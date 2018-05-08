@@ -56,12 +56,8 @@ class SitemapController extends InitController
             $res = $this->db->query($sql);
 
             foreach ($res as $row) {
-                $smi = new GoogleSitemapItem(
-                    $domain . build_uri('category', ['cid' => $row['cat_id']], $row['cat_name']),
-                    $today,
-                    $_POST['category_changefreq'],
-                    $_POST['category_priority']
-                );
+                $smi = new GoogleSitemapItem($domain . build_uri('category', ['cid' => $row['cat_id']], $row['cat_name']), $today,
+                    $_POST['category_changefreq'], $_POST['category_priority']);
                 $sm->add_item($smi);
             }
 
@@ -72,12 +68,8 @@ class SitemapController extends InitController
             $res = $this->db->query($sql);
 
             foreach ($res as $row) {
-                $smi = new GoogleSitemapItem(
-                    $domain . build_uri('article_cat', ['acid' => $row['cat_id']], $row['cat_name']),
-                    $today,
-                    $_POST['category_changefreq'],
-                    $_POST['category_priority']
-                );
+                $smi = new GoogleSitemapItem($domain . build_uri('article_cat', ['acid' => $row['cat_id']], $row['cat_name']), $today,
+                    $_POST['category_changefreq'], $_POST['category_priority']);
                 $sm->add_item($smi);
             }
 
@@ -88,12 +80,8 @@ class SitemapController extends InitController
             $res = $this->db->query($sql);
 
             foreach ($res as $row) {
-                $smi = new GoogleSitemapItem(
-                    $domain . build_uri('goods', ['gid' => $row['goods_id']], $row['goods_name']),
-                    $today,
-                    $_POST['content_changefreq'],
-                    $_POST['content_priority']
-                );
+                $smi = new GoogleSitemapItem($domain . build_uri('goods', ['gid' => $row['goods_id']], $row['goods_name']), $today,
+                    $_POST['content_changefreq'], $_POST['content_priority']);
                 $sm->add_item($smi);
             }
 
@@ -105,12 +93,8 @@ class SitemapController extends InitController
 
             foreach ($res as $row) {
                 $article_url = $row['open_type'] != 1 ? build_uri('article', ['aid' => $row['article_id']], $row['title']) : trim($row['file_url']);
-                $smi = new GoogleSitemapItem(
-                    $domain . $article_url,
-                    $today,
-                    $_POST['content_changefreq'],
-                    $_POST['content_priority']
-                );
+                $smi = new GoogleSitemapItem($domain . $article_url,
+                    $today, $_POST['content_changefreq'], $_POST['content_priority']);
                 $sm->add_item($smi);
             }
 

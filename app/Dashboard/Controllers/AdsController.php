@@ -56,11 +56,8 @@ class AdsController extends InitController
             $sort_flag = sort_flag($ads_list['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('ads_list.htm'),
-                '',
-                ['filter' => $ads_list['filter'], 'page_count' => $ads_list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('ads_list.htm'), '',
+                ['filter' => $ads_list['filter'], 'page_count' => $ads_list['page_count']]);
         }
 
         /**
@@ -75,11 +72,9 @@ class AdsController extends InitController
             $start_time = local_date('Y-m-d');
             $end_time = local_date('Y-m-d', gmtime() + 3600 * 24 * 30);  // 默认结束时间为1个月以后
 
-            $this->smarty->assign(
-                'ads',
+            $this->smarty->assign('ads',
                 ['ad_link' => $ad_link, 'ad_name' => $ad_name, 'start_time' => $start_time,
-                    'end_time' => $end_time, 'enabled' => 1]
-            );
+                    'end_time' => $end_time, 'enabled' => 1]);
 
             $this->smarty->assign('ur_here', $GLOBALS['_LANG']['ads_add']);
             $this->smarty->assign('action_link', ['href' => 'ads.php?act=list', 'text' => $GLOBALS['_LANG']['ad_list']]);
@@ -444,7 +439,7 @@ class AdsController extends InitController
 
             $url = 'ads.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
     }
 

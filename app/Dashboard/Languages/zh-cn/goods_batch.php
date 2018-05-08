@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  商品批量上传、修改语言文件
+ * 商品批量上传、修改语言文件
  */
 
 $_LANG['select_method'] = '选择商品的方式：';
@@ -89,5 +89,4 @@ $_LANG['upload_goods']['is_real'] = '是否实体商品';
 
 $_LANG['batch_upload_ok'] = '批量上传成功';
 $_LANG['goods_upload_confirm'] = '批量上传确认';
-
 return $_LANG;

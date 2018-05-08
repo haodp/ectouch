@@ -25,6 +25,7 @@ class PictureBatchController extends InitController
             $this->smarty->assign('brand_list', get_brand_list());
             return $this->smarty->display('picture_batch.htm');
         } elseif (!empty($_GET['get_goods'])) {
+
             $json = new Json();
             $brand_id = intval($_GET['brand_id']);
             $cat_id = intval($_GET['cat_id']);
@@ -41,6 +42,7 @@ class PictureBatchController extends InitController
 
             die($json->encode($this->db->getAll($sql)));
         } else {
+
             $json = new Json();
             $proc_thumb = (isset($GLOBALS['shop_id']) && $GLOBALS['shop_id'] > 0);
             $do_album = empty($_GET['do_album']) ? 0 : 1;

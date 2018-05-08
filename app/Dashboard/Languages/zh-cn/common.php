@@ -1,7 +1,16 @@
 <?php
 
+/**
+ * 管理中心共用语言文件
+ */
+
 $_LANG['app_name'] = 'ECTouch';
 $_LANG['cp_home'] = 'ECTouch管理中心';
+$_LANG['copyright'] = '';
+$_LANG['query_info'] = '共执行 %d 个查询，用时 %s 秒';
+$_LANG['memory_info'] = '，内存占用 %0.3f MB';
+$_LANG['gzip_enabled'] = '，Gzip 已启用';
+$_LANG['gzip_disabled'] = '，Gzip 已禁用';
 $_LANG['loading'] = '正在处理您的请求...';
 $_LANG['js_languages']['process_request'] = '正在处理您的请求...';
 $_LANG['js_languages']['todolist_caption'] = '记事本';
@@ -74,17 +83,17 @@ $_LANG['attradd_succed'] = '操作成功!';
 $_LANG['todolist'] = '记事本';
 $_LANG['n_a'] = 'N/A';
 
-// 提示
+/* 提示 */
 $_LANG['sys']['wrong'] = '错误：';
 
-// 编码
+/* 编码 */
 $_LANG['charset']['utf8'] = '国际化编码（utf8）';
 $_LANG['charset']['zh_cn'] = '简体中文';
 $_LANG['charset']['zh_tw'] = '繁体中文';
 $_LANG['charset']['en_us'] = '美国英语';
 $_LANG['charset']['en_uk'] = '英文';
 
-// 新订单通知
+/* 新订单通知 */
 $_LANG['order_notify'] = '新订单通知';
 $_LANG['new_order_1'] = '您有 ';
 $_LANG['new_order_2'] = ' 个新订单以及 ';
@@ -95,7 +104,7 @@ $_LANG['new_order_link'] = '点击查看新订单';
 $_LANG['chinese_simplified'] = '简体中文';
 $_LANG['english'] = '英文';
 
-// 分页
+/* 分页 */
 $_LANG['total_records'] = '总计 ';
 $_LANG['total_pages'] = '个记录分为';
 $_LANG['page_size'] = '页，每页';
@@ -106,33 +115,28 @@ $_LANG['page_next'] = '下一页';
 $_LANG['page_last'] = '最末页';
 $_LANG['admin_home'] = '起始页';
 
-// 重量
+/* 重量 */
 $_LANG['gram'] = '克';
 $_LANG['kilogram'] = '千克';
 
-// 菜单分类部分
-$_LANG['00_menu_dashboard'] = '控制台';
-$_LANG['01_system'] = '设置';
-$_LANG['02_cat_and_goods'] = '商品';
-$_LANG['03_order'] = '订单';
-$_LANG['04_members'] = '会员';
-$_LANG['05_promotion'] = '促销';
-$_LANG['06_stats'] = '报表';
-$_LANG['07_content'] = '内容';
-$_LANG['08_rec'] = '分销';
-$_LANG['09_priv_admin'] = '权限';
-$_LANG['10_template'] = '主题';
-$_LANG['11_backup'] = '数据库';
-$_LANG['12_others'] = '工具箱';
-$_LANG['13_wechat'] = '微信通';
+/* 菜单分类部分 */
+$_LANG['02_cat_and_goods'] = '商品管理';
+$_LANG['03_promotion'] = '促销管理';
+$_LANG['04_order'] = '订单管理';
+$_LANG['05_banner'] = '广告管理';
+$_LANG['06_stats'] = '报表统计';
+$_LANG['07_content'] = '文章管理';
+$_LANG['08_members'] = '会员管理';
+$_LANG['09_others'] = '杂项管理';
+$_LANG['10_priv_admin'] = '权限管理';
+$_LANG['11_system'] = '系统设置';
+$_LANG['12_template'] = '模板管理';
+$_LANG['13_backup'] = '数据库管理';
+$_LANG['14_sms'] = '短信管理';
+$_LANG['15_rec'] = '推荐管理';
+$_LANG['16_email_manage'] = '邮件群发管理';
 
-// 控制台
-$_LANG['01_dashboard_welcome'] = '欢迎页面';
-//$_LANG['02_favorite'] = '常用功能';
-//$_LANG['03_notepad'] = '记事本';
-//$_LANG['04_calc'] = '计算器';
-
-// 商品管理
+/* 商品管理 */
 $_LANG['01_goods_list'] = '商品列表';
 $_LANG['02_goods_add'] = '添加新商品';
 $_LANG['03_category_list'] = '商品分类';
@@ -160,9 +164,9 @@ $_LANG['51_virtual_card_add'] = '添加虚拟商品';
 $_LANG['52_virtual_card_change'] = '更改加密串';
 $_LANG['goods_auto'] = '商品自动上下架';
 $_LANG['article_auto'] = '文章自动发布';
-$_LANG['navigator'] = '自定义导航栏';
+$_LANG['navigator'] = $_LANG['01_navigator'] = '导航设置';
 
-// 促销管理
+/* 促销管理 */
 $_LANG['02_snatch_list'] = '夺宝奇兵';
 $_LANG['snatch_add'] = '添加夺宝奇兵';
 $_LANG['04_bonustype_list'] = '红包类型';
@@ -183,10 +187,8 @@ $_LANG['13_wholesale'] = '批发管理';
 $_LANG['ebao_commend'] = '易宝推荐';
 $_LANG['14_package_list'] = '超值礼包';
 $_LANG['package_add'] = '添加超值礼包';
-$_LANG['16_crowd_funding'] = '众筹活动';
-$_LANG['17_group_booking'] = '拼团活动';
 
-// 订单管理
+/* 订单管理 */
 $_LANG['02_order_list'] = '订单列表';
 $_LANG['03_order_query'] = '订单查询';
 $_LANG['04_merge_order'] = '合并订单';
@@ -195,12 +197,20 @@ $_LANG['06_undispose_booking'] = '缺货登记';
 $_LANG['08_add_order'] = '添加订单';
 $_LANG['09_delivery_order'] = '发货单列表';
 $_LANG['10_back_order'] = '退货单列表';
+/* by ECTouch leah begin*/
+$_LANG['13_service_type'] = '售后服务类型';
+$_LANG['02_add_service_type'] = '添加售后服务类型';
+$_LANG['04_aftermarket'] = '售后服务';
+$_LANG['10_cause_add'] = '添加退换货原因';
+$_LANG['11_back_cause'] = '退换货原因列表';
+$_LANG['12_back_apply'] = '退换货列表';
+/* by Leah end*/
 
-// 广告管理
+/* 广告管理 */
 $_LANG['ad_position'] = '广告位置';
 $_LANG['ad_list'] = '广告列表';
 
-// 报表统计
+/* 报表统计 */
 $_LANG['flow_stats'] = '流量分析';
 $_LANG['searchengine_stats'] = '搜索引擎';
 $_LANG['report_order'] = '订单统计';
@@ -212,7 +222,7 @@ $_LANG['report_users'] = '会员排行';
 $_LANG['visit_buy_per'] = '访问购买率';
 $_LANG['z_clicks_stats'] = '站外投放JS';
 
-// 文章管理
+/* 文章管理 */
 $_LANG['02_articlecat_list'] = '文章分类';
 $_LANG['articlecat_add'] = '添加文章分类';
 $_LANG['03_article_list'] = '文章列表';
@@ -222,7 +232,7 @@ $_LANG['shop_info'] = '网店信息';
 $_LANG['shop_help'] = '网店帮助';
 $_LANG['vote_list'] = '在线调查';
 
-// 会员管理
+/* 会员管理 */
 $_LANG['08_unreply_msg'] = '会员留言';
 $_LANG['03_users_list'] = '会员列表';
 $_LANG['04_users_add'] = '添加会员';
@@ -231,7 +241,7 @@ $_LANG['06_list_integrate'] = '会员整合';
 $_LANG['09_user_account'] = '充值和提现申请';
 $_LANG['10_user_account_manage'] = '资金管理';
 
-// 权限管理
+/* 权限管理 */
 $_LANG['admin_list'] = '管理员列表';
 $_LANG['admin_list_role'] = '角色列表';
 $_LANG['admin_role'] = '角色管理';
@@ -242,40 +252,40 @@ $_LANG['admin_logs'] = '管理员日志';
 $_LANG['agency_list'] = '办事处列表';
 $_LANG['suppliers_list'] = '供货商列表';
 
-// 系统设置
+/* 系统设置 */
 $_LANG['01_shop_config'] = '商店设置';
 $_LANG['shop_authorized'] = '授权证书';
 $_LANG['shp_webcollect'] = '网罗天下';
 $_LANG['02_payment_list'] = '支付方式';
 $_LANG['03_shipping_list'] = '配送方式';
-$_LANG['04_mail_settings'] = '邮件服务器设置';
+$_LANG['04_mail_settings'] = $_LANG['03_mail_settings'] = '邮件服务器设置';
 $_LANG['05_area_list'] = '地区列表';
 $_LANG['07_cron_schcron'] = '计划任务';
 $_LANG['08_friendlink_list'] = '友情链接';
 $_LANG['shipping_area_list'] = '配送区域';
 $_LANG['sitemap'] = '站点地图';
 $_LANG['check_file_priv'] = '文件权限检测';
-$_LANG['captcha_manage'] = '验证码管理';
+$_LANG['captcha_manage'] = $_LANG['05_captcha_manage'] = '验证码管理';
 $_LANG['fckfile_manage'] = 'Fck上传文件管理';
 $_LANG['ucenter_setup'] = 'UCenter设置';
 $_LANG['file_check'] = '文件校验';
 $_LANG['021_reg_fields'] = '会员注册项设置';
 
-// 模板管理
+/* 模板管理 */
 $_LANG['02_template_select'] = '模板选择';
 $_LANG['03_template_setup'] = '设置模板';
 $_LANG['04_template_library'] = '库项目管理';
 $_LANG['mail_template_manage'] = '邮件模板';
 $_LANG['05_edit_languages'] = '语言项编辑';
 $_LANG['06_template_backup'] = '模板设置备份';
-// 数据库管理
+/* 数据库管理 */
 $_LANG['02_db_manage'] = '数据备份';
 $_LANG['03_db_optimize'] = '数据表优化';
 $_LANG['04_sql_query'] = 'SQL查询';
 $_LANG['05_synchronous'] = '同步数据';
 $_LANG['convert'] = '转换数据';
 
-// 短信管理
+/* 短信管理 */
 $_LANG['02_sms_my_info'] = '账号信息';
 $_LANG['03_sms_send'] = '发送短信';
 $_LANG['04_sms_charge'] = '账户充值';
@@ -283,20 +293,23 @@ $_LANG['05_sms_send_history'] = '发送记录';
 $_LANG['06_sms_charge_history'] = '充值记录';
 
 
+
+
 $_LANG['affiliate'] = '推荐设置';
 $_LANG['affiliate_ck'] = '分成管理';
+$_LANG['flashplay'] = '首页主广告管理';
 $_LANG['search_log'] = '搜索关键字';
 $_LANG['email_list'] = '邮件订阅管理';
 $_LANG['magazine_list'] = '杂志管理';
 $_LANG['attention_list'] = '关注管理';
-$_LANG['view_sendlist'] = '邮件队列管理';
+$_LANG['view_sendlist'] = $_LANG['04_view_sendlist'] = '邮件队列管理';
 
-// 积分兑换管理
+/* 积分兑换管理 */
 $_LANG['15_exchange_goods'] = '积分商城商品';
 $_LANG['15_exchange_goods_list'] = '积分商城商品列表';
 $_LANG['exchange_goods_add'] = '添加新商品';
 
-// Image 类的语言项
+/* cls_image类的语言项 */
 $_LANG['directory_readonly'] = '目录 % 不存在或不可写';
 $_LANG['invalid_upload_image_type'] = '不是允许的图片格式';
 $_LANG['upload_failure'] = '文件 %s 上传失败。';
@@ -312,7 +325,7 @@ $_LANG['create_origin_image_res'] = '创建原始图片资源失败，原始图�
 $_LANG['invalid_image_type'] = '无法识别水印图片 %s ';
 $_LANG['file_unavailable'] = '文件 %s 不存在或不可读';
 
-// 邮件发送错误信息
+/* 邮件发送错误信息 */
 $_LANG['smtp_setting_error'] = '邮件服务器设置信息不完整';
 $_LANG['smtp_connect_failure'] = '无法连接到邮件服务器 %s';
 $_LANG['smtp_login_failure'] = '邮件服务器验证帐号或密码不正确';
@@ -320,7 +333,7 @@ $_LANG['sendemail_false'] = '邮件发送失败，请检查您的邮件服务器
 $_LANG['smtp_refuse'] = '服务器拒绝发送该邮件';
 $_LANG['disabled_fsockopen'] = '服务器已禁用 fsocketopen 函数。';
 
-// 虚拟卡
+/* 虚拟卡 */
 $_LANG['virtual_card_oos'] = '虚拟卡已缺货';
 
 $_LANG['span_edit_help'] = '点击修改内容';
@@ -329,12 +342,84 @@ $_LANG['href_sort_help'] = '点击对列表排序';
 $_LANG['catname_exist'] = '已存在相同的分类名称!';
 $_LANG['brand_name_exist'] = '已存在相同的品牌名称!';
 
-$_LANG['alipay_login'] = '<a href="https://www.alipay.com/" target="_blank">立即免费申请支付接口权限</a>';
+$_LANG['alipay_login'] = '<a href="https://www.alipay.com/user/login.htm?goto=https%3A%2F%2Fwww.alipay.com%2Fhimalayas%2Fpracticality_profile_edit.htm%3Fmarket_type%3Dfrom_agent_contract%26customer_external_id%3D%2BC4335319945672464113" target="_blank">立即免费申请支付接口权限</a>';
 $_LANG['alipay_look'] = '<a href=\"https://www.alipay.com/himalayas/practicality.htm\" target=\"_blank\">请申请成功后登录支付宝账户查看</a>';
+
 
 
 $_LANG['04_sms_sign'] = '短信签名';
 
+
+/* 后台管理菜单 */
+$_LANG['00_menu_dashboard'] = '控制台';
+$_LANG['01_menu_system'] = '设置';
+$_LANG['02_menu_goods'] = '商品';
+$_LANG['03_menu_order'] = '订单';
+$_LANG['031_menu_aftermarket'] = '售后服务';
+$_LANG['04_menu_members'] = '会员';
+$_LANG['05_menu_content'] = '内容';
+$_LANG['06_menu_promotion'] = '营销';
+$_LANG['07_menu_stats'] = '报表';
+$_LANG['08_menu_template'] = '模板';
+$_LANG['09_menu_backup'] = '数据库';
+$_LANG['10_menu_tools'] = '工具箱';
+/*DRP_START*/
+$_LANG['11_menu_rec'] = '微分销';
+/*DRP_END*/
+$_LANG['12_menu_wechat'] = '微信通';
+$_LANG['13_menu_team'] = '拼团';
+$_LANG['14_menu_teamorder'] = '拼团详情';
+$_LANG['15_menu_crowd'] = '微筹';
+// 控制台
+$_LANG['01_dashboard_welcome'] = '欢迎页面';
+//$_LANG['02_favorite'] = '常用功能';
+//$_LANG['03_notepad'] = '记事本';
+//$_LANG['04_calc'] = '计算器';
+
+// 设置
+$_LANG['01_shop_config'] = '商店设置';
+$_LANG['02_payment_list'] = '支付方式';
+$_LANG['03_shipping_list'] = '配送方式';
+$_LANG['04_area_list'] = '地区列表';
+$_LANG['05_admin_list'] = '管理员列表';
+$_LANG['06_admin_role'] = '角色管理';
+$_LANG['07_admin_logs'] = '管理员日志';
+$_LANG['08_agency_list'] = '办事处列表';
+$_LANG['09_suppliers_list'] = '供货商列表';
+$_LANG['10_shop_authorized'] = '授权证书';
+
+// 商品
+
+
+// 订单
+
+
+// 会员
+
+
+// 内容
+
+
+// 营销
+
+
+// 报表
+
+
+// 模板
+
+
+// 数据库
+
+// 工具箱
+$_LANG['01_navigator']       = '导航设置';
+$_LANG['02_authorization']   = '登录插件';
+$_LANG['03_mail_settings']   = '邮件服务器设置';
+$_LANG['04_view_sendlist']   = '邮件队列管理';
+$_LANG['05_captcha_manage']  = '验证码管理';
+$_LANG['99_upgrade']         = '在线更新';
+
+/*DRP_START*/
 // 微分销
 $_LANG['01_drp_config'] = '微分销设置';
 $_LANG['02_drp_audit'] = '分销商审核';
@@ -345,6 +430,7 @@ $_LANG['05_affiliate'] = '分成佣金设置';
 $_LANG['06_affiliate_ck'] = '分成订单管理';
 $_LANG['07_ranking'] = '分销商排行榜';
 $_LANG['08_drp_log'] = '佣金提现管理';
+/*DRP_END*/
 
 // 微信通
 $_LANG['01_wechat_config'] = '公众号设置';
@@ -352,7 +438,7 @@ $_LANG['02_wechat_masssend'] = '群发消息';
 $_LANG['03_wechat_autoreply'] = '自动回复';
 $_LANG['04_wechat_selfmenu'] = '自定义菜单';
 $_LANG['05_wechat_tmplmsg'] = '模板消息';
-$_LANG['06_wechat_contactmanage'] = '粉丝管理';
+$_LANG['06_wechat_contactmanage'] = '用户管理';
 $_LANG['07_wechat_appmsg'] = '素材管理';
 $_LANG['08_wechat_qrcode'] = '扫码引荐';
 $_LANG['09_wechat_extends'] = '扩展功能';
@@ -360,4 +446,18 @@ $_LANG['09_wechat_extends'] = '扩展功能';
 $_LANG['11_wechat_customer'] = '多客服设置';
 // $_LANG['12_wechat_wall'] = '微信墙';
 
+//频道
+$_LANG['01_team_index'] = '频道列表';
+$_LANG['02_team_add'] = '添加频道';
+$_LANG['03_team_order'] = '拼团订单';
+
+/*CROWD_START*/
+$_LANG['01_crowd'] = '微筹项目列表';
+$_LANG['02_crowd_category_list'] = '微筹分类';
+$_LANG['03_crowd_order_list'] = '微筹订单列表';
+$_LANG['04_crowd_message_list'] = '微筹订单评论';
+$_LANG['05_crowd_article_list'] = '问答中心';
+/*CROWD_END*/
+
 return $_LANG;
+

@@ -95,12 +95,10 @@ class SaleGeneralController extends InitController
             } else {
                 $filename = date('Ym', $start_time) . "_" . date('Ym', $end_time) . '_report';
             }
-            $this->smarty->assign(
-                'action_link',
+            $this->smarty->assign('action_link',
                 ['text' => $GLOBALS['_LANG']['down_sales_stats'],
                     'href' => 'sale_general.php?act=download&filename=' . $filename .
-                        '&query_type=' . $query_type . '&start_time=' . $start_time . '&end_time=' . $end_time]
-            );
+                        '&query_type=' . $query_type . '&start_time=' . $start_time . '&end_time=' . $end_time]);
 
             // 显示模板
             $this->smarty->assign('ur_here', $GLOBALS['_LANG']['report_sell']);

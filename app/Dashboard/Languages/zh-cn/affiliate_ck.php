@@ -1,6 +1,5 @@
 <?php
 
-
 $_LANG['order_id'] = '订单号';
 $_LANG['affiliate_separate'] = '分成';
 $_LANG['affiliate_cancel'] = '取消';

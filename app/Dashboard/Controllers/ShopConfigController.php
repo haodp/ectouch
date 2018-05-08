@@ -85,7 +85,7 @@ class ShopConfigController extends InitController
             foreach ($res as $row) {
                 $arr[$row['id']] = $row['value'];
             }
-            foreach ($_POST['value'] as $key => $val) {
+            foreach ($_POST['value'] AS $key => $val) {
                 if ($arr[$key] != $val) {
                     $sql = "UPDATE " . $this->ecs->table('shop_config') . " SET value = '" . trim($val) . "' WHERE id = '" . $key . "'";
                     $this->db->query($sql);
@@ -100,7 +100,7 @@ class ShopConfigController extends InitController
                 $file_var_list[$row['code']] = $row;
             }
 
-            foreach ($_FILES as $code => $file) {
+            foreach ($_FILES AS $code => $file) {
                 // 判断用户是否选择了文件
                 if ((isset($file['error']) && $file['error'] == 0) || (!isset($file['error']) && $file['tmp_name'] != 'none')) {
                     // 检查上传的文件类型是否合法
@@ -242,6 +242,7 @@ class ShopConfigController extends InitController
             clear_all_files();
 
             return sys_msg($GLOBALS['_LANG']['save_success'], 0);
+
         }
     }
 
@@ -274,17 +275,18 @@ class ShopConfigController extends InitController
      */
     private function get_settings($groups = null, $excludes = null)
     {
+
         $config_groups = '';
         $excludes_groups = '';
 
         if (!empty($groups)) {
-            foreach ($groups as $key => $val) {
+            foreach ($groups AS $key => $val) {
                 $config_groups .= " AND (id='$val' OR parent_id='$val')";
             }
         }
 
         if (!empty($excludes)) {
-            foreach ($excludes as $key => $val) {
+            foreach ($excludes AS $key => $val) {
                 $excludes_groups .= " AND (parent_id<>'$val' AND id<>'$val')";
             }
         }
@@ -296,7 +298,7 @@ class ShopConfigController extends InitController
 
         // 整理数据
         $group_list = [];
-        foreach ($item_list as $key => $item) {
+        foreach ($item_list AS $key => $item) {
             $pid = $item['parent_id'];
             $item['name'] = isset($GLOBALS['_LANG']['cfg_name'][$item['code']]) ? $GLOBALS['_LANG']['cfg_name'][$item['code']] : $item['code'];
             $item['desc'] = isset($GLOBALS['_LANG']['cfg_desc'][$item['code']]) ? $GLOBALS['_LANG']['cfg_desc'][$item['code']] : '';
@@ -315,7 +317,7 @@ class ShopConfigController extends InitController
                     if ($item['store_range']) {
                         $item['store_options'] = explode(',', $item['store_range']);
 
-                        foreach ($item['store_options'] as $k => $v) {
+                        foreach ($item['store_options'] AS $k => $v) {
                             $item['display_options'][$k] = isset($GLOBALS['_LANG']['cfg_range'][$item['code']][$v]) ?
                                 $GLOBALS['_LANG']['cfg_range'][$item['code']][$v] : $v;
                         }
@@ -323,8 +325,10 @@ class ShopConfigController extends InitController
                     $group_list[$pid]['vars'][] = $item;
                 }
             }
+
         }
 
         return $group_list;
     }
+
 }

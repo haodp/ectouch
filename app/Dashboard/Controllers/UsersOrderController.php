@@ -34,7 +34,7 @@ class UsersOrderController extends InitController
                 $data = "{$GLOBALS['_LANG'][visit_buy]}\t\n";
                 $data .= "{$GLOBALS['_LANG'][order_by]}\t{$GLOBALS['_LANG'][member_name]}\t{$GLOBALS['_LANG'][order_amount]}\t{$GLOBALS['_LANG'][buy_sum]}\t\n";
 
-                foreach ($user_orderinfo['user_orderinfo'] as $k => $row) {
+                foreach ($user_orderinfo['user_orderinfo'] AS $k => $row) {
                     $order_by = $k + 1;
                     $data .= "$order_by\t$row[user_name]\t$row[order_num]\t$row[turnover]\n";
                 }
@@ -51,6 +51,7 @@ class UsersOrderController extends InitController
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
             return make_json_result($this->smarty->fetch('users_order.htm'), '', ['filter' => $user_orderinfo['filter'], 'page_count' => $user_orderinfo['page_count']]);
+
         } else {
             // 权限判断
             admin_priv('client_flow_stats');
@@ -80,6 +81,7 @@ class UsersOrderController extends InitController
 
             return $this->smarty->display('users_order.htm');
         }
+
     }
 
     /*

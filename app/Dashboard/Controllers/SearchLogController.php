@@ -34,11 +34,8 @@ class SearchLogController extends InitController
             $this->smarty->assign('page_count', $logdb['page_count']);
             $this->smarty->assign('start_date', local_date('Y-m-d'));
             $this->smarty->assign('end_date', local_date('Y-m-d'));
-            return make_json_result(
-                $this->smarty->fetch('search_log_list.htm'),
-                '',
-                ['filter' => $logdb['filter'], 'page_count' => $logdb['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('search_log_list.htm'), '',
+                ['filter' => $logdb['filter'], 'page_count' => $logdb['page_count']]);
         }
     }
 
@@ -75,4 +72,5 @@ class SearchLogController extends InitController
 
         return $arr;
     }
+
 }

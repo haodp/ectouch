@@ -120,7 +120,7 @@ class GoodsController extends InitController
 
             if ($goods === false) {
                 // 如果没有找到任何记录则跳回到首页
-                return $this->redirect('/');
+                return redirect('/');
             } else {
                 if ($goods['brand_id'] > 0) {
                     $goods['goods_brand_url'] = build_uri('brand', ['bid' => $goods['brand_id']], $goods['goods_brand']);
@@ -208,7 +208,7 @@ class GoodsController extends InitController
         }
 
         // 记录浏览历史
-        $history = cookie('history');
+        $history = request()->cookie('history');
         if (!empty($history)) {
             $history = explode(',', $history);
 
@@ -219,9 +219,9 @@ class GoodsController extends InitController
                 array_pop($history);
             }
 
-            cookie('history', implode(',', $history), 3600 * 24 * 30);
+            \Cookie::queue('history', implode(',', $history), 3600 * 24 * 30);
         } else {
-            cookie('history', $goods_id, 3600 * 24 * 30);
+            \Cookie::queue('history', $goods_id, 3600 * 24 * 30);
         }
 
         // 更新点击次数

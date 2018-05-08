@@ -24,7 +24,7 @@ $_LANG['post_express_not_null'] = '平邮价格必须大于0';
 $_LANG['express_not_null'] = '快递价格必须大于0';
 $_LANG['ems_not_null'] = 'EMS价格必须大于0';
 
-// 淘宝
+/* 淘宝 */
 $_LANG['taobao']['goods_name'] = '宝贝名称';
 $_LANG['taobao']['goods_class'] = '宝贝类目';
 $_LANG['taobao']['shop_class'] = '店铺类目';
@@ -181,7 +181,7 @@ $_LANG['paipai4']['chengBao'] = '诚保';
 $_LANG['paipai4']['shopWindow'] = '橱窗';
 
 // 批量上传商品的字段
-$_LANG['export_ecshop'] = '导出到ECTouch数据格式';
+$_LANG['export_ecshop'] = '导出到ECShop数据格式';
 $_LANG['ecshop']['goods_name'] = '商品名称';
 $_LANG['ecshop']['goods_sn'] = '商品货号';
 $_LANG['ecshop']['brand_name'] = '商品品牌';   // 需要转换成brand_id

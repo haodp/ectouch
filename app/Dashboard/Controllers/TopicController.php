@@ -223,6 +223,7 @@ class TopicController extends InitController
         }
 
         if ($_REQUEST['act'] == 'get_goods_list') {
+
             $json = new Json();
 
             $filters = $json->decode($_GET['JSON']);
@@ -258,7 +259,7 @@ class TopicController extends InitController
 
             if (!empty($_REQUEST['is_ajax'])) {
                 $url = 'topic.php?act=query&' . str_replace('act=delete', '', $_SERVER['QUERY_STRING']);
-                $this->redirect($url);
+                return $this->redirect($url);
             }
 
             $links[] = ['href' => 'topic.php', 'text' => $GLOBALS['_LANG']['back_list']];

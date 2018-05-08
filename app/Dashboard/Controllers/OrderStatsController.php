@@ -46,7 +46,7 @@ class OrderStatsController extends InitController
             $click_turnover = $click_count > 0 ? round(($order_general['total_turnover'] * 1000) / $click_count, 2) : 0;
 
             // 时区
-            $timezone = session('?timezone') ? session('timezone') : $GLOBALS['_CFG']['timezone'];
+            $timezone = session()->has('timezone') ? session('timezone') : $GLOBALS['_CFG']['timezone'];
 
             // 时间参数
             $is_multi = empty($_POST['is_multi']) ? false : true;
@@ -79,8 +79,7 @@ class OrderStatsController extends InitController
             } else {
                 $tmp_time = local_strtotime(local_date('Y-m-d'));
                 $start_date_arr[] = local_strtotime(local_date('Y-m') . '-1');
-                $end_date_arr[] = local_strtotime(local_date('Y-m') . '-31');
-                ;
+                $end_date_arr[] = local_strtotime(local_date('Y-m') . '-31');;
             }
 
             // 按月份交叉查询
@@ -91,7 +90,7 @@ class OrderStatsController extends InitController
                     "<category label='{$GLOBALS['_LANG'][succeed]}' />" .
                     "<category label='{$GLOBALS['_LANG'][unconfirmed]}' />" .
                     "<category label='{$GLOBALS['_LANG'][invalid]}' /></categories>";
-                foreach ($start_date_arr as $k => $val) {
+                foreach ($start_date_arr AS $k => $val) {
                     $seriesName = local_date('Y-m', $val);
                     $order_info = $this->get_orderinfo($start_date_arr[$k], $end_date_arr[$k]);
                     $order_general_xml .= "<dataset seriesName='$seriesName' color='$color_array[$k]' showValues='0'>";
@@ -109,7 +108,7 @@ class OrderStatsController extends InitController
                 $payment = [];
                 $payment_count = [];
 
-                foreach ($start_date_arr as $k => $val) {
+                foreach ($start_date_arr AS $k => $val) {
                     $sql = 'SELECT i.pay_id, p.pay_name, i.pay_time, COUNT(i.order_id) AS order_num ' .
                         'FROM ' . $this->ecs->table('payment') . ' AS p, ' . $this->ecs->table('order_info') . ' AS i ' .
                         "WHERE p.pay_id = i.pay_id AND i.order_status = '" . OS_CONFIRMED . "' " .
@@ -127,15 +126,15 @@ class OrderStatsController extends InitController
                 }
 
                 $pay_xml .= "<categories>";
-                foreach ($payment as $k => $val) {
+                foreach ($payment AS $k => $val) {
                     $pay_xml .= "<category label='$k' />";
                 }
                 $pay_xml .= "</categories>";
 
-                foreach ($start_date_arr as $k => $val) {
+                foreach ($start_date_arr AS $k => $val) {
                     $date = local_date('Y-m', $start_date_arr[$k]);
                     $pay_xml .= "<dataset seriesName='$date' color='$color_array[$k]' showValues='0'>";
-                    foreach ($payment as $k => $val) {
+                    foreach ($payment AS $k => $val) {
                         $count = 0;
                         if (!empty($payment_count[$k][$date])) {
                             $count = $payment_count[$k][$date];
@@ -153,7 +152,7 @@ class OrderStatsController extends InitController
 
                 $ship_xml = "<chart caption='{$GLOBALS['_LANG'][shipping_method]}' shownames='1' showvalues='0' decimals='0' outCnvBaseFontSize='12' baseFontSize='12' >";
 
-                foreach ($start_date_arr as $k => $val) {
+                foreach ($start_date_arr AS $k => $val) {
                     $sql = 'SELECT sp.shipping_id, sp.shipping_name AS ship_name, i.shipping_time, COUNT(i.order_id) AS order_num ' .
                         'FROM ' . $this->ecs->table('shipping') . ' AS sp, ' . $this->ecs->table('order_info') . ' AS i ' .
                         'WHERE sp.shipping_id = i.shipping_id ' . order_query_sql('finished') .
@@ -171,16 +170,16 @@ class OrderStatsController extends InitController
                 }
 
                 $ship_xml .= "<categories>";
-                foreach ($ship as $k => $val) {
+                foreach ($ship AS $k => $val) {
                     $ship_xml .= "<category label='$k' />";
                 }
                 $ship_xml .= "</categories>";
 
-                foreach ($start_date_arr as $k => $val) {
+                foreach ($start_date_arr AS $k => $val) {
                     $date = local_date('Y-m', $start_date_arr[$k]);
 
                     $ship_xml .= "<dataset seriesName='$date' color='$color_array[$k]' showValues='0'>";
-                    foreach ($ship as $k => $val) {
+                    foreach ($ship AS $k => $val) {
                         $count = 0;
                         if (!empty($ship_count[$k][$date])) {
                             $count = $ship_count[$k][$date];
@@ -236,6 +235,7 @@ class OrderStatsController extends InitController
                 }
 
                 $ship_xml .= "</graph>";
+
             }
             // 赋值到模板
             $this->smarty->assign('order_general', $order_general);
@@ -291,11 +291,11 @@ class OrderStatsController extends InitController
                 "AND i.add_time >= '$start_date' AND i.add_time <= '$end_date' " .
                 "GROUP BY i.pay_id ORDER BY order_num DESC";
             $pay_res = $this->db->getAll($sql);
-            foreach ($pay_res as $val) {
+            foreach ($pay_res AS $val) {
                 $data .= $val['pay_name'] . "\t";
             }
             $data .= "\n";
-            foreach ($pay_res as $val) {
+            foreach ($pay_res AS $val) {
                 $data .= $val['order_num'] . "\t";
             }
 
@@ -308,16 +308,17 @@ class OrderStatsController extends InitController
             $ship_res = $this->db->getAll($sql);
 
             $data .= "\n{$GLOBALS['_LANG'][shipping_method]}\n";
-            foreach ($ship_res as $val) {
+            foreach ($ship_res AS $val) {
                 $data .= $val['ship_name'] . "\t";
             }
             $data .= "\n";
-            foreach ($ship_res as $val) {
+            foreach ($ship_res AS $val) {
                 $data .= $val['order_num'] . "\t";
             }
 
             echo ecs_iconv(CHARSET, 'GB2312', $data) . "\t";
             exit;
+
         }
     }
 
@@ -360,4 +361,5 @@ class OrderStatsController extends InitController
         $order_info['invalid_num'] = $GLOBALS['db']->getOne($sql);
         return $order_info;
     }
+
 }

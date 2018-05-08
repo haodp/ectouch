@@ -387,12 +387,8 @@ function get_template_region($tmp_name, $tmp_file, $lib = true)
             // 找出该编辑区域内所有库项目
             $lib_matches = [];
 
-            $result = preg_match_all(
-                '/([\s|\S]{0,20})(<!--\\s#BeginLibraryItem\\s")([^"]+)("\\s-->)/',
-                $matches[2],
-                $lib_matches,
-                PREG_SET_ORDER
-            );
+            $result = preg_match_all('/([\s|\S]{0,20})(<!--\\s#BeginLibraryItem\\s")([^"]+)("\\s-->)/',
+                $matches[2], $lib_matches, PREG_SET_ORDER);
             $i = 0;
             if ($result && $result > 0) {
                 foreach ($lib_matches as $k => $v) {

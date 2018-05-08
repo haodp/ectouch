@@ -18,7 +18,7 @@ class CategoryController extends InitController
             $cat_id = intval($_REQUEST['category']);
         } else {
             // 如果分类ID为0，则返回首页
-            return $this->redirect('/');
+            return redirect('/');
         }
 
         // 初始化分页信息
@@ -33,7 +33,6 @@ class CategoryController extends InitController
         $filter_attr_str = preg_match('/^[\d\.]+$/', $filter_attr_str) ? $filter_attr_str : '';
         $filter_attr = empty($filter_attr_str) ? '' : explode('.', $filter_attr_str);
 
-
         // 排序、显示方式以及类型
         $default_display_type = $GLOBALS['_CFG']['show_order_type'] == '0' ? 'list' : ($GLOBALS['_CFG']['show_order_type'] == '1' ? 'grid' : 'text');
         $default_sort_order_method = $GLOBALS['_CFG']['sort_order_method'] == '0' ? 'DESC' : 'ASC';
@@ -41,10 +40,10 @@ class CategoryController extends InitController
 
         $sort = (isset($_REQUEST['sort']) && in_array(trim(strtolower($_REQUEST['sort'])), ['goods_id', 'shop_price', 'last_update'])) ? trim($_REQUEST['sort']) : $default_sort_order_type;
         $order = (isset($_REQUEST['order']) && in_array(trim(strtoupper($_REQUEST['order'])), ['ASC', 'DESC'])) ? trim($_REQUEST['order']) : $default_sort_order_method;
-        $display = cookie('display');
+        $display = request()->cookie('display');
         $display = (isset($_REQUEST['display']) && in_array(trim(strtolower($_REQUEST['display'])), ['list', 'grid', 'text'])) ? trim($_REQUEST['display']) : ($display ? $display : $default_display_type);
         $display = in_array($display, ['list', 'grid', 'text']) ? $display : 'text';
-        cookie('display', $display, 1440 * 7);
+        \Cookie::queue('display', $display, 1440 * 7);
 
         // 页面的缓存ID
         $cache_id = sprintf('%X', crc32($cat_id . '-' . $display . '-' . $sort . '-' . $order . '-' . $page . '-' . $size . '-' . session('user_rank') . '-' .
@@ -63,7 +62,7 @@ class CategoryController extends InitController
                 $this->smarty->assign('cat_style', htmlspecialchars($cat['style']));
             } else {
                 // 如果分类不存在则返回首页
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 赋值固定内容

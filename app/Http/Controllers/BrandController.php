@@ -48,10 +48,10 @@ class BrandController extends InitController
 
         $sort = (isset($_REQUEST['sort']) && in_array(trim(strtolower($_REQUEST['sort'])), ['goods_id', 'shop_price', 'last_update'])) ? trim($_REQUEST['sort']) : $default_sort_order_type;
         $order = (isset($_REQUEST['order']) && in_array(trim(strtoupper($_REQUEST['order'])), ['ASC', 'DESC'])) ? trim($_REQUEST['order']) : $default_sort_order_method;
-        $display = cookie('display');
+        $display = request()->cookie('display');
         $display = (isset($_REQUEST['display']) && in_array(trim(strtolower($_REQUEST['display'])), ['list', 'grid', 'text'])) ? trim($_REQUEST['display']) : ($display ? $display : $default_display_type);
         $display = in_array($display, ['list', 'grid', 'text']) ? $display : 'text';
-        cookie('display', $display, 1440 * 7);
+        \Cookie::queue('display', $display, 1440 * 7);
 
         // 页面的缓存ID
         $cache_id = sprintf('%X', crc32($brand_id . '-' . $display . '-' . $sort . '-' . $order . '-' . $page . '-' . $size . '-' . session('user_rank') . '-' . $GLOBALS['_CFG']['lang'] . '-' . $cate));
@@ -60,7 +60,7 @@ class BrandController extends InitController
             $brand_info = $this->get_brand_info($brand_id);
 
             if (empty($brand_info)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             $this->smarty->assign('data_dir', DATA_DIR);

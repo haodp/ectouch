@@ -82,6 +82,8 @@ class LicenseController extends InitController
                 $links[] = ['text' => $GLOBALS['_LANG']['back'], 'href' => 'license.php?act=list_edit'];
                 return sys_msg($GLOBALS['_LANG']['fail_license'], 1, $links);
             } else {
+
+
                 include_once(ROOT_PATH . 'includes/lib_main.php');
                 include_once(ROOT_PATH . 'includes/lib_license.php');
 

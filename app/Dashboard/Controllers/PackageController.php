@@ -155,7 +155,7 @@ class PackageController extends InitController
 
             $url = 'package.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**
@@ -194,11 +194,8 @@ class PackageController extends InitController
             $sort_flag = sort_flag($packages['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('package_list.htm'),
-                '',
-                ['filter' => $packages['filter'], 'page_count' => $packages['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('package_list.htm'), '',
+                ['filter' => $packages['filter'], 'page_count' => $packages['page_count']]);
         }
 
         /**
@@ -227,6 +224,7 @@ class PackageController extends InitController
          * 搜索商品
          */
         if ($_REQUEST['act'] == 'search_goods') {
+
             $json = new Json();
 
             $filters = $json->decode($_GET['JSON']);
@@ -249,8 +247,8 @@ class PackageController extends InitController
          * 搜索商品，仅返回名称及ID
          */
 
-        //if ($_REQUEST['act'] == 'get_goods_list')
-        //{
+//if ($_REQUEST['act'] == 'get_goods_list')
+//{
 
 //    $json = new Json();
 //
@@ -269,12 +267,13 @@ class PackageController extends InitController
 //    }
 //
 //    return make_json_result($opt);
-        //}
+//}
 
         /**
          * 增加一个商品
          */
         if ($_REQUEST['act'] == 'add_package_goods') {
+
             $json = new Json();
 
             check_authz_json('package_manage');
@@ -312,6 +311,7 @@ class PackageController extends InitController
          * 删除一个商品
          */
         if ($_REQUEST['act'] == 'drop_package_goods') {
+
             $json = new Json();
 
             check_authz_json('package_manage');

@@ -130,11 +130,8 @@ class SnatchController extends InitController
             $sort_flag = sort_flag($snatchs['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('snatch_list.htm'),
-                '',
-                ['filter' => $snatchs['filter'], 'page_count' => $snatchs['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('snatch_list.htm'), '',
+                ['filter' => $snatchs['filter'], 'page_count' => $snatchs['page_count']]);
         }
 
         /**
@@ -170,7 +167,7 @@ class SnatchController extends InitController
 
             $url = 'snatch.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**
@@ -292,17 +289,15 @@ class SnatchController extends InitController
             $sort_flag = sort_flag($bid_list['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('snatch_view.htm'),
-                '',
-                ['filter' => $bid_list['filter'], 'page_count' => $bid_list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('snatch_view.htm'), '',
+                ['filter' => $bid_list['filter'], 'page_count' => $bid_list['page_count']]);
         }
 
         /**
          * 搜索商品
          */
         if ($_REQUEST['act'] == 'search_goods') {
+
             $json = new Json();
 
             $filters = $json->decode($_GET['JSON']);
@@ -320,6 +315,7 @@ class SnatchController extends InitController
          * 搜索货品
          */
         if ($_REQUEST['act'] == 'search_products') {
+
             $json = new Json();
 
             $filters = $json->decode($_GET['JSON']);
@@ -374,7 +370,7 @@ class SnatchController extends InitController
 
         $row = $GLOBALS['db']->getAll($sql);
 
-        foreach ($row as $key => $val) {
+        foreach ($row AS $key => $val) {
             $row[$key]['start_time'] = local_date($GLOBALS['_CFG']['time_format'], $val['start_time']);
             $row[$key]['end_time'] = local_date($GLOBALS['_CFG']['time_format'], $val['end_time']);
             $info = unserialize($row[$key]['ext_info']);
@@ -401,6 +397,7 @@ class SnatchController extends InitController
      */
     private function get_snatch_info($id)
     {
+
         $sql = "SELECT act_id, act_name AS snatch_name, goods_id, product_id, goods_name, start_time, end_time, act_desc, ext_info" .
             " FROM " . $GLOBALS['ecs']->table('goods_activity') .
             " WHERE act_id='$id' AND act_type = " . GAT_SNATCH;
@@ -450,7 +447,7 @@ class SnatchController extends InitController
             " LIMIT " . $filter['start'] . ", " . $filter['page_size'];
         $row = $GLOBALS['db']->getAll($sql);
 
-        foreach ($row as $key => $val) {
+        foreach ($row AS $key => $val) {
             $row[$key]['bid_time'] = date($GLOBALS['_CFG']['time_format'], $val['bid_time']);
         }
 
@@ -458,4 +455,5 @@ class SnatchController extends InitController
 
         return $arr;
     }
+
 }

@@ -18,7 +18,7 @@ class SnatchController extends InitController
             $id = $this->get_last_snatch();
             if ($id) {
                 $page = build_uri('snatch', ['sid' => $id]);
-                return $this->redirect("$page");
+                return redirect($page);
             } else {
                 // 当前没有任何可默认的活动
                 $id = 0;
@@ -170,7 +170,7 @@ class SnatchController extends InitController
          */
         if ($_REQUEST['act'] == 'buy') {
             if (empty($id)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             if (empty(session('user_id'))) {
@@ -181,13 +181,13 @@ class SnatchController extends InitController
 
 
             if (empty($snatch)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 未结束，不能购买
             if (empty($snatch['is_end'])) {
                 $page = build_uri('snatch', ['sid' => $id]);
-                return $this->redirect("$page");
+                return redirect("$page");
             }
 
             $result = get_snatch_result($id);
@@ -251,12 +251,12 @@ class SnatchController extends InitController
             $this->db->autoExecute($this->ecs->table('cart'), $cart, 'INSERT');
 
             // 记录购物流程类型：夺宝奇兵
-            session('flow_type', CART_SNATCH_GOODS);
-            session('extension_code', 'snatch');
-            session('extension_id', $id);
+            session(['flow_type' => CART_SNATCH_GOODS]);
+            session(['extension_code' => 'snatch']);
+            session(['extension_id' => $id]);
 
             // 进入收货人页面
-            return $this->redirect("flow.php?step=consignee");
+            return redirect("flow.php?step=consignee");
         }
     }
 

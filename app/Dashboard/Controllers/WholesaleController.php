@@ -52,11 +52,8 @@ class WholesaleController extends InitController
             $sort_flag = sort_flag($list['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('wholesale_list.htm'),
-                '',
-                ['filter' => $list['filter'], 'page_count' => $list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('wholesale_list.htm'), '',
+                ['filter' => $list['filter'], 'page_count' => $list['page_count']]);
         }
 
         /**
@@ -85,7 +82,7 @@ class WholesaleController extends InitController
 
             $url = 'wholesale.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**
@@ -537,6 +534,7 @@ class WholesaleController extends InitController
          * 取得商品信息
          */
         if ($_REQUEST['act'] == 'get_goods_info') {
+
             $json = new Json();
 
             $goods_id = intval($_REQUEST['goods_id']);

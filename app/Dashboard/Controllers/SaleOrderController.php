@@ -37,7 +37,7 @@ class SaleOrderController extends InitController
                 $data = "{$GLOBALS['_LANG'][sell_stats]}\t\n";
                 $data .= "{$GLOBALS['_LANG'][order_by]}\t{$GLOBALS['_LANG'][goods_name]}\t{$GLOBALS['_LANG'][goods_sn]}\t{$GLOBALS['_LANG'][sell_amount]}\t{$GLOBALS['_LANG'][sell_sum]}\t{$GLOBALS['_LANG'][percent_count]}\n";
 
-                foreach ($goods_order_data as $k => $row) {
+                foreach ($goods_order_data AS $k => $row) {
                     $order_by = $k + 1;
                     $data .= "$order_by\t$row[goods_name]\t$row[goods_sn]\t$row[goods_num]\t$row[turnover]\t$row[wvera_price]\n";
                 }

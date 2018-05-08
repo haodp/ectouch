@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  管理中心支付方式管理语言文件
+ * 管理中心支付方式管理语言文件
  */
 
 $_LANG['payment'] = '支付方式';
@@ -30,10 +30,9 @@ $_LANG['payment_not_available'] = '该支付插件不存在或尚未安装';
 
 $_LANG['js_languages']['lang_removeconfirm'] = '您确定要卸载该支付方式吗？';
 
-$_LANG['ctenpay']           = '立即注册财付通商户号';
-$_LANG['ctenpay_url']       = 'http://union.tenpay.com/mch/mch_register_b2c.shtml?sp_suggestuser=542554970';
-$_LANG['ctenpayc2c_url']    = 'https://www.tenpay.com/mchhelper/mch_register_c2c.shtml?sp_suggestuser=542554970';
+$_LANG['ctenpay']           = '注册财付通商户号';
+$_LANG['ctenpay_url']       = 'http://union.tenpay.com/mch/mch_register_b2c.shtml';
+$_LANG['ctenpayc2c_url']    = 'https://www.tenpay.com/mchhelper/mch_register_c2c.shtml';
 $_LANG['tenpay']  = '即时到账';
 $_LANG['tenpayc2c'] = '中介担保';
-
 return $_LANG;

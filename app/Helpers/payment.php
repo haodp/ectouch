@@ -145,13 +145,8 @@ function order_paid($log_id, $pay_status = PS_PAYED, $note = '')
                 // 如果需要，发短信
                 if ($GLOBALS['_CFG']['sms_order_payed'] == '1' && $GLOBALS['_CFG']['sms_shop_mobile'] != '') {
                     $sms = new Sms();
-                    $sms->send(
-                        $GLOBALS['_CFG']['sms_shop_mobile'],
-                        sprintf($GLOBALS['_LANG']['order_payed_sms'], $order_sn, $order['consignee'], $order['tel']),
-                        '',
-                        13,
-                        1
-                    );
+                    $sms->send($GLOBALS['_CFG']['sms_shop_mobile'],
+                        sprintf($GLOBALS['_LANG']['order_payed_sms'], $order_sn, $order['consignee'], $order['tel']), '', 13, 1);
                 }
 
                 // 对虚拟商品的支持

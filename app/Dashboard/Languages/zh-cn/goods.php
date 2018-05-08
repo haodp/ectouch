@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  管理中心起始页语言文件
+ * 管理中心起始页语言文件
  */
 
 $_LANG['edit_goods'] = '编辑商品信息';
@@ -32,9 +32,9 @@ $_LANG['batch_not_hot_confirm'] = '您确实要把选中的商品取消热销吗
 $_LANG['cannot_found_goods'] = '找不到指定的商品。';
 $_LANG['sel_goods_type'] = '请选择商品类型';
 $_LANG['sel_goods_suppliers'] = '请选择供货商';
-/**
- * 图片处理相关提示信息
- */
+/*------------------------------------------------------ */
+//-- 图片处理相关提示信息
+/*------------------------------------------------------ */
 $_LANG['no_gd'] = '您的服务器不支持 GD 或者没有安装处理该图片类型的扩展库。';
 $_LANG['img_not_exists'] = '没有找到原始图片，创建缩略图失败。';
 $_LANG['img_invalid'] = '创建缩略图失败，因为您上传了一个无效的图片文件。';
@@ -42,9 +42,9 @@ $_LANG['create_dir_failed'] = 'images 文件夹不可写，创建缩略图失败
 $_LANG['safe_mode_warning'] = '您的服务器运行在安全模式下，而且 %s 目录不存在。您可能需要先行创建该目录才能上传图片。';
 $_LANG['not_writable_warning'] = '目录 %s 不可写，您需要把该目录设为可写才能上传图片。';
 
-/**
- * 商品列表
- */
+/*------------------------------------------------------ */
+//-- 商品列表
+/*------------------------------------------------------ */
 $_LANG['goods_cat'] = '所有分类';
 $_LANG['goods_brand'] = '所有品牌';
 $_LANG['intro_type'] = '全部';
@@ -55,6 +55,7 @@ $_LANG['is_hot'] = '热销';
 $_LANG['is_promote'] = '特价';
 $_LANG['all_type'] = '全部推荐';
 $_LANG['sort_order'] = '推荐排序';
+$_LANG['virtual_sales'] = '虚拟销量';
 
 $_LANG['goods_name'] = '商品名称';
 $_LANG['goods_sn'] = '货号';
@@ -83,9 +84,9 @@ $_LANG['shop_price_not_number'] = '价格不是数字';
 $_LANG['shop_price_invalid'] = '您输入了一个非法的市场价格。';
 $_LANG['goods_sn_exists'] = '您输入的货号已存在，请换一个';
 
-/**
- * 添加/编辑商品信息
- */
+/*------------------------------------------------------ */
+//-- 添加/编辑商品信息
+/*------------------------------------------------------ */
 $_LANG['tab_general'] = '通用信息';
 $_LANG['tab_detail'] = '详细描述';
 $_LANG['tab_mix'] = '其他信息';
@@ -101,10 +102,13 @@ $_LANG['lab_goods_cat'] = '商品分类：';
 $_LANG['lab_other_cat'] = '扩展分类：';
 $_LANG['lab_goods_brand'] = '商品品牌：';
 $_LANG['lab_shop_price'] = '本店售价：';
+$_LANG['lab_shop_profit'] = '分销佣金：';
+$_LANG['touch_fencheng'] = '分成佣金：';
 $_LANG['lab_market_price'] = '市场售价：';
 $_LANG['lab_user_price'] = '会员价格：';
 $_LANG['lab_promote_price'] = '促销价：';
 $_LANG['lab_promote_date'] = '促销日期：';
+$_LANG['lab_virtual_sales'] = '虚拟销量：';
 $_LANG['lab_picture'] = '上传商品图片：';
 $_LANG['lab_thumb'] = '上传商品缩略图：';
 $_LANG['auto_thumb'] = '自动生成商品缩略图';
@@ -158,7 +162,7 @@ $_LANG['spec_price'] = '属性价格';
 $_LANG['drop_img_confirm'] = '您确实要删除该图片吗？';
 
 $_LANG['select_font'] = '字体样式';
-$_LANG['font_styles'] = ['strong' => '加粗', 'em' => '斜体', 'u' => '下划线', 'strike' => '删除线'];
+$_LANG['font_styles'] = array('strong' => '加粗', 'em' => '斜体', 'u' => '下划线', 'strike' => '删除线');
 
 $_LANG['rapid_add_cat'] = '添加分类';
 $_LANG['rapid_add_brand'] = '添加品牌';
@@ -177,9 +181,9 @@ $_LANG['suppliers_no']             = '不指定供货商属于本店商品';
 $_LANG['suppliers_move_to']        = '转移到供货商';
 $_LANG['lab_to_shopex']         = '转移到网店';
 
-/**
- * 关联商品
- */
+/*------------------------------------------------------ */
+//-- 关联商品
+/*------------------------------------------------------ */
 
 $_LANG['all_goods'] = '可选商品';
 $_LANG['link_goods'] = '跟该商品关联的商品';
@@ -189,24 +193,24 @@ $_LANG['all_article'] = '可选文章';
 $_LANG['goods_article'] = '跟该商品关联的文章';
 $_LANG['top_cat'] = '顶级分类';
 
-/**
- * 组合商品
- */
+/*------------------------------------------------------ */
+//-- 组合商品
+/*------------------------------------------------------ */
 
 $_LANG['group_goods'] = '该商品的配件';
 $_LANG['price'] = '价格';
 
-/**
- * 商品相册
- */
+/*------------------------------------------------------ */
+//-- 商品相册
+/*------------------------------------------------------ */
 
 $_LANG['img_desc'] = '图片描述';
 $_LANG['img_url'] = '上传文件';
 $_LANG['img_file'] = '或者输入外部图片链接地址';
 
-/**
- * 关联文章
- */
+/*------------------------------------------------------ */
+//-- 关联文章
+/*------------------------------------------------------ */
 $_LANG['article_title'] = '文章标题';
 
 $_LANG['goods_not_exist'] = '该商品不存在';
@@ -245,17 +249,17 @@ $_LANG['js_languages']['volume_price_not_number'] = '优惠价格不是数字';
 
 $_LANG['js_languages']['cancel_color'] = '无样式';
 
-// 虚拟卡
+/* 虚拟卡 */
 $_LANG['card'] = '查看虚拟卡信息';
 $_LANG['replenish'] = '补货';
 $_LANG['batch_card_add'] = '批量补货';
 $_LANG['add_replenish'] = '添加虚拟卡卡密';
-
+$_LANG['virtual_sales_error'] = '商品虚拟销售数量错误';
 $_LANG['goods_number_error'] = '商品库存数量错误';
 
-/**
- * 货品
- */
+/*------------------------------------------------------ */
+//-- 货品
+/*------------------------------------------------------ */
 $_LANG['product'] = '货品';
 $_LANG['product_info'] = '货品信息';
 $_LANG['specifications'] = '规格';
@@ -279,5 +283,4 @@ $_LANG['exist_same_goods_attr'] = '货品规格属性重复';
 $_LANG['cannot_goods_number'] = '此商品存在货品，不能修改商品库存';
 $_LANG['not_exist_goods_attr'] = '此商品不存在规格，请为其添加规格';
 $_LANG['goods_sn_exists'] = '您输入的货号已存在，请换一个';
-
 return $_LANG;

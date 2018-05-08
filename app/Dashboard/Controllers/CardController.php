@@ -73,7 +73,7 @@ class CardController extends InitController
 
                 $url = 'card.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-                $this->redirect($url);
+                return $this->redirect($url);
             } else {
                 return make_json_error($this->db->error());
             }

@@ -77,13 +77,13 @@ class AuctionController extends InitController
             // 取得参数：拍卖活动id
             $id = isset($_REQUEST['id']) ? intval($_REQUEST['id']) : 0;
             if ($id <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 取得拍卖活动信息
             $auction = auction_info($id);
             if (empty($auction)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 缓存id：语言，拍卖活动id，状态，如果是进行中，还要最后出价的时间（如果有的话）
@@ -124,7 +124,7 @@ class AuctionController extends InitController
                 $goods_id = $auction['goods_id'];
                 $goods = goods_info($goods_id);
                 if (empty($goods)) {
-                    return $this->redirect('/');
+                    return redirect('/');
                 }
                 $goods['url'] = build_uri('goods', ['gid' => $goods_id], $goods['goods_name']);
                 $this->smarty->assign('auction_goods', $goods);
@@ -166,13 +166,13 @@ class AuctionController extends InitController
             // 取得参数：拍卖活动id
             $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
             if ($id <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 取得拍卖活动信息
             $auction = auction_info($id);
             if (empty($auction)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 活动是否正在进行
@@ -234,25 +234,13 @@ class AuctionController extends InitController
 
                 // 如果不是第一个出价，解冻上一个用户的保证金
                 if ($auction['bid_user_count'] > 0) {
-                    log_account_change(
-                        $auction['last_bid']['bid_user'],
-                        $auction['deposit'],
-                        (-1) * $auction['deposit'],
-                        0,
-                        0,
-                        sprintf($GLOBALS['_LANG']['au_unfreeze_deposit'], $auction['act_name'])
-                    );
+                    log_account_change($auction['last_bid']['bid_user'], $auction['deposit'], (-1) * $auction['deposit'],
+                        0, 0, sprintf($GLOBALS['_LANG']['au_unfreeze_deposit'], $auction['act_name']));
                 }
 
                 // 冻结当前用户的保证金
-                log_account_change(
-                    $user_id,
-                    (-1) * $auction['deposit'],
-                    $auction['deposit'],
-                    0,
-                    0,
-                    sprintf($GLOBALS['_LANG']['au_freeze_deposit'], $auction['act_name'])
-                );
+                log_account_change($user_id, (-1) * $auction['deposit'], $auction['deposit'],
+                    0, 0, sprintf($GLOBALS['_LANG']['au_freeze_deposit'], $auction['act_name']));
             }
 
             // 插入出价记录
@@ -272,7 +260,7 @@ class AuctionController extends InitController
             }
 
             // 跳转到活动详情页
-            return $this->redirect("auction.php?act=view&id=$id");
+            return redirect("auction.php?act=view&id=$id");
         }
 
         /**
@@ -282,13 +270,13 @@ class AuctionController extends InitController
             // 查询：取得参数：拍卖活动id
             $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
             if ($id <= 0) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 查询：取得拍卖活动信息
             $auction = auction_info($id);
             if (empty($auction)) {
-                return $this->redirect('/');
+                return redirect('/');
             }
 
             // 查询：活动是否已结束
@@ -368,12 +356,12 @@ class AuctionController extends InitController
             $this->db->autoExecute($this->ecs->table('cart'), $cart, 'INSERT');
 
             // 记录购物流程类型：团购
-            session('flow_type', CART_AUCTION_GOODS);
-            session('extension_code', 'auction');
-            session('extension_id', $id);
+            session(['flow_type' => CART_AUCTION_GOODS]);
+            session(['extension_code' => 'auction']);
+            session(['extension_id' => $id]);
 
             // 进入收货人页面
-            return $this->redirect("flow.php?step=consignee");
+            return redirect("flow.php?step=consignee");
         }
     }
 

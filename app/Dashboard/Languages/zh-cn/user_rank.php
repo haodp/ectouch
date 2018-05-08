@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  管理中心共用语言文件
+ * 管理中心共用语言文件
  */
 
 $_LANG['rank_name'] = '会员等级名称';
@@ -22,7 +22,7 @@ $_LANG['add_rank_success'] = '会员等级已经添加成功。';
 $_LANG['integral_min_exists'] = '已经存在一个等级积分下限为 %d 的会员等级';
 $_LANG['integral_max_exists'] = '已经存在一个等级积分上限为 %d 的会员等级';
 
-// JS 语言
+/* JS 语言 */
 $_LANG['js_languages']['remove_confirm'] = '您确定要删除选定的会员等级吗？';
 $_LANG['js_languages']['rank_name_empty'] = '您没有输入会员等级名称。';
 $_LANG['js_languages']['integral_min_invalid'] = '您没有输入积分下限或者积分下限不是一个整数。';
@@ -30,5 +30,4 @@ $_LANG['js_languages']['integral_max_invalid'] = '您没有输入积分上限或
 $_LANG['js_languages']['discount_invalid'] = '您没有输入折扣率或者折扣率无效。';
 $_LANG['js_languages']['integral_max_small'] = '积分上限必须大于积分下限。';
 $_LANG['js_languages']['lang_remove'] = '移除';
-
 return $_LANG;

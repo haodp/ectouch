@@ -52,11 +52,8 @@ class GoodsTypeController extends InitController
             $this->smarty->assign('record_count', $good_type_list['record_count']);
             $this->smarty->assign('page_count', $good_type_list['page_count']);
 
-            return make_json_result(
-                $this->smarty->fetch('goods_type.htm'),
-                '',
-                ['filter' => $good_type_list['filter'], 'page_count' => $good_type_list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('goods_type.htm'), '',
+                ['filter' => $good_type_list['filter'], 'page_count' => $good_type_list['page_count']]);
         }
 
         /**
@@ -203,7 +200,7 @@ class GoodsTypeController extends InitController
 
                 $url = 'goods_type.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-                $this->redirect($url);
+                return $this->redirect($url);
             } else {
                 return make_json_error($GLOBALS['_LANG']['remove_failed']);
             }

@@ -597,6 +597,8 @@ class SmsController extends InitController
 //            return $this->smarty->display('sms_my_info.htm');
 //        }
         }
+
+
     }
 
     private function shop_config_update($config_code, $config_value)

@@ -1,12 +1,12 @@
 <?php
 
 /**
- *  虚拟卡管理
+ * 虚拟卡管理
  */
 
-/**
- * 卡片信息
- */
+/*------------------------------------------------------ */
+//-- 卡片信息
+/*------------------------------------------------------ */
 $_LANG['virtual_card_list'] = '虚拟商品列表';
 $_LANG['lab_goods_name'] = '商品名称';
 $_LANG['replenish'] = '补货';
@@ -26,7 +26,7 @@ $_LANG['separator'] = '分隔符';
 $_LANG['uploadfile'] = '上传文件';
 $_LANG['sql_error'] = '第 %s 条信息出错：<br /> ';
 
-// 提示信息
+/* 提示信息 */
 $_LANG['replenish_no_goods_id'] = '缺少商品ID参数，无法进行补货操作';
 $_LANG['replenish_no_get_goods_name'] = '商品ID参数有误，无法获取商品名';
 $_LANG['drop_card_success'] = '该记录已成功删除';
@@ -51,9 +51,9 @@ $_LANG['use_help'] = '使用说明：' .
           '<li>卡号、卡片密码、截至日期中不要使用中文</li>' .
         '</ol>';
 
-/**
- * 改变加密串
- */
+/*------------------------------------------------------ */
+//-- 改变加密串
+/*------------------------------------------------------ */
 
 $_LANG['virtual_card_change'] = '更改加密串';
 $_LANG['user_guide'] = '使用说明：' .
@@ -76,5 +76,4 @@ $_LANG['new_stat'] = '<strong>更新完毕</strong>，现在使用新串加密�
 $_LANG['update_error'] = '更新过程中出错：%s';
 $_LANG['js_languages']['updating_info'] = '<strong>正在更新</strong>（每次 100 条记录）';
 $_LANG['js_languages']['updated_info'] = '<strong>已更新</strong> <span id=\"updated\">0</span> 条记录。';
-
 return $_LANG;

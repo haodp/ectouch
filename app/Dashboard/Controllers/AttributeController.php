@@ -53,11 +53,8 @@ class AttributeController extends InitController
             $sort_flag = sort_flag($list['filter']);
             $this->smarty->assign($sort_flag['tag'], $sort_flag['img']);
 
-            return make_json_result(
-                $this->smarty->fetch('attribute_list.htm'),
-                '',
-                ['filter' => $list['filter'], 'page_count' => $list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('attribute_list.htm'), '',
+                ['filter' => $list['filter'], 'page_count' => $list['page_count']]);
         }
 
         /**
@@ -236,7 +233,7 @@ class AttributeController extends InitController
 
             $url = 'attribute.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**

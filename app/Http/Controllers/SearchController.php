@@ -20,7 +20,7 @@ class SearchController extends InitController
             $string['search_encode_time'] = time();
             $string = str_replace('+', '%2b', base64_encode(serialize($string)));
 
-            return $this->redirect("search.php?encode=$string");
+            return redirect("search.php?encode=$string");
         } else {
             $string = base64_decode(trim($_GET['encode']));
             if ($string !== false) {
@@ -187,8 +187,8 @@ class SearchController extends InitController
 
         $sort = (isset($_REQUEST['sort']) && in_array(trim(strtolower($_REQUEST['sort'])), ['goods_id', 'shop_price', 'last_update'])) ? trim($_REQUEST['sort']) : $default_sort_order_type;
         $order = (isset($_REQUEST['order']) && in_array(trim(strtoupper($_REQUEST['order'])), ['ASC', 'DESC'])) ? trim($_REQUEST['order']) : $default_sort_order_method;
-        $display = (isset($_REQUEST['display']) && in_array(trim(strtolower($_REQUEST['display'])), ['list', 'grid', 'text'])) ? trim($_REQUEST['display']) : (session('?display_search') ? session('display_search') : $default_display_type);
-        session('display_search', $display);
+        $display = (isset($_REQUEST['display']) && in_array(trim(strtolower($_REQUEST['display'])), ['list', 'grid', 'text'])) ? trim($_REQUEST['display']) : (session()->has('display_search') ? session('display_search') : $default_display_type);
+        session(['display_search' => $display]);
 
         $page = !empty($_REQUEST['page']) && intval($_REQUEST['page']) > 0 ? intval($_REQUEST['page']) : 1;
         $size = !empty($GLOBALS['_CFG']['page_size']) && intval($GLOBALS['_CFG']['page_size']) > 0 ? intval($GLOBALS['_CFG']['page_size']) : 10;

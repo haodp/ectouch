@@ -46,11 +46,8 @@ class VoteController extends InitController
             $this->smarty->assign('record_count', $vote_list['record_count']);
             $this->smarty->assign('page_count', $vote_list['page_count']);
 
-            return make_json_result(
-                $this->smarty->fetch('vote_list.htm'),
-                '',
-                ['filter' => $vote_list['filter'], 'page_count' => $vote_list['page_count']]
-            );
+            return make_json_result($this->smarty->fetch('vote_list.htm'), '',
+                ['filter' => $vote_list['filter'], 'page_count' => $vote_list['page_count']]);
         }
 
         /**
@@ -214,7 +211,7 @@ class VoteController extends InitController
 
                     $url = 'vote.php?act=query_option&vid=' . $vote_id . '&' . str_replace('act=new_option', '', $_SERVER['QUERY_STRING']);
 
-                    $this->redirect($url);
+                    return $this->redirect($url);
                 }
             } else {
                 return make_json_error($GLOBALS['_LANG']['js_languages']['option_name_empty']);
@@ -297,7 +294,7 @@ class VoteController extends InitController
 
             $url = 'vote.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
 
         /**
@@ -316,7 +313,7 @@ class VoteController extends InitController
 
             $url = 'vote.php?act=query_option&vid=' . $vote_id . '&' . str_replace('act=remove_option', '', $_SERVER['QUERY_STRING']);
 
-            $this->redirect($url);
+            return $this->redirect($url);
         }
     }
 

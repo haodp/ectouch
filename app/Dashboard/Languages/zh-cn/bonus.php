@@ -1,9 +1,10 @@
 <?php
 
 /**
- *  红包类型/红包管理程序
+ * 红包类型/红包管理程序
  */
-// 红包类型字段信息
+
+ /* 红包类型字段信息 */
 $_LANG['bonus_type'] = '红包类型';
 $_LANG['bonus_list'] = '红包列表';
 $_LANG['type_name'] = '类型名称';
@@ -62,7 +63,7 @@ $_LANG['continue_add'] = '继续添加红包';
 $_LANG['back_bonus_list'] = '返回红包列表';
 $_LANG['validated_email'] = '只给通过邮件验证的用户发放红包';
 
-// 提示信息
+/* 提示信息 */
 $_LANG['attradd_succed'] = '操作成功!';
 $_LANG['js_languages']['type_name_empty'] = '请输入红包类型名称!';
 $_LANG['js_languages']['type_money_empty'] = '请输入红包类型价格!';
@@ -93,7 +94,7 @@ $_LANG['creat_bonus_num'] = ' 个红包序列号';
 $_LANG['bonus_sn_error'] = '红包序列号必须是数字!';
 $_LANG['send_user_notice'] = '给指定的用户发放红包时,请在此输入用户名, 多个用户之间请用逗号(,)分隔开<br />如:liry, wjz, zwj';
 
-// 红包信息字段
+/* 红包信息字段 */
 $_LANG['bonus_id'] = '编号';
 $_LANG['bonus_type_id'] = '类型金额';
 $_LANG['send_bonus_count'] = '红包数量';
@@ -120,5 +121,4 @@ $_LANG['confirm_send_bonus'] = '确定发送红包';
 $_LANG['bonus_not_exist'] = '该红包不存在';
 $_LANG['success_send_mail'] = '%d 封邮件已被加入邮件列表';
 $_LANG['send_continue'] = '继续发放红包';
-
 return $_LANG;

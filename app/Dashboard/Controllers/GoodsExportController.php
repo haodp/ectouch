@@ -514,7 +514,7 @@ class GoodsExportController extends InitController
 
         if ($_REQUEST['act'] == 'act_export_custom') {
             // 检查输出列
-            if (empty($_POST['custom_goods_export'])) {
+            if (empty ($_POST['custom_goods_export'])) {
                 return sys_msg($GLOBALS['_LANG']['custom_goods_field_not_null'], 1, [], false);
             }
 
@@ -593,12 +593,13 @@ class GoodsExportController extends InitController
         }
 
         if ($_REQUEST['act'] == 'get_goods_list') {
+
             $json = new Json();
             $filters = $json->decode($_REQUEST['JSON']);
             $arr = get_goods_list($filters);
             $opt = [];
 
-            foreach ($arr as $key => $val) {
+            foreach ($arr AS $key => $val) {
                 $opt[] = ['goods_id' => $val['goods_id'],
                     'goods_name' => $val['goods_name']
                 ];
@@ -676,6 +677,7 @@ class GoodsExportController extends InitController
                 }
 
                 $content .= implode("\t", $goods_value) . "\n";
+
             }
             if (CHARSET != 'utf-8') {
                 $content = ecs_iconv(CHARSET, 'utf-8', $content);
@@ -728,6 +730,7 @@ class GoodsExportController extends InitController
                     }
                     $start += 3;
                 } elseif ($num < 248) {
+
                     if ($start + 3 < $len) {
                         $num = (ord($str{$start}) & 0x0f) << 18;
                         $num += (ord($str{$start + 1}) & 0x3f) << 12;
@@ -748,6 +751,7 @@ class GoodsExportController extends InitController
                     $start += 6;
                 }
             }
+
         }
 
         return $result;
