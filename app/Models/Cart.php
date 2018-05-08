@@ -6,30 +6,37 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Cart
- * @package App\Models
- * @property $user_id
- * @property $session_id
- * @property $goods_id
- * @property $goods_sn
- * @property $product_id
- * @property $goods_name
- * @property $market_price
- * @property $goods_price
- * @property $goods_number
- * @property $goods_attr
- * @property $is_real
- * @property $extension_code
- * @property $parent_id
- * @property $rec_type
- * @property $is_gift
- * @property $is_shipping
- * @property $can_handsel
- * @property $goods_attr_id
  */
 class Cart extends Model
 {
     protected $table = 'cart';
 
-    protected $pk = 'rec_id';
+    protected $primaryKey = 'rec_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'user_id',
+        'session_id',
+        'goods_id',
+        'goods_sn',
+        'product_id',
+        'goods_name',
+        'market_price',
+        'goods_price',
+        'goods_number',
+        'goods_attr',
+        'is_real',
+        'extension_code',
+        'parent_id',
+        'rec_type',
+        'is_gift',
+        'is_shipping',
+        'can_handsel',
+        'goods_attr_id'
+    ];
+
+    protected $guarded = [];
+
+        
 }

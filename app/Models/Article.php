@@ -6,25 +6,32 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Article
- * @package App\Models
- * @property $cat_id
- * @property $title
- * @property $content
- * @property $author
- * @property $author_email
- * @property $keywords
- * @property $article_type
- * @property $is_open
- * @property $add_time
- * @property $file_url
- * @property $open_type
- * @property $link
- * @property $description
  */
 class Article extends Model
 {
     protected $table = 'article';
 
-    protected $pk = 'article_id';
+    protected $primaryKey = 'article_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'cat_id',
+        'title',
+        'content',
+        'author',
+        'author_email',
+        'keywords',
+        'article_type',
+        'is_open',
+        'add_time',
+        'file_url',
+        'open_type',
+        'link',
+        'description'
+    ];
+
+    protected $guarded = [];
+
+        
 }

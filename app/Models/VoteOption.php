@@ -6,16 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class VoteOption
- * @package App\Models
- * @property $vote_id
- * @property $option_name
- * @property $option_count
- * @property $option_order
  */
 class VoteOption extends Model
 {
     protected $table = 'vote_option';
 
-    protected $pk = 'option_id';
+    protected $primaryKey = 'option_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'vote_id',
+        'option_name',
+        'option_count',
+        'option_order'
+    ];
+
+    protected $guarded = [];
+
+        
 }

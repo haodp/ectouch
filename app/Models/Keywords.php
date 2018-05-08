@@ -6,14 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Keywords
- * @package App\Models
- * @property $date
- * @property $searchengine
- * @property $keyword
- * @property $count
  */
 class Keywords extends Model
 {
     protected $table = 'keywords';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'date',
+        'searchengine',
+        'keyword',
+        'count'
+    ];
+
+    protected $guarded = [];
+
+        
 }

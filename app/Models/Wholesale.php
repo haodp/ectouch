@@ -6,17 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Wholesale
- * @package App\Models
- * @property $goods_id
- * @property $goods_name
- * @property $rank_ids
- * @property $prices
- * @property $enabled
  */
 class Wholesale extends Model
 {
     protected $table = 'wholesale';
 
-    protected $pk = 'act_id';
+    protected $primaryKey = 'act_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'goods_id',
+        'goods_name',
+        'rank_ids',
+        'prices',
+        'enabled'
+    ];
+
+    protected $guarded = [];
+
+        
 }

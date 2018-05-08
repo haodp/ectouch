@@ -6,18 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserRank
- * @package App\Models
- * @property $rank_name
- * @property $min_points
- * @property $max_points
- * @property $discount
- * @property $show_price
- * @property $special_rank
  */
 class UserRank extends Model
 {
     protected $table = 'user_rank';
 
-    protected $pk = 'rank_id';
+    protected $primaryKey = 'rank_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'rank_name',
+        'min_points',
+        'max_points',
+        'discount',
+        'show_price',
+        'special_rank'
+    ];
+
+    protected $guarded = [];
+
+        
 }

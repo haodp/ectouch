@@ -6,7 +6,6 @@ use App\Libraries\Shop;
 use App\Libraries\Error;
 use App\Libraries\Mysql;
 use App\Libraries\Template;
-use dao\Controller;
 
 class InitController extends Controller
 {

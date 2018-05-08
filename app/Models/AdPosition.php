@@ -6,17 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AdPosition
- * @package App\Models
- * @property $position_name
- * @property $ad_width
- * @property $ad_height
- * @property $position_desc
- * @property $position_style
  */
 class AdPosition extends Model
 {
     protected $table = 'ad_position';
 
-    protected $pk = 'position_id';
+    protected $primaryKey = 'position_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'position_name',
+        'ad_width',
+        'ad_height',
+        'position_desc',
+        'position_style'
+    ];
+
+    protected $guarded = [];
+
+        
 }

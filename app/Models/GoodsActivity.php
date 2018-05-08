@@ -6,22 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class GoodsActivity
- * @package App\Models
- * @property $act_name
- * @property $act_desc
- * @property $act_type
- * @property $goods_id
- * @property $product_id
- * @property $goods_name
- * @property $start_time
- * @property $end_time
- * @property $is_finished
- * @property $ext_info
  */
 class GoodsActivity extends Model
 {
     protected $table = 'goods_activity';
 
-    protected $pk = 'act_id';
+    protected $primaryKey = 'act_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'act_name',
+        'act_desc',
+        'act_type',
+        'goods_id',
+        'product_id',
+        'goods_name',
+        'start_time',
+        'end_time',
+        'is_finished',
+        'ext_info'
+    ];
+
+    protected $guarded = [];
+
+        
 }

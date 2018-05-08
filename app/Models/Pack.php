@@ -6,17 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Pack
- * @package App\Models
- * @property $pack_name
- * @property $pack_img
- * @property $pack_fee
- * @property $free_money
- * @property $pack_desc
  */
 class Pack extends Model
 {
     protected $table = 'pack';
 
-    protected $pk = 'pack_id';
+    protected $primaryKey = 'pack_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'pack_name',
+        'pack_img',
+        'pack_fee',
+        'free_money',
+        'pack_desc'
+    ];
+
+    protected $guarded = [];
+
+        
 }

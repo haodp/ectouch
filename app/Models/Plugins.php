@@ -6,16 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Plugins
- * @package App\Models
- * @property $version
- * @property $library
- * @property $assign
- * @property $install_date
  */
 class Plugins extends Model
 {
     protected $table = 'plugins';
 
-    protected $pk = 'code';
+    protected $primaryKey = 'code';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'version',
+        'library',
+        'assign',
+        'install_date'
+    ];
+
+    protected $guarded = [];
+
+        
 }

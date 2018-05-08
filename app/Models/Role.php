@@ -6,15 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Role
- * @package App\Models
- * @property $role_name
- * @property $action_list
- * @property $role_describe
  */
 class Role extends Model
 {
     protected $table = 'role';
 
-    protected $pk = 'role_id';
+    protected $primaryKey = 'role_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'role_name',
+        'action_list',
+        'role_describe'
+    ];
+
+    protected $guarded = [];
+
+        
 }

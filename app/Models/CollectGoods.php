@@ -6,16 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class CollectGoods
- * @package App\Models
- * @property $user_id
- * @property $goods_id
- * @property $add_time
- * @property $is_attention
  */
 class CollectGoods extends Model
 {
     protected $table = 'collect_goods';
 
-    protected $pk = 'rec_id';
+    protected $primaryKey = 'rec_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'user_id',
+        'goods_id',
+        'add_time',
+        'is_attention'
+    ];
+
+    protected $guarded = [];
+
+        
 }

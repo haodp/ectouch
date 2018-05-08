@@ -6,15 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class MemberPrice
- * @package App\Models
- * @property $goods_id
- * @property $user_rank
- * @property $user_price
  */
 class MemberPrice extends Model
 {
     protected $table = 'member_price';
 
-    protected $pk = 'price_id';
+    protected $primaryKey = 'price_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'goods_id',
+        'user_rank',
+        'user_price'
+    ];
+
+    protected $guarded = [];
+
+        
 }

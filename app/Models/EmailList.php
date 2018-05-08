@@ -6,13 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class EmailList
- * @package App\Models
- * @property $email
- * @property $stat
- * @property $hash
  */
 class EmailList extends Model
 {
     protected $table = 'email_list';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'email',
+        'stat',
+        'hash'
+    ];
+
+    protected $guarded = [];
+
+        
 }

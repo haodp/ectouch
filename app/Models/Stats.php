@@ -6,20 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Stats
- * @package App\Models
- * @property $access_time
- * @property $ip_address
- * @property $visit_times
- * @property $browser
- * @property $system
- * @property $language
- * @property $area
- * @property $referer_domain
- * @property $referer_path
- * @property $access_url
  */
 class Stats extends Model
 {
     protected $table = 'stats';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'access_time',
+        'ip_address',
+        'visit_times',
+        'browser',
+        'system',
+        'language',
+        'area',
+        'referer_domain',
+        'referer_path',
+        'access_url'
+    ];
+
+    protected $guarded = [];
+
+        
 }

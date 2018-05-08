@@ -6,14 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Agency
- * @package App\Models
- * @property $agency_name
- * @property $agency_desc
  */
 class Agency extends Model
 {
     protected $table = 'agency';
 
-    protected $pk = 'agency_id';
+    protected $primaryKey = 'agency_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'agency_name',
+        'agency_desc'
+    ];
+
+    protected $guarded = [];
+
+        
 }

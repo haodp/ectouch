@@ -6,16 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AuctionLog
- * @package App\Models
- * @property $act_id
- * @property $bid_user
- * @property $bid_price
- * @property $bid_time
  */
 class AuctionLog extends Model
 {
     protected $table = 'auction_log';
 
-    protected $pk = 'log_id';
+    protected $primaryKey = 'log_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'act_id',
+        'bid_user',
+        'bid_price',
+        'bid_time'
+    ];
+
+    protected $guarded = [];
+
+        
 }

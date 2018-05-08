@@ -6,14 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class LinkGoods
- * @package App\Models
- * @property $goods_id
- * @property $link_goods_id
- * @property $is_double
- * @property $admin_id
  */
 class LinkGoods extends Model
 {
     protected $table = 'link_goods';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'goods_id',
+        'link_goods_id',
+        'is_double',
+        'admin_id'
+    ];
+
+    protected $guarded = [];
+
+        
 }

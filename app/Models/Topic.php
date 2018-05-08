@@ -6,24 +6,31 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Topic
- * @package App\Models
- * @property $topic_id
- * @property $title
- * @property $intro
- * @property $start_time
- * @property $end_time
- * @property $data
- * @property $template
- * @property $css
- * @property $topic_img
- * @property $title_pic
- * @property $base_style
- * @property $htmls
- * @property $keywords
- * @property $description
  */
 class Topic extends Model
 {
     protected $table = 'topic';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'topic_id',
+        'title',
+        'intro',
+        'start_time',
+        'end_time',
+        'data',
+        'template',
+        'css',
+        'topic_img',
+        'title_pic',
+        'base_style',
+        'htmls',
+        'keywords',
+        'description'
+    ];
+
+    protected $guarded = [];
+
+        
 }

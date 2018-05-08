@@ -6,14 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AutoManage
- * @package App\Models
- * @property $item_id
- * @property $type
- * @property $starttime
- * @property $endtime
  */
 class AutoManage extends Model
 {
     protected $table = 'auto_manage';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'item_id',
+        'type',
+        'starttime',
+        'endtime'
+    ];
+
+    protected $guarded = [];
+
+        
 }

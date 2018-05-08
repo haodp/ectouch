@@ -6,14 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class GroupGoods
- * @package App\Models
- * @property $parent_id
- * @property $goods_id
- * @property $goods_price
- * @property $admin_id
  */
 class GroupGoods extends Model
 {
     protected $table = 'group_goods';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'parent_id',
+        'goods_id',
+        'goods_price',
+        'admin_id'
+    ];
+
+    protected $guarded = [];
+
+        
 }

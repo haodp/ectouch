@@ -2,30 +2,40 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class AdminUser
- * @package App\Models
- * @property $user_name
- * @property $email
- * @property $password
- * @property $ec_salt
- * @property $add_time
- * @property $last_login
- * @property $last_ip
- * @property $action_list
- * @property $nav_list
- * @property $lang_type
- * @property $agency_id
- * @property $suppliers_id
- * @property $todolist
- * @property $role_id
  */
-class AdminUser extends Model
+class AdminUser extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'admin_user';
 
-    protected $pk = 'user_id';
+    protected $primaryKey = 'user_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'user_name',
+        'email',
+        'password',
+        'ec_salt',
+        'add_time',
+        'last_login',
+        'last_ip',
+        'action_list',
+        'nav_list',
+        'lang_type',
+        'agency_id',
+        'suppliers_id',
+        'todolist',
+        'role_id'
+    ];
+
+    protected $guarded = [];
+
+        
 }

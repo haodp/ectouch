@@ -6,41 +6,48 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class DeliveryOrder
- * @package App\Models
- * @property $delivery_sn
- * @property $order_sn
- * @property $order_id
- * @property $invoice_no
- * @property $add_time
- * @property $shipping_id
- * @property $shipping_name
- * @property $user_id
- * @property $action_user
- * @property $consignee
- * @property $address
- * @property $country
- * @property $province
- * @property $city
- * @property $district
- * @property $sign_building
- * @property $email
- * @property $zipcode
- * @property $tel
- * @property $mobile
- * @property $best_time
- * @property $postscript
- * @property $how_oos
- * @property $insure_fee
- * @property $shipping_fee
- * @property $update_time
- * @property $suppliers_id
- * @property $status
- * @property $agency_id
  */
 class DeliveryOrder extends Model
 {
     protected $table = 'delivery_order';
 
-    protected $pk = 'delivery_id';
+    protected $primaryKey = 'delivery_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'delivery_sn',
+        'order_sn',
+        'order_id',
+        'invoice_no',
+        'add_time',
+        'shipping_id',
+        'shipping_name',
+        'user_id',
+        'action_user',
+        'consignee',
+        'address',
+        'country',
+        'province',
+        'city',
+        'district',
+        'sign_building',
+        'email',
+        'zipcode',
+        'tel',
+        'mobile',
+        'best_time',
+        'postscript',
+        'how_oos',
+        'insure_fee',
+        'shipping_fee',
+        'update_time',
+        'suppliers_id',
+        'status',
+        'agency_id'
+    ];
+
+    protected $guarded = [];
+
+        
 }

@@ -6,27 +6,34 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class OrderGoods
- * @package App\Models
- * @property $order_id
- * @property $goods_id
- * @property $goods_name
- * @property $goods_sn
- * @property $product_id
- * @property $goods_number
- * @property $market_price
- * @property $goods_price
- * @property $goods_attr
- * @property $send_number
- * @property $is_real
- * @property $extension_code
- * @property $parent_id
- * @property $is_gift
- * @property $goods_attr_id
  */
 class OrderGoods extends Model
 {
     protected $table = 'order_goods';
 
-    protected $pk = 'rec_id';
+    protected $primaryKey = 'rec_id';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'order_id',
+        'goods_id',
+        'goods_name',
+        'goods_sn',
+        'product_id',
+        'goods_number',
+        'market_price',
+        'goods_price',
+        'goods_attr',
+        'send_number',
+        'is_real',
+        'extension_code',
+        'parent_id',
+        'is_gift',
+        'goods_attr_id'
+    ];
+
+    protected $guarded = [];
+
+        
 }

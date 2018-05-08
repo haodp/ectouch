@@ -6,13 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class GoodsArticle
- * @package App\Models
- * @property $goods_id
- * @property $article_id
- * @property $admin_id
  */
 class GoodsArticle extends Model
 {
     protected $table = 'goods_article';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'goods_id',
+        'article_id',
+        'admin_id'
+    ];
+
+    protected $guarded = [];
+
+        
 }
