@@ -16,6 +16,7 @@ class Region extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'region_id',
         'parent_id',
         'region_name',
         'region_type',
@@ -24,5 +25,4 @@ class Region extends Model
 
     protected $guarded = [];
 
-        
 }
