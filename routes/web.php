@@ -11,170 +11,170 @@
 |
 */
 
-Route::any('/', 'IndexController@index');
+Route::any('/', 'Index/index');
 
-Route::any('activity.php', 'ActivityController@index');
+Route::any('activity.php', 'Activity/index');
 
-Route::any('affiche.php', 'AfficheController@index');
+Route::any('affiche.php', 'Affiche/index');
 
-Route::any('affiliate.php', 'AffiliateController@index');
+Route::any('affiliate.php', 'Affiliate/index');
 
-Route::any('api.php', 'ApiController@index');
+Route::any('api.php', 'Api/index');
 
-Route::any('article-{id}{s?}.html', 'ArticleController@index')
-    ->where(['id' => '[0-9]+', 's' => '.*']);
+Route::any('article-<id><s?>', 'Article/index')
+    ->pattern(['id' => '[0-9]+', 's' => '.*']);
 
-Route::any('article.php', 'ArticleController@index');
+Route::any('article.php', 'Article/index');
 
-Route::any('article_cat-{id}-{page}-{sort}-{order}{s?}.html', 'ArticleCatController@index')
-    ->where(['id' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
+Route::any('article_cat-<id>-<page>-<sort>-<order><s?>', 'ArticleCat/index')
+    ->pattern(['id' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
 
-Route::any('article_cat-{id}-{page}-{keywords}{s?}.html', 'ArticleCatController@index')
-    ->where(['id' => '[0-9]+', 'page' => '[0-9]+', 'keywords' => '.+', 's' => '.*']);
+Route::any('article_cat-<id>-<page>-<keywords><s?>', 'ArticleCat/index')
+    ->pattern(['id' => '[0-9]+', 'page' => '[0-9]+', 'keywords' => '.+', 's' => '.*']);
 
-Route::any('article_cat-{id}-{page}{s?}.html', 'ArticleCatController@index')
-    ->where(['id' => '[0-9]+', 'page' => '[0-9]+', 's' => '.*']);
+Route::any('article_cat-<id>-<page><s?>', 'ArticleCat/index')
+    ->pattern(['id' => '[0-9]+', 'page' => '[0-9]+', 's' => '.*']);
 
-Route::any('article_cat-{id}{s?}.html', 'ArticleCatController@index')
-    ->where(['id' => '[0-9]+', 's' => '.*']);
+Route::any('article_cat-<id><s?>', 'ArticleCat/index')
+    ->pattern(['id' => '[0-9]+', 's' => '.*']);
 
-Route::any('article_cat.php', 'ArticleCatController@index');
+Route::any('article_cat.php', 'ArticleCat/index');
 
-Route::any('auction-{id}.html', 'auctionController@index')
-    // ->bind('act', 'view')
-    ->where(['id' => '[0-9]+']);
+Route::any('auction-<id>', 'auction/index')
+    ->append(['act' => 'view'])
+    ->pattern(['id' => '[0-9]+']);
 
-Route::any('auction.php', 'AuctionController@index');
+Route::any('auction.php', 'Auction/index');
 
-Route::any('brand-{id}-c{cat}-{page}-{sort}-{order}.html', 'BrandController@index')
-    ->where(['id' => '[0-9]+', 'cat' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+']);
+Route::any('brand-<id>-c<cat>-<page>-<sort>-<order>', 'Brand/index')
+    ->pattern(['id' => '[0-9]+', 'cat' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+']);
 
-Route::any('brand-{id}-c{cat}-{page}{s?}.html', 'BrandController@index')
-    ->where(['id' => '[0-9]+', 'cat' => '[0-9]+', 'page' => '[0-9]+', 's' => '.*']);
+Route::any('brand-<id>-c<cat>-<page><s?>', 'Brand/index')
+    ->pattern(['id' => '[0-9]+', 'cat' => '[0-9]+', 'page' => '[0-9]+', 's' => '.*']);
 
-Route::any('brand-{id}-c{cat}{s?}.html', 'BrandController@index')
-    ->where(['id' => '[0-9]+', 'cat' => '[0-9]+', 's' => '.*']);
+Route::any('brand-<id>-c<cat><s?>', 'Brand/index')
+    ->pattern(['id' => '[0-9]+', 'cat' => '[0-9]+', 's' => '.*']);
 
-Route::any('brand-{id}{s?}.html', 'BrandController@index')
-    ->where(['id' => '[0-9]+', 's' => '.*']);
+Route::any('brand-<id><s?>', 'Brand/index')
+    ->pattern(['id' => '[0-9]+', 's' => '.*']);
 
-Route::any('brand.php', 'BrandController@index');
+Route::any('brand.php', 'Brand/index');
 
-Route::any('captcha.php', 'CaptchaController@index');
+Route::any('captcha.php', 'Captcha/index');
 
-Route::any('catalog.php', 'CatalogController@index');
+Route::any('catalog.php', 'Catalog/index');
 
-Route::any('category-{id}-b{brand}-min{price_min}-max{price_max}-attr{filter_attr}-{page}-{sort}-{order}{s?}.html', 'CategoryController@index')
-    ->where(['id' => '[0-9]+', 'brand' => '[0-9]+', 'price_min' => '[0-9]+', 'price_max' => '[0-9]+', 'filter_attr' => '[^-]*', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
+Route::any('category-<id>-b<brand>-min<price_min>-max<price_max>-attr<filter_attr>-<page>-<sort>-<order><s?>', 'Category/index')
+    ->pattern(['id' => '[0-9]+', 'brand' => '[0-9]+', 'price_min' => '[0-9]+', 'price_max' => '[0-9]+', 'filter_attr' => '[^-]*', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
 
-Route::any('category-{id}-b{brand}-min{price_min}-max{price_max}-attr{filter_attr}{s?}.html', 'CategoryController@index')
-    ->where(['id' => '[0-9]+', 'brand' => '[0-9]+', 'price_min' => '[0-9]+', 'price_max' => '[0-9]+', 'filter_attr' => '[^-]*', 's' => '.*']);
+Route::any('category-<id>-b<brand>-min<price_min>-max<price_max>-attr<filter_attr><s?>', 'Category/index')
+    ->pattern(['id' => '[0-9]+', 'brand' => '[0-9]+', 'price_min' => '[0-9]+', 'price_max' => '[0-9]+', 'filter_attr' => '[^-]*', 's' => '.*']);
 
-Route::any('category-{id}-b{brand}-{page}-{sort}-{order}{s?}.html', 'CategoryController@index')
-    ->where(['id' => '[0-9]+', 'brand' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
+Route::any('category-<id>-b<brand>-<page>-<sort>-<order><s?>', 'Category/index')
+    ->pattern(['id' => '[0-9]+', 'brand' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
 
-Route::any('category-{id}-b{brand}-{page}{s?}.html', 'CategoryController@index')
-    ->where(['id' => '[0-9]+', 'brand' => '[0-9]+', 'page' => '[0-9]+', 's' => '.*']);
+Route::any('category-<id>-b<brand>-<page><s?>', 'Category/index')
+    ->pattern(['id' => '[0-9]+', 'brand' => '[0-9]+', 'page' => '[0-9]+', 's' => '.*']);
 
-Route::any('category-{id}-b{brand}{s?}.html', 'CategoryController@index')
-    ->where(['id' => '[0-9]+', 'brand' => '[0-9]+', 's' => '.*']);
+Route::any('category-<id>-b<brand><s?>', 'Category/index')
+    ->pattern(['id' => '[0-9]+', 'brand' => '[0-9]+', 's' => '.*']);
 
-Route::any('category-{id}{s?}.html', 'CategoryController@index')
-    ->where(['id' => '[0-9]+', 's' => '.*']);
+Route::any('category-<id><s?>', 'Category/index')
+    ->pattern(['id' => '[0-9]+', 's' => '.*']);
 
-Route::any('category.php', 'CategoryController@index');
+Route::any('category.php', 'Category/index');
 
-Route::any('certi.php', 'CertiController@index');
+Route::any('certi.php', 'Certi/index');
 
-Route::any('comment.php', 'CommentController@index');
+Route::any('comment.php', 'Comment/index');
 
-Route::any('compare.php', 'CompareController@index');
+Route::any('compare.php', 'Compare/index');
 
-Route::any('cycle_image.php', 'CycleImageController@index');
+Route::any('cycle_image.php', 'CycleImage/index');
 
-Route::any('exchange-id{id}{s?}.html', 'ExchangeController@index')
-    // ->bind('act', 'view')
-    ->where(['id' => '[0-9]+', 's' => '.*']);
+Route::any('exchange-id<id><s?>', 'Exchange/index')
+    ->append(['act' => 'view'])
+    ->pattern(['id' => '[0-9]+', 's' => '.*']);
 
-Route::any('exchange-{cat_id}-min{integral_min}-max{integral_max}-{page}-{sort}-{order}{s?}.html', 'ExchangeController@index')
-    ->where(['cat_id' => '[0-9]+', 'integral_min' => '[0-9]+', 'integral_max' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
+Route::any('exchange-<cat_id>-min<integral_min>-max<integral_max>-<page>-<sort>-<order><s?>', 'Exchange/index')
+    ->pattern(['cat_id' => '[0-9]+', 'integral_min' => '[0-9]+', 'integral_max' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
 
-Route::any('exchange-{cat_id}-{page}-{sort}-{order}{s?}.html', 'ExchangeController@index')
-    ->where(['cat_id' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
+Route::any('exchange-<cat_id>-<page>-<sort>-<order><s?>', 'Exchange/index')
+    ->pattern(['cat_id' => '[0-9]+', 'page' => '[0-9]+', 'sort' => '.+', 'order' => '[a-zA-Z]+', 's' => '.*']);
 
-Route::any('exchange-{cat_id}-{page}{s?}.html', 'ExchangeController@index')
-    ->where(['id' => '[0-9]+', 'page' => '[0-9]+', 's' => '.*']);
+Route::any('exchange-<cat_id>-<page><s?>', 'Exchange/index')
+    ->pattern(['id' => '[0-9]+', 'page' => '[0-9]+', 's' => '.*']);
 
-Route::any('exchange-{cat_id}{s?}.html', 'ExchangeController@index')
-    ->where(['id' => '[0-9]+', 's' => '.*']);
+Route::any('exchange-<cat_id><s?>', 'Exchange/index')
+    ->pattern(['id' => '[0-9]+', 's' => '.*']);
 
-Route::any('exchange.php', 'ExchangeController@index');
+Route::any('exchange.php', 'Exchange/index');
 
-Route::any('feed-c{cat}.xml', 'FeedController@index')
-    ->where(['cat' => '[0-9]+']);
+Route::any('feed-c<cat>.xml', 'Feed/index')
+    ->pattern(['cat' => '[0-9]+']);
 
-Route::any('feed-b{brand}.xml', 'FeedController@index')
-    ->where(['brand' => '[0-9]+']);
+Route::any('feed-b<brand>.xml', 'Feed/index')
+    ->pattern(['brand' => '[0-9]+']);
 
-Route::any('feed-type{type}.xml', 'FeedController@index')
-    ->where(['type' => '[^-]+']);
+Route::any('feed-type<type>.xml', 'Feed/index')
+    ->pattern(['type' => '[^-]+']);
 
-Route::any('feed.{ext}', 'FeedController@index')
-    ->where(['ext' => 'xml|php']);
+Route::any('feed.<ext>', 'Feed/index')
+    ->pattern(['ext' => 'xml|php']);
 
-Route::any('flow.php', 'FlowController@index');
+Route::any('flow.php', 'Flow/index');
 
-Route::any('gallery.php', 'GalleryController@index');
+Route::any('gallery.php', 'Gallery/index');
 
-Route::any('goods-{id}{s?}.html', 'GoodsController@index')
-    ->where(['id' => '[0-9]+', 's' => '.*']);
+Route::any('goods-<id><s?>', 'Goods/index')
+    ->pattern(['id' => '[0-9]+', 's' => '.*']);
 
-Route::any('goods.php', 'GoodsController@index');
+Route::any('goods.php', 'Goods/index');
 
-Route::any('goods_script.php', 'GoodsScriptController@index');
+Route::any('goods_script.php', 'GoodsScript/index');
 
-Route::any('group_buy-{id}.html', 'GroupBuyController@index')
-    // ->bind('act', 'view')
-    ->where(['id' => '[0-9]+']);
+Route::any('group_buy-<id>', 'GroupBuy/index')
+    ->append(['act' => 'view'])
+    ->pattern(['id' => '[0-9]+']);
 
-Route::any('group_buy.php', 'GroupBuyController@index');
+Route::any('group_buy.php', 'GroupBuy/index');
 
-Route::any('message.php', 'MessageController@index');
+Route::any('message.php', 'Message/index');
 
-Route::any('myship.php', 'MyshipController@index');
+Route::any('myship.php', 'Myship/index');
 
-Route::any('package.php', 'PackageController@index');
+Route::any('package.php', 'Package/index');
 
-Route::any('pick_out.php', 'PickOutController@index');
+Route::any('pick_out.php', 'PickOut/index');
 
-Route::any('pm.php', 'PmController@index');
+Route::any('pm.php', 'Pm/index');
 
-Route::any('quotation.php', 'QuotationController@index');
+Route::any('quotation.php', 'Quotation/index');
 
-Route::any('receive.php', 'ReceiveController@index');
+Route::any('receive.php', 'Receive/index');
 
-Route::any('region.php', 'RegionController@index');
+Route::any('region.php', 'Region/index');
 
-Route::any('respond.php', 'RespondController@index');
+Route::any('respond.php', 'Respond/index');
 
-Route::any('tag-{keywords}.html', 'SearchController@index')
-    ->where(['keywords' => '.*']);
+Route::any('tag-<keywords>', 'Search/index')
+    ->pattern(['keywords' => '.*']);
 
-Route::any('search.php', 'SearchController@index');
+Route::any('search.php', 'Search/index');
 
-Route::any('sitemaps.php', 'SitemapsController@index');
+Route::any('sitemaps.php', 'Sitemaps/index');
 
-Route::any('snatch-{id}.html', 'SnatchController@index')
-    ->where(['id' => '[0-9]+']);
+Route::any('snatch-<id>', 'Snatch/index')
+    ->pattern(['id' => '[0-9]+']);
 
-Route::any('snatch.php', 'SnatchController@index');
+Route::any('snatch.php', 'Snatch/index');
 
-Route::any('tag_cloud.php', 'TagCloudController@index');
+Route::any('tag_cloud.php', 'TagCloud/index');
 
-Route::any('topic.php', 'TopicController@index');
+Route::any('topic.php', 'Topic/index');
 
-Route::any('user.php', 'UserController@index');
+Route::any('user.php', 'User/index');
 
-Route::any('vote.php', 'VoteController@index');
+Route::any('vote.php', 'Vote/index');
 
-Route::any('wholesale.php', 'WholesaleController@index');
+Route::any('wholesale.php', 'Wholesale/index');

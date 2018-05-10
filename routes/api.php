@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,226 +11,219 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group('api', function () {
 
-Route::namespace('App\Api\Controllers\V2')->prefix('v2')->group(function () {
+    Route::get('article.{id}', 'api/Article/show')
+        ->pattern(['id' => '[0-9]+']);
 
-    Route::get('article.{id}', 'ArticleController@show')
-        ->where(['id' => '[0-9]+']);
+    Route::get('notice.{id:[0-9]+}', 'api/Notice/show');
 
-    Route::get('notice.{id:[0-9]+}', 'NoticeController@show');
+    Route::post('order.notify.{code}', 'api/Order/notify');
 
-    Route::post('order.notify.{code}', 'OrderController@notify');
+    Route::get('product.intro.{id:[0-9]+}', 'api/Goods/intro');
 
-    Route::get('product.intro.{id:[0-9]+}', 'GoodsController@intro');
+    Route::get('product.share.{id:[0-9]+}', 'api/Goods/share');
 
-    Route::get('product.share.{id:[0-9]+}', 'GoodsController@share');
+    Route::get('ecapi.auth.web', 'api/User/webOauth');
 
-    Route::get('ecapi.auth.web', 'UserController@webOauth');
-
-    Route::get('ecapi.auth.web.callback/{vendor:[0-9]+}', 'UserController@webCallback');
+    Route::get('ecapi.auth.web.callback/{vendor:[0-9]+}', 'api/User/webCallback');
 
     // Guest
-    Route::middleware(['xss'])->group(function () {
+    Route::post('ecapi.access.dns', 'api/Access/dns');
 
-        Route::post('ecapi.access.dns', 'AccessController@dns');
+    Route::post('ecapi.access.batch', 'api/Access/batch');
 
-        Route::post('ecapi.access.batch', 'AccessController@batch');
+    Route::post('ecapi.category.list', 'api/Goods/category');
 
-        Route::post('ecapi.category.list', 'GoodsController@category');
+    Route::post('ecapi.product.list', 'api/Goods/index');
 
-        Route::post('ecapi.product.list', 'GoodsController@index');
+    Route::post('ecapi.home.product.list', 'api/Goods/home');
 
-        Route::post('ecapi.home.product.list', 'GoodsController@home');
+    Route::post('ecapi.search.product.list', 'api/Goods/search');
 
-        Route::post('ecapi.search.product.list', 'GoodsController@search');
+    Route::post('ecapi.review.product.list', 'api/Goods/review');
 
-        Route::post('ecapi.review.product.list', 'GoodsController@review');
+    Route::post('ecapi.review.product.subtotal', 'api/Goods/subtotal');
 
-        Route::post('ecapi.review.product.subtotal', 'GoodsController@subtotal');
+    Route::post('ecapi.recommend.product.list', 'api/Goods/recommendList');
 
-        Route::post('ecapi.recommend.product.list', 'GoodsController@recommendList');
+    Route::post('ecapi.product.accessory.list', 'api/Goods/accessoryList');
 
-        Route::post('ecapi.product.accessory.list', 'GoodsController@accessoryList');
+    Route::post('ecapi.product.get', 'api/Goods/info');
 
-        Route::post('ecapi.product.get', 'GoodsController@info');
+    Route::post('ecapi.auth.signin', 'api/User/signin');
 
-        Route::post('ecapi.auth.signin', 'UserController@signin');
+    Route::post('ecapi.auth.social', 'api/User/auth');
 
-        Route::post('ecapi.auth.social', 'UserController@auth');
+    Route::post('ecapi.auth.default.signup', 'api/User/signupByEmail');
 
-        Route::post('ecapi.auth.default.signup', 'UserController@signupByEmail');
+    Route::post('ecapi.auth.mobile.signup', 'api/User/signupByMobile');
 
-        Route::post('ecapi.auth.mobile.signup', 'UserController@signupByMobile');
+    Route::post('ecapi.user.profile.fields', 'api/User/fields');
 
-        Route::post('ecapi.user.profile.fields', 'UserController@fields');
+    Route::post('ecapi.auth.mobile.verify', 'api/User/verifyMobile');
 
-        Route::post('ecapi.auth.mobile.verify', 'UserController@verifyMobile');
+    Route::post('ecapi.auth.mobile.send', 'api/User/sendCode');
 
-        Route::post('ecapi.auth.mobile.send', 'UserController@sendCode');
+    Route::post('ecapi.auth.mobile.reset', 'api/User/resetPasswordByMobile');
 
-        Route::post('ecapi.auth.mobile.reset', 'UserController@resetPasswordByMobile');
+    Route::post('ecapi.auth.default.reset', 'api/User/resetPasswordByEmail');
 
-        Route::post('ecapi.auth.default.reset', 'UserController@resetPasswordByEmail');
+    Route::post('ecapi.cardpage.get', 'api/CardPage/view');
 
-        Route::post('ecapi.cardpage.get', 'CardPageController@view');
+    Route::post('ecapi.cardpage.preview', 'api/CardPage/preview');
 
-        Route::post('ecapi.cardpage.preview', 'CardPageController@preview');
+    Route::post('ecapi.config.get', 'api/Config/index');
 
-        Route::post('ecapi.config.get', 'ConfigController@index');
+    Route::post('ecapi.article.list', 'api/Article/index');
 
-        Route::post('ecapi.article.list', 'ArticleController@index');
+    Route::post('ecapi.brand.list', 'api/Brand/index');
 
-        Route::post('ecapi.brand.list', 'BrandController@index');
+    Route::post('ecapi.search.keyword.list', 'api/Search/index');
 
-        Route::post('ecapi.search.keyword.list', 'SearchController@index');
+    Route::post('ecapi.region.list', 'api/Region/index');
 
-        Route::post('ecapi.region.list', 'RegionController@index');
+    Route::post('ecapi.invoice.type.list', 'api/Invoice/type');
 
-        Route::post('ecapi.invoice.type.list', 'InvoiceController@type');
+    Route::post('ecapi.invoice.content.list', 'api/Invoice/content');
 
-        Route::post('ecapi.invoice.content.list', 'InvoiceController@content');
+    Route::post('ecapi.invoice.status.get', 'api/Invoice/status');
 
-        Route::post('ecapi.invoice.status.get', 'InvoiceController@status');
+    Route::post('ecapi.notice.list', 'api/Notice/index');
 
-        Route::post('ecapi.notice.list', 'NoticeController@index');
+    Route::post('ecapi.banner.list', 'api/Banner/index');
 
-        Route::post('ecapi.banner.list', 'BannerController@index');
+    Route::post('ecapi.version.check', 'api/Version/check');
 
-        Route::post('ecapi.version.check', 'VersionController@check');
+    Route::post('ecapi.recommend.brand.list', 'api/Brand/recommend');
 
-        Route::post('ecapi.recommend.brand.list', 'BrandController@recommend');
+    Route::post('ecapi.message.system.list', 'api/Message/system');
 
-        Route::post('ecapi.message.system.list', 'MessageController@system');
+    Route::post('ecapi.message.count', 'api/Message/unread');
 
-        Route::post('ecapi.message.count', 'MessageController@unread');
+    Route::post('ecapi.site.get', 'api/Site/index');
 
-        Route::post('ecapi.site.get', 'SiteController@index');
+    Route::post('ecapi.splash.list', 'api/Splash/index');
 
-        Route::post('ecapi.splash.list', 'SplashController@index');
+    Route::post('ecapi.splash.preview', 'api/Splash/view');
 
-        Route::post('ecapi.splash.preview', 'SplashController@view');
+    Route::post('ecapi.theme.list', 'api/Theme/index');
 
-        Route::post('ecapi.theme.list', 'ThemeController@index');
+    Route::post('ecapi.theme.preview', 'api/Theme/view');
 
-        Route::post('ecapi.theme.preview', 'ThemeController@view');
+    Route::post('ecapi.search.category.list', 'api/Goods/categorySearch');
 
-        Route::post('ecapi.search.category.list', 'GoodsController@categorySearch');
+    Route::post('ecapi.order.reason.list', 'api/Order/reasonList');
 
-        Route::post('ecapi.order.reason.list', 'OrderController@reasonList');
+    Route::post('ecapi.search.shop.list', 'api/Shop/search');
 
-        Route::post('ecapi.search.shop.list', 'ShopController@search');
+    Route::post('ecapi.recommend.shop.list', 'api/Shop/recommand');
 
-        Route::post('ecapi.recommend.shop.list', 'ShopController@recommand');
+    Route::post('ecapi.shop.list', 'api/Shop/index');
 
-        Route::post('ecapi.shop.list', 'ShopController@index');
+    Route::post('ecapi.shop.get', 'api/Shop/info');
 
-        Route::post('ecapi.shop.get', 'ShopController@info');
-
-        Route::post('ecapi.areacode.list', 'AreaCodeController@index');
-
-    });
+    Route::post('ecapi.areacode.list', 'api/AreaCode/index');
 
     // Authorization
-    Route::middleware(['token', 'xss'])->group(function () {
+    Route::post('ecapi.user.profile.get', 'api/User/profile');
 
-        Route::post('ecapi.user.profile.get', 'UserController@profile');
+    Route::post('ecapi.user.profile.update', 'api/User/updateProfile');
 
-        Route::post('ecapi.user.profile.update', 'UserController@updateProfile');
+    Route::post('ecapi.user.password.update', 'api/User/updatePassword');
 
-        Route::post('ecapi.user.password.update', 'UserController@updatePassword');
+    Route::post('ecapi.order.list', 'api/Order/index');
 
-        Route::post('ecapi.order.list', 'OrderController@index');
+    Route::post('ecapi.order.get', 'api/Order/view');
 
-        Route::post('ecapi.order.get', 'OrderController@view');
+    Route::post('ecapi.order.confirm', 'api/Order/confirm');
 
-        Route::post('ecapi.order.confirm', 'OrderController@confirm');
+    Route::post('ecapi.order.cancel', 'api/Order/cancel');
 
-        Route::post('ecapi.order.cancel', 'OrderController@cancel');
+    Route::post('ecapi.order.price', 'api/Order/price');
 
-        Route::post('ecapi.order.price', 'OrderController@price');
+    Route::post('ecapi.product.like', 'api/Goods/setLike');
 
-        Route::post('ecapi.product.like', 'GoodsController@setLike');
+    Route::post('ecapi.product.unlike', 'api/Goods/setUnlike');
 
-        Route::post('ecapi.product.unlike', 'GoodsController@setUnlike');
+    Route::post('ecapi.product.liked.list', 'api/Goods/likedList');
 
-        Route::post('ecapi.product.liked.list', 'GoodsController@likedList');
+    Route::post('ecapi.order.review', 'api/Order/review');
 
-        Route::post('ecapi.order.review', 'OrderController@review');
+    Route::post('ecapi.order.subtotal', 'api/Order/subtotal');
 
-        Route::post('ecapi.order.subtotal', 'OrderController@subtotal');
+    Route::post('ecapi.payment.types.list', 'api/Order/paymentList');
 
-        Route::post('ecapi.payment.types.list', 'OrderController@paymentList');
+    Route::post('ecapi.payment.pay', 'api/Order/pay');
 
-        Route::post('ecapi.payment.pay', 'OrderController@pay');
+    Route::post('ecapi.shipping.vendor.list', 'api/Shipping/index');
 
-        Route::post('ecapi.shipping.vendor.list', 'ShippingController@index');
+    Route::post('ecapi.shipping.status.get', 'api/Shipping/info');
 
-        Route::post('ecapi.shipping.status.get', 'ShippingController@info');
+    Route::post('ecapi.consignee.list', 'api/Consignee/index');
 
-        Route::post('ecapi.consignee.list', 'ConsigneeController@index');
+    Route::post('ecapi.consignee.update', 'api/Consignee/modify');
 
-        Route::post('ecapi.consignee.update', 'ConsigneeController@modify');
+    Route::post('ecapi.consignee.add', 'api/Consignee/add');
 
-        Route::post('ecapi.consignee.add', 'ConsigneeController@add');
+    Route::post('ecapi.consignee.delete', 'api/Consignee/remove');
 
-        Route::post('ecapi.consignee.delete', 'ConsigneeController@remove');
+    Route::post('ecapi.consignee.setDefault', 'api/Consignee/setDefault');
 
-        Route::post('ecapi.consignee.setDefault', 'ConsigneeController@setDefault');
+    Route::post('ecapi.score.get', 'api/Score/view');
 
-        Route::post('ecapi.score.get', 'ScoreController@view');
+    Route::post('ecapi.score.history.list', 'api/Score/history');
 
-        Route::post('ecapi.score.history.list', 'ScoreController@history');
+    Route::post('ecapi.cashgift.list', 'api/CashGift/index');
 
-        Route::post('ecapi.cashgift.list', 'CashGiftController@index');
+    Route::post('ecapi.cashgift.available', 'api/CashGift/available');
 
-        Route::post('ecapi.cashgift.available', 'CashGiftController@available');
+    Route::post('ecapi.push.update', 'api/Message/updateDeviceId');
 
-        Route::post('ecapi.push.update', 'MessageController@updateDeviceId');
-        //cart
-        Route::post('ecapi.cart.add', 'CartController@add');
+    Route::post('ecapi.cart.add', 'api/Cart/add');
 
-        Route::post('ecapi.cart.clear', 'CartController@clear');
+    Route::post('ecapi.cart.clear', 'api/Cart/clear');
 
-        Route::post('ecapi.cart.delete', 'CartController@delete');
+    Route::post('ecapi.cart.delete', 'api/Cart/delete');
 
-        Route::post('ecapi.cart.get', 'CartController@index');
+    Route::post('ecapi.cart.get', 'api/Cart/index');
 
-        Route::post('ecapi.cart.update', 'CartController@update');
+    Route::post('ecapi.cart.update', 'api/Cart/update');
 
-        Route::post('ecapi.cart.checkout', 'CartController@checkout');
+    Route::post('ecapi.cart.checkout', 'api/Cart/checkout');
 
-        Route::post('ecapi.cart.promos', 'CartController@promos');
+    Route::post('ecapi.cart.promos', 'api/Cart/promos');
 
-        Route::post('ecapi.product.purchase', 'GoodsController@purchase');
+    Route::post('ecapi.product.purchase', 'api/Goods/purchase');
 
-        Route::post('ecapi.product.validate', 'GoodsController@checkProduct');
+    Route::post('ecapi.product.validate', 'api/Goods/checkProduct');
 
-        Route::post('ecapi.message.order.list', 'MessageController@order');
+    Route::post('ecapi.message.order.list', 'api/Message/order');
 
-        Route::post('ecapi.shop.watch', 'ShopController@watch');
+    Route::post('ecapi.shop.watch', 'api/Shop/watch');
 
-        Route::post('ecapi.shop.unwatch', 'ShopController@unwatch');
+    Route::post('ecapi.shop.unwatch', 'api/Shop/unwatch');
 
-        Route::post('ecapi.shop.watching.list', 'ShopController@watchingList');
+    Route::post('ecapi.shop.watching.list', 'api/Shop/watchingList');
 
-        Route::post('ecapi.coupon.list', 'CouponController@index');
+    Route::post('ecapi.coupon.list', 'api/Coupon/index');
 
-        Route::post('ecapi.coupon.available', 'CouponController@available');
+    Route::post('ecapi.coupon.available', 'api/Coupon/available');
 
-        Route::post('ecapi.recommend.bonus.list', 'AffiliateController@index');
-        Route::post('ecapi.recommend.bonus.info', 'AffiliateController@info');
+    Route::post('ecapi.recommend.bonus.list', 'api/Affiliate/index');
 
-        Route::post('ecapi.withdraw.submit', 'AccountController@submit');
-        Route::post('ecapi.withdraw.cancel', 'AccountController@cancel');
-        Route::post('ecapi.withdraw.list', 'AccountController@index');
-        Route::post('ecapi.withdraw.info', 'AccountController@getDetail');
+    Route::post('ecapi.recommend.bonus.info', 'api/Affiliate/info');
 
-        Route::post('ecapi.balance.get', 'AccountController@surplus');
-        Route::post('ecapi.balance.list', 'AccountController@accountDetail');
+    Route::post('ecapi.withdraw.submit', 'api/Account/submit');
 
-    });
+    Route::post('ecapi.withdraw.cancel', 'api/Account/cancel');
+
+    Route::post('ecapi.withdraw.list', 'api/Account/index');
+
+    Route::post('ecapi.withdraw.info', 'api/Account/getDetail');
+
+    Route::post('ecapi.balance.get', 'api/Account/surplus');
+
+    Route::post('ecapi.balance.list', 'api/Account/accountDetail');
 
 });
